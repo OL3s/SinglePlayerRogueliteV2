@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://b52f0q8tr3vh6"]
+
+[ext_resource type="Script" uid="uid://bx7b6honsiix8" path="res://scenes/startmenu/Gem.cs" id="1_r6t6j"]
+[ext_resource type="Texture2D" uid="uid://bmpv515l7e8on" path="res://assets/gems/spr-gemstone-empty1.png" id="2_cgu2t"]
+[ext_resource type="Texture2D" uid="uid://ckptiq420umnc" path="res://assets/gems/spr-gemstones-full1.png" id="3_xrane"]
+
+[node name="Gem" type="Control" unique_id=600863267]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1024.0
+offset_bottom = -520.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6t6j")
+
+[node name="Background" type="TextureRect" parent="." unique_id=22563225]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cgu2t")
+stretch_mode = 5
+
+[node name="Gem" type="TextureRect" parent="." unique_id=168557344]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_xrane")
+stretch_mode = 5

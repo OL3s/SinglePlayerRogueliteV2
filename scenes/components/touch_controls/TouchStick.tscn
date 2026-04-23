@@ -1,0 +1,31 @@
+[gd_scene format=3]
+
+[ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyle.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/components/touch_controls/TouchStick.cs" id="2"]
+
+[node name="Stick" type="Panel" node_paths=PackedStringArray("DrawStick")]
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+pivot_offset = Vector2(128, 128)
+theme_override_styles/panel = ExtResource("1")
+script = ExtResource("2")
+DrawStick = NodePath("Stick")
+
+[node name="Stick" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 64)
+localize_numeral_system = false
+theme_override_styles/panel = ExtResource("1")

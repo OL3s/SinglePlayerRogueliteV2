@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dy5tks6jru17m"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_6amyp"]
+[ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_bgakn"]
+[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_6amyp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6amyp"]
+
+[node name="Outpost" type="Control" unique_id=350632434]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6amyp")
+
+[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1377796944]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 124.0
+offset_bottom = 466.0
+theme_override_constants/separation = 30
+vertical = true
+
+[node name="ExitButton" type="Button" parent="BoxContainer" unique_id=251179644]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Back"
+icon = SubResource("PlaceholderTexture2D_bgakn")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("1_bgakn")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"
+
+[node name="OpenOverlay" type="Button" parent="BoxContainer" unique_id=946192043]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Char"
+icon = SubResource("PlaceholderTexture2D_6amyp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"

@@ -1,0 +1,18 @@
+.godot/
+
+# Godot C# / .NET build output
+.mono/
+bin/
+obj/
+
+# User-specific IDE files
+.vs/
+.vscode/
+*.suo
+*.user
+*.userprefs
+*.rsuser
+
+# OS files
+.DS_Store
+Thumbs.db

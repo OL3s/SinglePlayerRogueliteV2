@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://ctji244a31gb0"]
+
+[ext_resource type="PackedScene" uid="uid://b52f0q8tr3vh6" path="res://scenes/startmenu/gem.tscn" id="1_38cwu"]
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_f84f2"]
+[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="3_w37gf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w37gf"]
+
+[node name="StartMenu" type="Control" unique_id=692433732]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f84f2")
+metadata/_edit_lock_ = true
+
+[node name="Control" type="Control" parent="." unique_id=1670196038]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -466.0
+offset_top = -248.0
+offset_right = 466.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GemContainer" type="HBoxContainer" parent="Control" unique_id=146507989]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -141.0
+offset_right = 300.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Gem" parent="Control/GemContainer" unique_id=600863267 instance=ExtResource("1_38cwu")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gem2" parent="Control/GemContainer" unique_id=1938986198 instance=ExtResource("1_38cwu")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+Type = 2
+
+[node name="Gem3" parent="Control/GemContainer" unique_id=2146447991 instance=ExtResource("1_38cwu")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+Type = 1
+
+[node name="Label" type="Label" parent="Control" unique_id=1277470694]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.5
+offset_top = 79.5
+offset_right = 336.5
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 55
+text = "Press anywhere to start game"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=407143791]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -360.0
+offset_top = -144.0
+offset_right = 360.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 32
+
+[node name="OpenOverlayCodex" type="Button" parent="ButtonContainer" unique_id=1488001950]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Codex"
+icon = SubResource("PlaceholderTexture2D_w37gf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_w37gf")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+
+[node name="OpenOverlayCareer" type="Button" parent="ButtonContainer" unique_id=1397589226]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Career"
+icon = SubResource("PlaceholderTexture2D_w37gf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_w37gf")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+
+[node name="OpenOverlaySocials" type="Button" parent="ButtonContainer" unique_id=2040914212]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Socials"
+icon = SubResource("PlaceholderTexture2D_w37gf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_w37gf")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+
+[node name="OpenOverlaySettings" type="Button" parent="ButtonContainer" unique_id=856152320]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Settings"
+icon = SubResource("PlaceholderTexture2D_w37gf")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_w37gf")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"

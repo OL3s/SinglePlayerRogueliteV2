@@ -1,0 +1,23 @@
+* text=auto eol=lf
+
+*.cs text
+*.gd text
+*.tscn text
+*.tres text
+*.godot text
+*.json text
+*.md text
+*.yml text
+*.yaml text
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.svg text
+*.wav binary
+*.ogg binary
+*.mp3 binary
+*.ttf binary
+*.otf binary
+*.dll binary
