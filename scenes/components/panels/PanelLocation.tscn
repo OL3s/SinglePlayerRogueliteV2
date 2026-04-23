@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cpis4v08h0ebo"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_l6ox1"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8govw"]
+
+[node name="Control" type="Control" unique_id=420231159]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 50.0
+theme = ExtResource("1_l6ox1")
+
+[node name="Panel" type="Panel" parent="." unique_id=450910599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=356109707]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 50.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_8govw")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=476957545]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.16700001
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.10000229
+grow_horizontal = 2
+grow_vertical = 2
+text = "$Location"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

@@ -29,6 +29,7 @@ offset_right = 466.0
 offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="GemContainer" type="HBoxContainer" parent="Control" unique_id=146507989]
 layout_mode = 1
@@ -79,16 +80,35 @@ theme_override_font_sizes/font_size = 55
 text = "Press anywhere to start game"
 horizontal_alignment = 1
 
+[node name="OpenOverlaySettings" type="Button" parent="." unique_id=856152320]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 124.0
+grow_horizontal = 0
+text = "Settings"
+icon = SubResource("PlaceholderTexture2D_w37gf")
+text_overrun_behavior = 1
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("3_w37gf")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+
 [node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=407143791]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -360.0
-offset_top = -144.0
-offset_right = 360.0
+offset_left = 28.0
+offset_top = -124.0
+offset_right = -31.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -97,8 +117,10 @@ theme_override_constants/separation = 32
 [node name="OpenOverlayCodex" type="Button" parent="ButtonContainer" unique_id=1488001950]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Codex"
 icon = SubResource("PlaceholderTexture2D_w37gf")
+text_overrun_behavior = 1
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -108,8 +130,10 @@ metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 [node name="OpenOverlayCareer" type="Button" parent="ButtonContainer" unique_id=1397589226]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Career"
 icon = SubResource("PlaceholderTexture2D_w37gf")
+text_overrun_behavior = 1
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
@@ -119,19 +143,10 @@ metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 [node name="OpenOverlaySocials" type="Button" parent="ButtonContainer" unique_id=2040914212]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Socials"
 icon = SubResource("PlaceholderTexture2D_w37gf")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-script = ExtResource("3_w37gf")
-metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-
-[node name="OpenOverlaySettings" type="Button" parent="ButtonContainer" unique_id=856152320]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "Settings"
-icon = SubResource("PlaceholderTexture2D_w37gf")
+text_overrun_behavior = 1
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
