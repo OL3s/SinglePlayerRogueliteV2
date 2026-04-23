@@ -22,9 +22,15 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 
 ## Visual References
 
+
+
 <img width="800" alt="Main menu template" src="docs/images/mainmenu-example.png" />
 
 **Main Menu**
+
+<img width="800" alt="Ingame example" src="docs/images/ingame-example.png" />
+
+**Ingame**
 
 <img width="800" alt="Outpost wireframe for the between-run stop" src="docs/images/outpost-example.png" />
 
