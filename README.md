@@ -6,13 +6,13 @@ Godot 4.6 C# single-player roguelite project.
 
 This project is built around repeatable runs, route choices, boss fights, and long-term progression. The player works toward collecting three gems by defeating three different bosses across multiple runs.
 
-### Core Goal
+**Core Goal**
 
 ```text
 Collect the 3 gems by defeating the 3 different bosses across runs
 ```
 
-### Core Loop
+**Core Loop**
 
 ```text
 Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
