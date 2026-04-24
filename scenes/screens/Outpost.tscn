@@ -10,9 +10,9 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6amyp"]
-
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b38rb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6amyp"]
 
 [node name="Outpost" type="Control" unique_id=350632434]
 layout_mode = 3
@@ -64,32 +64,6 @@ expand_icon = true
 script = ExtResource("1_bgakn")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
 
-[node name="BoxContainer" type="BoxContainer" parent="." unique_id=1377796944]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 27.0
-offset_top = -124.0
-offset_right = -27.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 30
-
-[node name="BtnChar" type="Button" parent="BoxContainer" unique_id=946192043]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Character"
-icon = SubResource("PlaceholderTexture2D_6amyp")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-script = ExtResource("2_6amyp")
-metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-
 [node name="OpenOverlaySettings" type="Button" parent="." unique_id=434306903]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
@@ -128,3 +102,30 @@ layout_mode = 2
 
 [node name="Control2" parent="HBoxContainer" unique_id=420231159 instance=ExtResource("5_wqu6w")]
 layout_mode = 2
+
+[node name="ButtonContainer" type="HBoxContainer" parent="." unique_id=95820252]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 148.0
+offset_top = -124.0
+offset_right = -148.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 128
+
+[node name="BtnChar" type="Button" parent="ButtonContainer" unique_id=946192043]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Character"
+icon = SubResource("PlaceholderTexture2D_6amyp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
