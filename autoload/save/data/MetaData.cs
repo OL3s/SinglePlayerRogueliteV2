@@ -1,10 +1,8 @@
 using Godot;
 
-namespace SaveData
-{
+namespace SaveData {
 	[GlobalClass]
-	public partial class MetaData : SaveResource
-	{
+	public partial class MetaData : SaveResource {
 		[ExportGroup("Gem Collection")]
 		[Export] public bool GemRedCollected { get; set; } = false;
 		[Export] public bool GemGreenCollected { get; set; } = false;
@@ -12,14 +10,12 @@ namespace SaveData
 		[ExportGroup("Run Data")]
 		[Export] public int RunCount { get; set; } = 0;
 		public bool IsFirstTimePlayer => RunCount == 0;
-		public override string ToString()
-		{
+		public override string ToString() {
 			return $"MetaData: RunCount={RunCount}, IsFirstTimePlayer={IsFirstTimePlayer}, CollectedGems=[Red={GemRedCollected}, Green={GemGreenCollected}, Blue={GemBlueCollected}]";
 		}
 	}
 
-	public enum Gem
-	{
+	public enum Gem {
 		Red = 0,
 		Green = 1,
 		Blue = 2,

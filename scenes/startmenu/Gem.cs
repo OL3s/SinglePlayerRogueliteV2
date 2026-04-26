@@ -1,10 +1,8 @@
 using Godot;
 using System;
 
-public partial class Gem : Control
-{
-	public enum GemType
-	{
+public partial class Gem : Control {
+	public enum GemType {
 		Blue,
 		Red,
 		Green,
@@ -21,13 +19,11 @@ public partial class Gem : Control
 	private TextureRect _background;
 	private TextureRect _gemSprite;
 
-	public override void _Ready()
-	{
+	public override void _Ready() {
 		_background = GetNodeOrNull<TextureRect>("Background") ?? throw new ArgumentNullException(nameof(_background), "Background node is missing.");
 		_gemSprite = GetNodeOrNull<TextureRect>("Gem") ?? throw new ArgumentNullException(nameof(_gemSprite), "Gem node is missing.");
 
-		(Texture2D backgroundTexture, Texture2D gemTexture) = Type switch
-		{
+		(Texture2D backgroundTexture, Texture2D gemTexture) = Type switch {
 			GemType.Blue => (BlueBackgroundTexture, BlueGemTexture),
 			GemType.Red => (RedBackgroundTexture, RedGemTexture),
 			GemType.Green => (GreenBackgroundTexture, GreenGemTexture),
@@ -40,12 +36,10 @@ public partial class Gem : Control
 		_gemSprite.Visible = IsUnlocked();
 	}
 
-	private bool IsUnlocked()
-	{
+	private bool IsUnlocked() {
 		var metaData = SaveNode.Get().MetaData;
 
-		return Type switch
-		{
+		return Type switch {
 			GemType.Blue => metaData.GemBlueCollected,
 			GemType.Red => metaData.GemRedCollected,
 			GemType.Green => metaData.GemGreenCollected,

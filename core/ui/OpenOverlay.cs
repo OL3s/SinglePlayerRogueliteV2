@@ -1,14 +1,11 @@
 using Godot;
 
 [GlobalClass]
-public partial class OpenOverlay : OverlayButton
-{
+public partial class OpenOverlay : OverlayButton {
 	[Export] public PackedScene OverlayScene { get; set; }
 
-	protected override void HandleOverlayAction()
-	{
-		if (OverlayScene != null)
-		{
+	protected override void HandleOverlayAction() {
+		if (OverlayScene != null) {
 			GlobalOverlay.Get()?.AddOverlay(OverlayScene);
 			return;
 		}

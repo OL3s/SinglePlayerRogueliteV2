@@ -3,8 +3,7 @@ using SaveData;
 using MyTypes;
 using System;
 
-public partial class SaveNode : Node
-{
+public partial class SaveNode : Node {
 	[Export] public MetaData DefaultMetaData { get; set; } = new MetaData();
 	[Export] public RunData DefaultRunData { get; set; } = new RunData();
 	[Export] public SettingsData DefaultSettingsData { get; set; } = new SettingsData();
@@ -17,18 +16,13 @@ public partial class SaveNode : Node
 	public InventoryData InventoryData => RunData.InventoryData;
 	public EquipedItemsData EquipedItemsData => PlayerData.EquipedItems;
 	public static SaveNode Get() => Engine.GetMainLoop() is SceneTree tree ? tree.Root.GetNode<SaveNode>("SaveNode") : throw new InvalidOperationException("SaveNode: Unable to find SaveNode in the scene tree. Ensure that SaveNode is added as a child of the root node and is named 'SaveNode'.");
-	public override void _Ready()
-	{
-		if (DefaultMetaData == null || DefaultRunData == null || DefaultSettingsData == null)
-		{
-			throw new InvalidOperationException("DefaultMetaData, DefaultRunData, and DefaultSettingsData must be assigned in the inspector.");
-		}
+	public override void _Ready() {
+		if (DefaultMetaData == null || DefaultRunData == null || DefaultSettingsData == null) throw new InvalidOperationException("DefaultMetaData, DefaultRunData, and DefaultSettingsData must be assigned in the inspector.");
 
 		ExecuteReady();
 	}
 
-	public void ExecuteReady()
-	{
+	public void ExecuteReady() {
 		DirAccess.MakeDirRecursiveAbsolute(SavePath);
 		LoadAllData();
 
@@ -40,33 +34,27 @@ public partial class SaveNode : Node
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");
 	}
 
-	public void SaveData(SaveResource data, FileType type)
-	{
+	public void SaveData(SaveResource data, FileType type) {
 		var filePath = GetSavePath(type);
 		var error = ResourceSaver.Save(data, filePath);
-		if (error != Error.Ok)
-		{
+		if (error != Error.Ok) {
 			GD.PrintErr($"Failed to save data to {filePath}: {error}");
 		}
-		else
-		{
+		else {
 			GD.Print($"Data successfully saved to {filePath}");
 		}
 	}
 
-	public Resource LoadData(FileType type)
-	{
+	public Resource LoadData(FileType type) {
 		var filePath = GetSavePath(type);
 
-		if (!FileAccess.FileExists(filePath))
-		{
+		if (!FileAccess.FileExists(filePath)) {
 			GD.Print($"No existing data found at {filePath}. A new instance will be created.");
 			return null;
 		}
 
 		var resource = ResourceLoader.Load(filePath);
-		if (resource == null)
-		{
+		if (resource == null) {
 			GD.PrintErr($"Failed to load data from {filePath}");
 			return null;
 		}
@@ -75,17 +63,14 @@ public partial class SaveNode : Node
 		return resource;
 	}
 
-	public override void _ExitTree()
-	{
+	public override void _ExitTree() {
 		SaveAllData();
 		GD.Print("SaveNode is exiting. All data has been saved.");
 	}
 
-	public void DeleteData(FileType type)
-	{
+	public void DeleteData(FileType type) {
 		var filePath = GetSavePath(type);
-		if (!FileAccess.FileExists(filePath))
-		{
+		if (!FileAccess.FileExists(filePath)) {
 			GD.Print($"No data found at {filePath} to delete.");
 			return;
 		}
@@ -107,30 +92,24 @@ public partial class SaveNode : Node
 	public void SaveRunData() => SaveData(RunData, FileType.Run);
 	public void SaveSettingsData() => SaveData(SettingsData, FileType.Settings);
 
-	public void DeleteAllData()
-	{
+	public void DeleteAllData() {
 		DeleteData(FileType.Meta);
 		DeleteData(FileType.Run);
 		DeleteData(FileType.Settings);
 	}
 
-	public void SaveAllData()
-	{
+	public void SaveAllData() {
 		SaveMetaData();
 		SaveRunData();
 		SaveSettingsData();
 	}
 
-	public void LoadAllData()
-	{
+	public void LoadAllData() {
 		MetaData = LoadData(FileType.Meta) as MetaData ?? DefaultMetaData;
 		RunData = LoadData(FileType.Run) as RunData ?? DefaultRunData;
 		SettingsData = LoadData(FileType.Settings) as SettingsData ?? DefaultSettingsData;
 
-		if (MetaData.IsFirstTimePlayer)
-		{
-			GD.Print("First time player detected. Tutorial gameplay enabled.");
-		}
+		if (MetaData.IsFirstTimePlayer) GD.Print("First time player detected. Tutorial gameplay enabled.");
 
 		GD.Print(MetaData.ToString());
 		GD.Print(RunData.ToString());
@@ -139,8 +118,7 @@ public partial class SaveNode : Node
 
 	public static string GetSavePath(FileType type) => Get().SavePath + $"{type.ToString().ToLower()}_data.tres";
 
-	private bool FilesExist()
-	{
+	private bool FilesExist() {
 		return FileAccess.FileExists(GetSavePath(FileType.Meta)) &&
 			   FileAccess.FileExists(GetSavePath(FileType.Run)) &&
 			   FileAccess.FileExists(GetSavePath(FileType.Settings));

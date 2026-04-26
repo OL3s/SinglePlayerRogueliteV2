@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dsu3lvwx7mxxo"]
 
-[ext_resource type="Script" path="res://scenes/components/touch_controls/TouchControls.cs" id="1"]
+[ext_resource type="Script" uid="uid://bs5cbo4nalw6d" path="res://scenes/components/touch_controls/TouchControls.cs" id="1"]
 [ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyle.tres" id="2"]
 [ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyleAlt.tres" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/components/touch_controls/TouchStick.tscn" id="4"]
@@ -9,7 +9,16 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15yyi"]
 
-[node name="TouchControls" type="Control" node_paths=PackedStringArray("Btn1", "Btn2", "Btn3", "Btn4", "DebugLabel", "LeftStick", "RightStick")]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rjjdx"]
+size = Vector2(64, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mqvto"]
+size = Vector2(64, 64)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kcflu"]
+size = Vector2(64, 64)
+
+[node name="TouchControls" type="Control" unique_id=135301437 node_paths=PackedStringArray("Btn1", "Btn2", "Btn3", "Btn4", "DebugLabel", "LeftStick", "RightStick")]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,7 +40,7 @@ DebugLabel = NodePath("Label")
 LeftStick = NodePath("LeftStick")
 RightStick = NodePath("RightStick")
 
-[node name="Btn1" type="Button" parent="."]
+[node name="Btn1" type="Button" parent="." unique_id=13751991]
 layout_mode = 0
 offset_left = 32.0
 offset_top = 192.0
@@ -42,9 +51,10 @@ theme_override_styles/pressed = ExtResource("3")
 theme_override_styles/hover = ExtResource("2")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kgyjp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_15yyi")
-text = "1"
+icon = SubResource("PlaceholderTexture2D_rjjdx")
+icon_alignment = 1
 
-[node name="Btn2" type="Button" parent="."]
+[node name="Btn2" type="Button" parent="." unique_id=935754272]
 layout_mode = 0
 offset_left = 224.0
 offset_top = 192.0
@@ -55,9 +65,10 @@ theme_override_styles/pressed = ExtResource("3")
 theme_override_styles/hover = ExtResource("2")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kgyjp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_15yyi")
-text = "2"
+icon = SubResource("PlaceholderTexture2D_mqvto")
+icon_alignment = 1
 
-[node name="Btn3" type="Button" parent="."]
+[node name="Btn3" type="Button" parent="." unique_id=1577854180]
 layout_mode = 0
 offset_left = 800.0
 offset_top = 192.0
@@ -68,9 +79,10 @@ theme_override_styles/pressed = ExtResource("3")
 theme_override_styles/hover = ExtResource("2")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kgyjp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_15yyi")
-text = "3"
+icon = SubResource("PlaceholderTexture2D_kcflu")
+icon_alignment = 1
 
-[node name="Btn4" type="Button" parent="."]
+[node name="Btn4" type="Button" parent="." unique_id=2098416207]
 layout_mode = 0
 offset_left = 992.0
 offset_top = 192.0
@@ -81,9 +93,10 @@ theme_override_styles/pressed = ExtResource("3")
 theme_override_styles/hover = ExtResource("2")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_kgyjp")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_15yyi")
-text = "4"
+icon = SubResource("PlaceholderTexture2D_kcflu")
+icon_alignment = 1
 
-[node name="LeftStick" parent="." node_paths=PackedStringArray("InputRoot") instance=ExtResource("4")]
+[node name="LeftStick" parent="." unique_id=1854392888 node_paths=PackedStringArray("InputRoot") instance=ExtResource("4")]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 320.0
@@ -91,7 +104,7 @@ offset_right = 320.0
 offset_bottom = 576.0
 InputRoot = NodePath("..")
 
-[node name="RightStick" parent="." node_paths=PackedStringArray("InputRoot") instance=ExtResource("4")]
+[node name="RightStick" parent="." unique_id=1683970524 node_paths=PackedStringArray("InputRoot") instance=ExtResource("4")]
 layout_mode = 0
 offset_left = 832.0
 offset_top = 320.0
@@ -99,7 +112,7 @@ offset_right = 1088.0
 offset_bottom = 576.0
 InputRoot = NodePath("..")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=499178959]
 layout_mode = 0
 offset_left = 432.0
 offset_top = 88.0

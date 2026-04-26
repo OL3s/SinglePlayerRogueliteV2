@@ -1,7 +1,5 @@
-namespace Combat
-{
-	public enum DamageType
-	{
+namespace Combat {
+	public enum DamageType {
 		Slashing,
 		Piercing,
 		Blunt,
@@ -11,8 +9,7 @@ namespace Combat
 		Poison,
 	}
 
-	public enum StatusEffectType
-	{
+	public enum StatusEffectType {
 		Burn,
 		Freeze,
 		Shock,

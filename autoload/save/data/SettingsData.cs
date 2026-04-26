@@ -1,12 +1,9 @@
 using Godot;
 
-namespace SaveData
-{
+namespace SaveData {
 	[GlobalClass]
-	public partial class SettingsData : SaveResource
-	{
-		public override string ToString()
-		{
+	public partial class SettingsData : SaveResource {
+		public override string ToString() {
 			return $"SettingsData: DataVersion={DataVersion}";
 		}
 	}

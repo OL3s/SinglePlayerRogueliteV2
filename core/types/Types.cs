@@ -2,8 +2,7 @@ using Godot;
 
 namespace MyTypes {
 
-	public enum Biomes
-	{
+	public enum Biomes {
 		Undefined = 0,
 		GrasslandsA = 1,
 		TundraB = 2,
@@ -16,16 +15,14 @@ namespace MyTypes {
 		LavaBossD = 9,
 	}
 
-	public enum Locations
-	{
+	public enum Locations {
 		Undefined = 0,
 		Village = 1,
 		Sanctuary = 2,
 		Campsite = 3
 	}
 
-	public enum BuildingTypes
-	{
+	public enum BuildingTypes {
 		Tavern,
 		Merchant,
 		Blacksmith,
@@ -36,14 +33,12 @@ namespace MyTypes {
 		Enchanter,
 	}
 
-	public enum AmmoType
-	{
+	public enum AmmoType {
 		None,
 		Arrow
 	}
 
-	public enum ItemType
-	{
+	public enum ItemType {
 		ItemBase,
 		ItemEquipable,
 		ItemConsumable,
@@ -53,10 +48,8 @@ namespace MyTypes {
 	}
 }
 
-namespace SaveData
-{
-	public enum FileType
-	{
+namespace SaveData {
+	public enum FileType {
 		Meta,
 		Run,
 		Settings

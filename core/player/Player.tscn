@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dm3n7pskru04q"]
+
+[ext_resource type="PackedScene" uid="uid://dsu3lvwx7mxxo" path="res://scenes/components/touch_controls/TouchControls.tscn" id="1_8jpqp"]
+[ext_resource type="Script" uid="uid://bc0guxh50bqql" path="res://core/player/Player.cs" id="1_h8ia1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8jpqp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_h8ia1"]
+size = Vector2(16, 16)
+
+[node name="Player" type="CharacterBody2D" unique_id=1177476462]
+script = ExtResource("1_h8ia1")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1367649367]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1235801842]
+
+[node name="TouchControls" parent="CanvasLayer" unique_id=109843506 instance=ExtResource("1_8jpqp")]
+EnableDebugOutput = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006335078]
+shape = SubResource("CircleShape2D_8jpqp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=429460859]
+texture = SubResource("PlaceholderTexture2D_h8ia1")

@@ -2,8 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class SignalHandler : Node
-{
+public partial class SignalHandler : Node {
 	[Signal] public delegate void SignalReceivedEventHandler(SignalType signalType, Variant data);
 
 	private static readonly Dictionary<(SignalType signalType, Delegate handler), SignalReceivedEventHandler> SubscriptionWrappers = new();
@@ -17,8 +16,7 @@ public partial class SignalHandler : Node
 		if (SubscriptionWrappers.ContainsKey(key))
 			return;
 
-		SignalReceivedEventHandler wrapper = (receivedSignalType, _) =>
-		{
+		SignalReceivedEventHandler wrapper = (receivedSignalType, _) => {
 			if (receivedSignalType == signalType)
 				handler(receivedSignalType);
 		};
@@ -36,8 +34,7 @@ public partial class SignalHandler : Node
 		if (SubscriptionWrappers.ContainsKey(key))
 			return;
 
-		SignalReceivedEventHandler wrapper = (receivedSignalType, _) =>
-		{
+		SignalReceivedEventHandler wrapper = (receivedSignalType, _) => {
 			if (receivedSignalType == signalType)
 				handler();
 		};
@@ -55,8 +52,7 @@ public partial class SignalHandler : Node
 		if (SubscriptionWrappers.ContainsKey(key))
 			return;
 
-		SignalReceivedEventHandler wrapper = (receivedSignalType, data) =>
-		{
+		SignalReceivedEventHandler wrapper = (receivedSignalType, data) => {
 			if (receivedSignalType != signalType)
 				return;
 
@@ -76,8 +72,7 @@ public partial class SignalHandler : Node
 		if (SubscriptionWrappers.ContainsKey(key))
 			return;
 
-		SignalReceivedEventHandler wrapper = (receivedSignalType, data) =>
-		{
+		SignalReceivedEventHandler wrapper = (receivedSignalType, data) => {
 			if (receivedSignalType != signalType)
 				return;
 
@@ -210,12 +205,10 @@ public partial class SignalHandler : Node
 	}
 
 	private static T GetPayload<[MustBeVariant] T>(SignalType signalType, Variant data) {
-		try
-		{
+		try {
 			return data.As<T>();
 		}
-		catch (InvalidCastException exception)
-		{
+		catch (InvalidCastException exception) {
 			throw new InvalidCastException($"Signal '{signalType}' payload could not be cast to '{typeof(T).Name}'.", exception);
 		}
 	}
@@ -227,8 +220,7 @@ public partial class SignalHandler : Node
 		return Variant.From(data);
 	}
 
-	public enum SignalType
-	{
+	public enum SignalType {
 		PurchaseItem,
 		ItemEquipped,
 		GoldAmountChanged,
