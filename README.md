@@ -91,3 +91,124 @@ scenes/
   components/ Reusable scene components and UI pieces
   startmenu/  Start menu presentation scenes
 ```
+
+## Autoload Usage
+
+### SignalHandler
+
+`SignalHandler` is a global event bus autoload used for game events that need to be observed across unrelated nodes.
+
+Use it when:
+- One part of the game needs to notify other systems without holding direct references
+- The event has a clear game meaning, such as item equipped or gold amount changed
+
+Prefer the specific helper methods instead of the generic enum-based API.
+
+**Emit examples**
+
+```csharp
+SignalHandler.EmitSignalGoldAmountChangedStatic(250);
+SignalHandler.EmitSignalItemEquippedStatic(item);
+```
+
+**Subscribe and unsubscribe examples**
+
+```csharp
+private void OnGoldAmountChanged(int goldAmount)
+{
+	GD.Print($"Gold changed to {goldAmount}");
+}
+
+public override void _Ready()
+{
+	SignalHandler.SubscribeGoldAmountChanged(OnGoldAmountChanged);
+}
+
+public override void _ExitTree()
+{
+	SignalHandler.UnsubscribeGoldAmountChanged(OnGoldAmountChanged);
+}
+```
+
+```csharp
+private void OnItemEquipped(ItemBase item)
+{
+	GD.Print($"Equipped: {item.ItemName}");
+}
+
+public override void _Ready()
+{
+	SignalHandler.SubscribeItemEquipped(OnItemEquipped);
+}
+
+public override void _ExitTree()
+{
+	SignalHandler.UnsubscribeItemEquipped(OnItemEquipped);
+}
+```
+
+**Available specific signal helpers**
+
+- `EmitSignalPurchaseItemStatic(ItemBase item)`
+- `EmitSignalItemEquippedStatic(ItemBase item)`
+- `EmitSignalGoldAmountChangedStatic(int goldAmount)`
+- `SubscribePurchaseItem(Action<ItemBase> handler)`
+- `SubscribeItemEquipped(Action<ItemBase> handler)`
+- `SubscribeGoldAmountChanged(Action<int> handler)`
+- `UnsubscribePurchaseItem(Action<ItemBase> handler)`
+- `UnsubscribeItemEquipped(Action<ItemBase> handler)`
+- `UnsubscribeGoldAmountChanged(Action<int> handler)`
+
+The generic methods still exist for lower-level use, but the intended path is the specific methods because they make the expected payload type obvious.
+
+### GlobalOverlay
+
+`GlobalOverlay` is a global `CanvasLayer` autoload used for menus, popups, and modal UI that should sit on top of the active scene.
+
+Use it when:
+- Opening a popup or overlay scene above the current screen
+- Closing the latest overlay or clearing all overlays
+- Changing the main scene and making sure overlay UI is cleaned up first
+
+Get the autoload instance like this:
+
+```csharp
+var overlay = GlobalOverlay.Get();
+```
+
+**Open an overlay**
+
+```csharp
+var overlay = GlobalOverlay.Get();
+overlay?.AddOverlay(packedOverlayScene);
+```
+
+**Close the top overlay**
+
+```csharp
+GlobalOverlay.Get()?.CloseTopOverlay();
+```
+
+**Close all overlays**
+
+```csharp
+GlobalOverlay.Get()?.CloseAllOverlays();
+```
+
+**Change the root scene**
+
+```csharp
+GlobalOverlay.Get()?.ChangeRootScene(nextScene);
+```
+
+`ChangeRootScene` closes all overlays before switching scene.
+
+### Overlay Buttons
+
+There are small reusable button helpers in `core/ui/` for common overlay actions:
+
+- `OpenOverlay` opens a configured `PackedScene`
+- `CloseOverlay` closes a specific target, the top overlay, or all overlay children
+- `ChangeOverlayScene` changes the root scene through `GlobalOverlay`
+
+These are useful when the action is purely UI wiring and you do not need a custom script.

@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://dy5tks6jru17m"]
+
+[ext_resource type="PackedScene" uid="uid://ccfxm8netofo0" path="res://scenes/outpost/buildings/buildingTemplate.tscn" id="1_7r7tj"]
+[ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_bgakn"]
+[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_6amyp"]
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="2_vumbe"]
+[ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_b38rb"]
+[ext_resource type="PackedScene" uid="uid://cpis4v08h0ebo" path="res://scenes/components/panels/PanelLocation.tscn" id="5_wqu6w"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b38rb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6amyp"]
+
+[node name="Root" type="Node" unique_id=1748825370]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=812051596]
+
+[node name="Overlay" type="Control" parent="CanvasLayer" unique_id=1246035958]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_vumbe")
+metadata/_edit_lock_ = true
+
+[node name="TopUI" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=2137027080]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="GoldPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=843888578 instance=ExtResource("4_b38rb")]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="LocaltionPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=420231159 instance=ExtResource("5_wqu6w")]
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="Space" type="Control" parent="CanvasLayer/Overlay/TopUI" unique_id=2105839823]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+metadata/_edit_lock_ = true
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=466970424]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Back"
+icon = SubResource("PlaceholderTexture2D_bgakn")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("1_bgakn")
+ScenePath = "res://scenes/screens/StartMenu.tscn"
+metadata/_custom_type_script = "uid://cojt55fjm1e35"
+
+[node name="OpenOverlaySettings" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=833163387]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+text = "Settings"
+icon = SubResource("PlaceholderTexture2D_b38rb")
+text_overrun_behavior = 1
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="BottomUI" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=398106598]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="BtnInventory" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=1063589233]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+icon = SubResource("PlaceholderTexture2D_6amyp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="BtnCharacter" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=1311285667]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Character"
+icon = SubResource("PlaceholderTexture2D_6amyp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="BtnCodex" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=169016246]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Codex"
+icon = SubResource("PlaceholderTexture2D_6amyp")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_6amyp")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="World" type="Node2D" parent="." unique_id=1723193871]
+
+[node name="Building" parent="World" unique_id=1511369869 instance=ExtResource("1_7r7tj")]
+position = Vector2(204, 393)
+
+[node name="Building2" parent="World" unique_id=780541550 instance=ExtResource("1_7r7tj")]
+position = Vector2(414, 252)
+
+[node name="Building3" parent="World" unique_id=1997029538 instance=ExtResource("1_7r7tj")]
+position = Vector2(575, 478)
+
+[node name="Building4" parent="World" unique_id=1919299272 instance=ExtResource("1_7r7tj")]
+position = Vector2(721, 259)
+
+[node name="Camera2D" type="Camera2D" parent="World" unique_id=2010866043]
+position = Vector2(576, 324)
+
+[node name="Building5" parent="World" unique_id=1162120890 instance=ExtResource("1_7r7tj")]
+position = Vector2(891, 402)

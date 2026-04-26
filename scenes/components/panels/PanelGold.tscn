@@ -1,22 +1,27 @@
 [gd_scene format=3 uid="uid://b1kf2xl55ull2"]
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_848ib"]
+[ext_resource type="Script" uid="uid://135h1ojmx1fy" path="res://scenes/components/panels/PanelGold.cs" id="2_655x8"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_655x8"]
 
-[node name="Control" type="Control" unique_id=843888578]
+[node name="GoldPanel" type="Control" unique_id=843888578]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 200.0
 offset_bottom = 50.0
 theme = ExtResource("1_848ib")
+script = ExtResource("2_655x8")
 
 [node name="Panel" type="Panel" parent="." unique_id=336991667]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+offset_top = -25.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -24,7 +29,10 @@ grow_vertical = 2
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 51.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 47.88
+offset_bottom = -3.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_655x8")
 stretch_mode = 5

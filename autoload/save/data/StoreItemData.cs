@@ -122,8 +122,30 @@ public partial class StoreItemData : Resource
 		EnchanterItems = new Array<ItemBase>();
 	}
 
-	public override string ToString()
-	{
-		return $"StoreItemData: TavernItems={TavernItems}, MerchantItems={MerchantItems}, BlacksmithItems={BlacksmithItems}, GoldsmithItems={GoldsmithItems}, AlchemistItems={AlchemistItems}, FletcherItems={FletcherItems}, ArcanistItems={ArcanistItems}, EnchanterItems={EnchanterItems}";
+	public override string ToString() {
+		return $"StoreItemData:\n"
+			+ $"    Tavern={FormatItems(TavernItems)}\n"
+			+ $"    Merchant={FormatItems(MerchantItems)}\n"
+			+ $"    Blacksmith={FormatItems(BlacksmithItems)}\n"
+			+ $"    Goldsmith={FormatItems(GoldsmithItems)}\n"
+			+ $"    Alchemist={FormatItems(AlchemistItems)}\n"
+			+ $"    Fletcher={FormatItems(FletcherItems)}\n"
+			+ $"    Arcanist={FormatItems(ArcanistItems)}\n"
+			+ $"    Enchanter={FormatItems(EnchanterItems)}";
+	}
+
+	private static string FormatItems(Array<ItemBase> items) {
+		if (items == null || items.Count == 0)
+			return "[]";
+
+		var result = "[\n";
+		for (var i = 0; i < items.Count; i++) {
+			if (i > 0)
+				result += ",\n";
+
+			result += $"      {items[i]?.ToString() ?? "null"}";
+		}
+
+		return result + "\n    ]";
 	}
 }

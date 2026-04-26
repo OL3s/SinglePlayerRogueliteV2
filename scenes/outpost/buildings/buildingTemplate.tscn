@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://ccfxm8netofo0"]
+
+[ext_resource type="Texture2D" uid="uid://dsqb3fvddhg1s" path="res://assets/outpost/buildings/building_placeholder.svg" id="1_8rcmu"]
+[ext_resource type="Script" uid="uid://bt8a8igubvw8b" path="res://scenes/outpost/buildings/BuildingTemplate.cs" id="2_lm4d7"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_13jms"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13jms"]
+radius = 61.03278
+
+[node name="Building" type="Node2D" unique_id=1511369869]
+script = ExtResource("2_lm4d7")
+TextureHouse = ExtResource("1_8rcmu")
+
+[node name="SpriteHouse" type="Sprite2D" parent="." unique_id=333691828]
+texture = ExtResource("1_8rcmu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=735441159]
+position = Vector2(0, -56)
+texture = SubResource("PlaceholderTexture2D_13jms")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=380661012]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=869004202]
+position = Vector2(0, -56)
+shape = SubResource("CircleShape2D_13jms")
