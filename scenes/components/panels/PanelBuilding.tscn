@@ -5,7 +5,7 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n2dy3"]
 
-[node name="Control" type="PanelContainer" unique_id=2082076853]
+[node name="PanelBuilding" type="PanelContainer" unique_id=2082076853]
 offset_right = 492.0
 offset_bottom = 100.0
 theme = ExtResource("1_n2dy3")
@@ -41,7 +41,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 6
 text = "$ Descriptivate text"
-vertical_alignment = 1
 
 [node name="Control" type="Control" parent="HBoxContainer" unique_id=724184053]
 custom_minimum_size = Vector2(16, 0)

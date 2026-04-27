@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_b38rb"]
 [ext_resource type="PackedScene" uid="uid://cpis4v08h0ebo" path="res://scenes/components/panels/PanelLocation.tscn" id="5_wqu6w"]
 [ext_resource type="PackedScene" uid="uid://fqd6rdrheta3" path="res://scenes/components/panels/PanelPlayerTop.tscn" id="6_imbua"]
-[ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/outpost/screens/Blacksmith.tscn" id="8_nw8ct"]
+[ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/outpost/screens/BuildingOverlay.tscn" id="8_nw8ct"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 

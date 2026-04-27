@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://hwrt00phvgys"]
 
-[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_a2i1k"]
-[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="1_l5w5p"]
-[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_tn0jv"]
-[ext_resource type="PackedScene" uid="uid://cbit1hetoxuyt" path="res://scenes/components/panels/PanelBuilding.tscn" id="3_urxyx"]
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_01qpf"]
+[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_cjdsb"]
+[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_66bgr"]
+[ext_resource type="PackedScene" uid="uid://cbit1hetoxuyt" path="res://scenes/components/panels/PanelBuilding.tscn" id="4_mlke7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_urxyx"]
 
-[node name="Blacksmith" type="Control" unique_id=1224944966]
+[node name="BuildingOverlay" type="Control" unique_id=1224944966]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_a2i1k")
+theme = ExtResource("1_01qpf")
 
 [node name="Panel" type="ColorRect" parent="." unique_id=164256524]
 layout_mode = 1
@@ -45,7 +45,7 @@ icon = SubResource("PlaceholderTexture2D_urxyx")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
-script = ExtResource("2_tn0jv")
+script = ExtResource("2_cjdsb")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
@@ -58,7 +58,7 @@ icon = SubResource("PlaceholderTexture2D_urxyx")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
-script = ExtResource("2_tn0jv")
+script = ExtResource("2_cjdsb")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
@@ -71,7 +71,7 @@ icon = SubResource("PlaceholderTexture2D_urxyx")
 icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
-script = ExtResource("2_tn0jv")
+script = ExtResource("2_cjdsb")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
@@ -92,10 +92,18 @@ offset_left = -100.0
 offset_bottom = 100.0
 grow_horizontal = 0
 text = "X"
-script = ExtResource("1_l5w5p")
+script = ExtResource("3_66bgr")
 CloseTarget = NodePath("../..")
 CloseAllOverlayChildren = true
 metadata/_custom_type_script = "uid://b5nexivgcopri"
 
-[node name="Control" parent="TopUI" unique_id=2082076853 instance=ExtResource("3_urxyx")]
+[node name="PanelBuilding" parent="TopUI" unique_id=2082076853 instance=ExtResource("4_mlke7")]
 layout_mode = 1
+
+[node name="PanelOverlay" type="PanelContainer" parent="." unique_id=642527499]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+offset_bottom = -100.0
