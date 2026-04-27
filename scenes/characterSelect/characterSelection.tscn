@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://d1ag7gm5vb0ht"]
+
+[ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_nmjne"]
+[ext_resource type="Script" uid="uid://dwynphf850buu" path="res://scenes/characterSelect/CharacterSelection.cs" id="1_sblgg"]
+[ext_resource type="PackedScene" uid="uid://bdidiwmmk523p" path="res://scenes/components/panels/PanelCareerData.tscn" id="2_i30vl"]
+
+[node name="CharacterSelection" type="Control" unique_id=565005107]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sblgg")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=479273925]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 67.0
+offset_right = -29.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PanelStats" type="Panel" parent="HBoxContainer" unique_id=422848442]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelCareerData" parent="HBoxContainer/PanelStats" unique_id=357901048 instance=ExtResource("2_i30vl")]
+layout_mode = 1
+offset_left = 11.0
+offset_right = -10.0
+
+[node name="PanelGear" type="Panel" parent="HBoxContainer" unique_id=1772211458]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelButton" type="Panel" parent="HBoxContainer" unique_id=1963934283]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelButton" unique_id=749074820]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.5
+offset_top = -193.3125
+offset_right = 118.5
+offset_bottom = 193.3125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="ContinueButton" type="Button" parent="HBoxContainer/PanelButton/VBoxContainer" unique_id=1895055029]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+text = "Continue"
+script = ExtResource("1_nmjne")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"
+
+[node name="NewRunButton" type="Button" parent="HBoxContainer/PanelButton/VBoxContainer" unique_id=1955471423]
+layout_mode = 2
+size_flags_vertical = 3
+text = "New Run"
+script = ExtResource("1_nmjne")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"
+
+[node name="BackButton" type="Button" parent="." unique_id=328935732]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+text = "X"
+script = ExtResource("1_nmjne")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"

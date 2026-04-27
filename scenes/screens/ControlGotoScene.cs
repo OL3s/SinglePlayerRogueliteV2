@@ -2,6 +2,8 @@ using Godot;
 
 [GlobalClass]
 public partial class ControlGotoScene : Control {
+	private const string NewCharacterScenePath = "res://scenes/characterSelect/characterSelectNew.tscn";
+
 	[Export] public PackedScene SceneToLoad { get; set; }
 	[Export] public bool ChangeScene { get; set; }
 
@@ -13,7 +15,9 @@ public partial class ControlGotoScene : Control {
 	}
 
 	public void GoToScene() {
-		if (SceneToLoad == null) {
+		var sceneToLoad = GetSceneToLoad();
+
+		if (sceneToLoad == null) {
 			GD.PushWarning($"{nameof(ControlGotoScene)} on '{Name}' has no scene configured.");
 			return;
 		}
@@ -25,11 +29,19 @@ public partial class ControlGotoScene : Control {
 		}
 
 		if (ChangeScene) {
-			overlay.ChangeRootScene(SceneToLoad);
+			overlay.ChangeRootScene(sceneToLoad);
 			return;
 		}
 
-		overlay.AddOverlay(SceneToLoad);
+		overlay.AddOverlay(sceneToLoad);
+	}
+
+	private PackedScene GetSceneToLoad() {
+		var saveNode = SaveNode.Get();
+		if (!saveNode.HadPlayerDataOnLoad)
+			return ResourceLoader.Load<PackedScene>(NewCharacterScenePath);
+
+		return SceneToLoad;
 	}
 
 	private static bool IsPressed(InputEvent @event) {

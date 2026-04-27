@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpis4v08h0ebo" path="res://scenes/components/panels/PanelLocation.tscn" id="5_wqu6w"]
 [ext_resource type="PackedScene" uid="uid://fqd6rdrheta3" path="res://scenes/components/panels/PanelPlayerTop.tscn" id="6_imbua"]
 [ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/outpost/screens/BuildingOverlay.tscn" id="8_nw8ct"]
+[ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/screens/StartMenu.tscn" id="9_bgakn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 
@@ -74,7 +75,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("1_bgakn")
-ScenePath = "res://scenes/screens/StartMenu.tscn"
+SceneToLoad = ExtResource("9_bgakn")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
 
 [node name="OpenOverlaySettings" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=833163387]

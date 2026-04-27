@@ -11,6 +11,7 @@ public partial class SaveNode : Node {
 	public MetaData MetaData { get; set; }
 	public RunData RunData { get; set; }
 	public SettingsData SettingsData { get; set; }
+	public bool HadPlayerDataOnLoad { get; private set; }
 	public PlayerData PlayerData => RunData.PlayerData;
 	public StoreItemData StoreData => RunData.StoreData;
 	public InventoryData InventoryData => RunData.InventoryData;
@@ -106,8 +107,11 @@ public partial class SaveNode : Node {
 	}
 
 	public void LoadAllData() {
+		var loadedRunData = LoadData(FileType.Run) as RunData;
+		HadPlayerDataOnLoad = loadedRunData?.PlayerData != null;
+
 		MetaData = LoadData(FileType.Meta) as MetaData ?? DefaultMetaData;
-		RunData = LoadData(FileType.Run) as RunData ?? DefaultRunData;
+		RunData = loadedRunData ?? DefaultRunData;
 		SettingsData = LoadData(FileType.Settings) as SettingsData ?? DefaultSettingsData;
 
 		if (MetaData.IsFirstTimePlayer) GD.Print("First time player detected. Tutorial gameplay enabled.");

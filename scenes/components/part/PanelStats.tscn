@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://b3t78msmcidw4"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_r8kxw"]
+[ext_resource type="Script" uid="uid://dx2xl7xqpge8a" path="res://scenes/components/part/PanelStats.cs" id="2_48cim"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_48cim"]
+
+[node name="PanelStats" type="VBoxContainer" unique_id=1885579756]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_r8kxw")
+script = ExtResource("2_48cim")
+
+[node name="StatStr" type="Panel" parent="." unique_id=75430432]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatStr" unique_id=1150834241]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_48cim")
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="StatStr" unique_id=1840103329]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_right = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Strength"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelValue" type="Label" parent="StatStr" unique_id=1685869954]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "$Val"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="StatAgi" type="Panel" parent="." unique_id=176615201]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatAgi" unique_id=2078804690]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_48cim")
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="StatAgi" unique_id=735923346]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_right = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Agility"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelValue" type="Label" parent="StatAgi" unique_id=299408097]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "$Val"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="StatArc" type="Panel" parent="." unique_id=1397246923]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatArc" unique_id=396915403]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_48cim")
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="StatArc" unique_id=1364201953]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_right = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Arcana"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelValue" type="Label" parent="StatArc" unique_id=1364649403]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "$Val"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="StatVit" type="Panel" parent="." unique_id=1830128517]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="StatVit" unique_id=2024900540]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 80.0
+offset_bottom = -8.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_48cim")
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="StatVit" unique_id=1885446992]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_right = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Vitality"
+vertical_alignment = 1
+clip_text = true
+
+[node name="LabelValue" type="Label" parent="StatVit" unique_id=1976815979]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -88.0
+offset_right = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "$Val"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true

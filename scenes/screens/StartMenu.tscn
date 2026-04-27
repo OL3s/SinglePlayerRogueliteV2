@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b52f0q8tr3vh6" path="res://scenes/startmenu/gem.tscn" id="1_38cwu"]
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_f84f2"]
 [ext_resource type="Script" uid="uid://c43vpjm3f8d4i" path="res://scenes/screens/ControlGotoScene.cs" id="2_2xbjv"]
-[ext_resource type="PackedScene" uid="uid://dy5tks6jru17m" path="res://scenes/outpost/Outpost.tscn" id="3_fkdaq"]
+[ext_resource type="PackedScene" uid="uid://d1ag7gm5vb0ht" path="res://scenes/characterSelect/characterSelection.tscn" id="3_fkdaq"]
 [ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="3_w37gf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_w37gf"]

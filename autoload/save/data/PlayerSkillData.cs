@@ -2,6 +2,13 @@ using Godot;
 
 [GlobalClass]
 public partial class PlayerSkillData : Resource {
+	public enum PlayerSkillType {
+		Strength,
+		Agility,
+		Arcana,
+		Vitality
+	}
+
 	private const int XpPerLevel = 100;
 
 	[Export] public int StrengthXp { get; set; } = 0;
@@ -13,20 +20,34 @@ public partial class PlayerSkillData : Resource {
 		return (currentXp / XpPerLevel) + 1;
 	}
 
+	public int GetXp(PlayerSkillType skillType) {
+		return skillType switch {
+			PlayerSkillType.Strength => StrengthXp,
+			PlayerSkillType.Agility => AgilityXp,
+			PlayerSkillType.Arcana => ArcanaXp,
+			PlayerSkillType.Vitality => VitalityXp,
+			_ => 0
+		};
+	}
+
+	public int GetSkillLevel(PlayerSkillType skillType) {
+		return GetLevel(GetXp(skillType));
+	}
+
 	public int GetStrengthLevel() {
-		return GetLevel(StrengthXp);
+		return GetSkillLevel(PlayerSkillType.Strength);
 	}
 
 	public int GetAgilityLevel() {
-		return GetLevel(AgilityXp);
+		return GetSkillLevel(PlayerSkillType.Agility);
 	}
 
 	public int GetArcanaLevel() {
-		return GetLevel(ArcanaXp);
+		return GetSkillLevel(PlayerSkillType.Arcana);
 	}
 
 	public int GetVitalityLevel() {
-		return GetLevel(VitalityXp);
+		return GetSkillLevel(PlayerSkillType.Vitality);
 	}
 
 	public int GetTotalLevel() {

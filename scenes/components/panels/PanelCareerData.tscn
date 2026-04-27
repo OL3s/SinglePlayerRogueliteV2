@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://bdidiwmmk523p"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_2txqd"]
+[ext_resource type="Script" uid="uid://b3ol3why0rlar" path="res://scenes/components/panels/PanelCareerData.cs" id="2_cb71i"]
+[ext_resource type="PackedScene" uid="uid://b3t78msmcidw4" path="res://scenes/components/part/PanelStats.tscn" id="2_lqmvw"]
+
+[node name="PanelCareerData" type="Control" unique_id=357901048]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2txqd")
+script = ExtResource("2_cb71i")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1667843]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Name" type="Control" parent="HBoxContainer" unique_id=463401335]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/Name" unique_id=543752679]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "$CharacterName"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelStats" parent="HBoxContainer" unique_id=1885579756 instance=ExtResource("2_lqmvw")]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Stats" type="Control" parent="HBoxContainer" unique_id=416614338]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
