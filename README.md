@@ -36,6 +36,10 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 
 **Outpost**
 
+<img width="800" alt="Blacksmith building example" src="docs/images/blacksmith-building-example.png" />
+
+**Blacksmith**
+
 ## Current Direction
 
 - Single-player roguelite structure with run-based progression
