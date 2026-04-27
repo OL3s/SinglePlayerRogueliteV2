@@ -29,11 +29,16 @@ public partial class PlayerSkillData : Resource {
 		return GetLevel(VitalityXp);
 	}
 
+	public int GetTotalLevel() {
+		return GetStrengthLevel() + GetAgilityLevel() + GetArcanaLevel() + GetVitalityLevel();
+	}
+
 	public override string ToString() {
 		return $"PlayerSkillData:\n"
 			+ $"    StrengthXp={StrengthXp}, StrengthLevel={GetStrengthLevel()}\n"
 			+ $"    AgilityXp={AgilityXp}, AgilityLevel={GetAgilityLevel()}\n"
 			+ $"    ArcanaXp={ArcanaXp}, ArcanaLevel={GetArcanaLevel()}\n"
-			+ $"    VitalityXp={VitalityXp}, VitalityLevel={GetVitalityLevel()}";
+			+ $"    VitalityXp={VitalityXp}, VitalityLevel={GetVitalityLevel()}\n"
+			+ $"    TotalLevel={GetTotalLevel()}";
 	}
 }

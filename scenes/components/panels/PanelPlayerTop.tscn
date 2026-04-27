@@ -55,8 +55,8 @@ layout_mode = 2
 text = "$Name"
 horizontal_alignment = 1
 
-[node name="LabelWave" type="Label" parent="LabelContainer" unique_id=1619067584]
+[node name="LabelLevel" type="Label" parent="LabelContainer" unique_id=1619067584]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "$Wave"
+text = "$Level"
 horizontal_alignment = 1

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://autoload/overlay/GlobalOverlay.cs" id="1"]
 
 [node name="GlobalOverlay" type="CanvasLayer"]
+layer = 100
 script = ExtResource("1")

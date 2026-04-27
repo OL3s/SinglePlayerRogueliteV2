@@ -2,23 +2,23 @@ using Godot;
 using SaveData;
 
 public partial class PanelLocation : Control {
-	private Label _labelLocation;
 	private Label _labelBiome;
+	private Label _labelLocationWave;
 
 	public override void _Ready() {
-		_labelBiome = GetNodeOrNull<Label>("Labels/Panel/LablLocation");
-		_labelLocation = GetNodeOrNull<Label>("Labels/LablBiome");
+		_labelBiome = GetNodeOrNull<Label>("Labels/Panel/LablBiome");
+		_labelLocationWave = GetNodeOrNull<Label>("Labels/LablLocationWave");
 		Update();
 	}
 
 	public void Update() {
 		var runData = SaveNode.Get().RunData;
 
-		if (_labelLocation != null)
-			_labelLocation.Text = runData.CurrentLocation.ToString();
-
 		if (_labelBiome != null)
 			_labelBiome.Text = FormatBiomeName(runData);
+
+		if (_labelLocationWave != null)
+			_labelLocationWave.Text = $"{runData.CurrentLocation} : W{runData.ContractsCompleted + 1}";
 	}
 
 	private static string FormatBiomeName(RunData runData) {

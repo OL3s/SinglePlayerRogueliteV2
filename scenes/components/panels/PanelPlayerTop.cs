@@ -2,11 +2,11 @@ using Godot;
 
 public partial class PanelPlayerTop : Control {
 	private Label _labelName;
-	private Label _labelWave;
+	private Label _labelLevel;
 
 	public override void _Ready() {
 		_labelName = GetNodeOrNull<Label>("LabelContainer/LabelName");
-		_labelWave = GetNodeOrNull<Label>("LabelContainer/LabelWave");
+		_labelLevel = GetNodeOrNull<Label>("LabelContainer/LabelLevel");
 		Update();
 	}
 
@@ -17,7 +17,8 @@ public partial class PanelPlayerTop : Control {
 		if (_labelName != null)
 			_labelName.Text = string.IsNullOrWhiteSpace(playerData?.PlayerName) ? "Player" : playerData.PlayerName;
 
-		if (_labelWave != null)
-			_labelWave.Text = $"Wave {runData.ContractsCompleted + 1}";
+
+		if (_labelLevel != null)
+			_labelLevel.Text = $"Level {playerData?.Skills?.GetTotalLevel() ?? 0}";
 	}
 }

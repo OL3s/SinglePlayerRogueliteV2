@@ -54,7 +54,7 @@ offset_right = -8.0
 offset_bottom = 46.0
 grow_horizontal = 2
 
-[node name="LablLocation" type="Label" parent="Labels/Panel" unique_id=476957545]
+[node name="LablBiome" type="Label" parent="Labels/Panel" unique_id=476957545]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -68,7 +68,7 @@ vertical_alignment = 1
 clip_text = true
 metadata/_edit_lock_ = true
 
-[node name="LablBiome" type="Label" parent="Labels" unique_id=1477095374]
+[node name="LablLocationWave" type="Label" parent="Labels" unique_id=1477095374]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -81,6 +81,6 @@ offset_right = 139.5
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "$Location"
+text = "$Location-Wave"
 horizontal_alignment = 1
 vertical_alignment = 1
