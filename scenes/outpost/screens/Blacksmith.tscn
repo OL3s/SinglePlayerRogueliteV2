@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://hwrt00phvgys"]
+
+[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="1_l5w5p"]
+[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_tn0jv"]
+[ext_resource type="PackedScene" uid="uid://cbit1hetoxuyt" path="res://scenes/components/panels/PanelBuilding.tscn" id="3_urxyx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_urxyx"]
+
+[node name="Blacksmith" type="Control" unique_id=1224944966]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=291293805]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomUI" type="HBoxContainer" parent="." unique_id=539710287]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -100.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_lock_ = true
+
+[node name="BtnOne" type="Button" parent="BottomUI" unique_id=1807113178]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$Btn1"
+icon = SubResource("PlaceholderTexture2D_urxyx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_tn0jv")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="BtnTwo" type="Button" parent="BottomUI" unique_id=959787783]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$Btn2"
+icon = SubResource("PlaceholderTexture2D_urxyx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_tn0jv")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="BtnTree" type="Button" parent="BottomUI" unique_id=1175373288]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "$Btn3"
+icon = SubResource("PlaceholderTexture2D_urxyx")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("2_tn0jv")
+metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
+metadata/_edit_lock_ = true
+
+[node name="TopUI" type="Panel" parent="." unique_id=1162762457]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="CloseOverlay" type="Button" parent="TopUI" unique_id=1959946455 node_paths=PackedStringArray("CloseTarget")]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 100.0
+grow_horizontal = 0
+text = "X"
+script = ExtResource("1_l5w5p")
+CloseTarget = NodePath("../..")
+metadata/_custom_type_script = "uid://b5nexivgcopri"
+
+[node name="Control" parent="TopUI" unique_id=2082076853 instance=ExtResource("3_urxyx")]
+layout_mode = 1

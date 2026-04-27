@@ -29,6 +29,7 @@ public partial class SaveNode : Node {
 		if (!FilesExist())
 			SaveAllData();
 
+		RunData.PlayerData ??= new PlayerData();
 		RunData.StoreData ??= new StoreItemData();
 		RunData.StoreData.GenerateMissingItems(RunData.CurrentBiome);
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");

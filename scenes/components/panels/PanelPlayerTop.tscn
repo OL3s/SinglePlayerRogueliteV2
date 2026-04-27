@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://fqd6rdrheta3"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_oexaw"]
+[ext_resource type="Script" uid="uid://bmmm56wv3dhj" path="res://scenes/components/panels/PanelPlayerTop.cs" id="2_g4dxu"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g4dxu"]
+
+[node name="PlayerPanel" type="Control" unique_id=1339663068]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 100.0
+theme = ExtResource("1_oexaw")
+script = ExtResource("2_g4dxu")
+
+[node name="Panel" type="Panel" parent="." unique_id=1356378294]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerImage" type="TextureRect" parent="." unique_id=784183869]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -50.0
+offset_right = 100.0
+offset_bottom = 50.0
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_g4dxu")
+
+[node name="LabelContainer" type="VBoxContainer" parent="." unique_id=82649603]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33400002
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.7999954
+offset_top = -45.0
+offset_right = -6.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LabelName" type="Label" parent="LabelContainer" unique_id=1121586405]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "$Name"
+horizontal_alignment = 1
+
+[node name="LabelWave" type="Label" parent="LabelContainer" unique_id=1619067584]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "$Wave"
+horizontal_alignment = 1

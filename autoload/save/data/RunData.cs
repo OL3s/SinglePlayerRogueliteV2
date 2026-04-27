@@ -6,7 +6,7 @@ namespace SaveData {
 	public partial class RunData : SaveResource {
 		[Export] public Biomes CurrentBiome { get; set; } = Biomes.GrasslandsA;
 		[Export] public Locations CurrentLocation { get; set; } = Locations.Village;
-		[Export] public PlayerData PlayerData { get; set; } = null;
+		[Export] public PlayerData PlayerData { get; set; } = new PlayerData();
 		[Export] public StoreItemData StoreData { get; set; } = null;
 		[Export] public Contract CurrentContract { get; set; } = null;
 		[Export] public InventoryData InventoryData { get; set; } = new InventoryData();

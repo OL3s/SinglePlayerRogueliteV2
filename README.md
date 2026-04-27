@@ -4,6 +4,8 @@ Godot 4.6 C# single-player roguelite project.
 
 ## Overview
 
+**Name Suggestion: The Lost Gems**
+
 This project is built around repeatable runs, route choices, boss fights, and long-term progression. The player works toward collecting three gems by defeating three different bosses across multiple runs.
 
 **Core Goal**
@@ -22,23 +24,44 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 
 ## Visual References
 
-
-
-<img width="800" alt="Main menu template" src="docs/images/mainmenu-example.png" />
+<details open>
+<summary>Show Images</summary>
 
 **Main Menu**
 
-<img width="800" alt="Ingame example" src="docs/images/ingame-example.png" />
+<img width="800" alt="Main menu template" src="docs/images/mainmenu-example.png" />
+
+---
+
+**Character Select - Current Run**
+
+<img width="800" alt="Character select menu with current run" src="docs/images/example-current-run-character-select.png" />
+
+---
+
+**Character Select - New Character**
+
+<img width="800" alt="Character select menu for a new character" src="docs/images/example-new-character-select.png" />
+
+---
 
 **Ingame**
 
-<img width="800" alt="Outpost wireframe for the between-run stop" src="docs/images/outpost-example.png" />
+<img width="800" alt="Ingame example" src="docs/images/ingame-example.png" />
+
+---
 
 **Outpost**
 
-<img width="800" alt="Blacksmith building example" src="docs/images/blacksmith-building-example.png" />
+<img width="800" alt="Outpost wireframe for the between-run stop" src="docs/images/outpost-example.png" />
+
+---
 
 **Blacksmith**
+
+<img width="800" alt="Blacksmith building example" src="docs/images/blacksmith-building-example.png" />
+
+</details>
 
 ## Current Direction
 
@@ -118,35 +141,29 @@ SignalHandler.EmitSignalItemEquippedStatic(item);
 **Subscribe and unsubscribe examples**
 
 ```csharp
-private void OnGoldAmountChanged(int goldAmount)
-{
+private void OnGoldAmountChanged(int goldAmount) {
 	GD.Print($"Gold changed to {goldAmount}");
 }
 
-public override void _Ready()
-{
+public override void _Ready() {
 	SignalHandler.SubscribeGoldAmountChanged(OnGoldAmountChanged);
 }
 
-public override void _ExitTree()
-{
+public override void _ExitTree() {
 	SignalHandler.UnsubscribeGoldAmountChanged(OnGoldAmountChanged);
 }
 ```
 
 ```csharp
-private void OnItemEquipped(ItemBase item)
-{
+private void OnItemEquipped(ItemBase item) {
 	GD.Print($"Equipped: {item.ItemName}");
 }
 
-public override void _Ready()
-{
+public override void _Ready() {
 	SignalHandler.SubscribeItemEquipped(OnItemEquipped);
 }
 
-public override void _ExitTree()
-{
+public override void _ExitTree() {
 	SignalHandler.UnsubscribeItemEquipped(OnItemEquipped);
 }
 ```

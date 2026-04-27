@@ -3,12 +3,10 @@ using SaveData;
 
 public partial class PanelLocation : Control {
 	private Label _labelLocation;
-	private Label _labelRound;
 	private Label _labelBiome;
 
 	public override void _Ready() {
 		_labelBiome = GetNodeOrNull<Label>("Labels/Panel/LablLocation");
-		_labelRound = GetNodeOrNull<Label>("Labels/LablWave");
 		_labelLocation = GetNodeOrNull<Label>("Labels/LablBiome");
 		Update();
 	}
@@ -18,9 +16,6 @@ public partial class PanelLocation : Control {
 
 		if (_labelLocation != null)
 			_labelLocation.Text = runData.CurrentLocation.ToString();
-
-		if (_labelRound != null)
-			_labelRound.Text = $"Wave {runData.ContractsCompleted + 1}";
 
 		if (_labelBiome != null)
 			_labelBiome.Text = FormatBiomeName(runData);

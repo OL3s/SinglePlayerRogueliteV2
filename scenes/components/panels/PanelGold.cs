@@ -28,6 +28,6 @@ public partial class PanelGold : Control {
 		if (_label == null)
 			return;
 
-		_label.Text = $"Gold: {goldAmount}";
+		_label.Text = goldAmount.ToString();
 	}
 }

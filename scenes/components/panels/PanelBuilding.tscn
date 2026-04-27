@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cbit1hetoxuyt"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_n2dy3"]
+[ext_resource type="FontFile" uid="uid://cxfqp1nanmj0v" path="res://assets/fonts/GothicByte.ttf" id="1_wpko2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_n2dy3"]
+
+[node name="Control" type="PanelContainer" unique_id=2082076853]
+offset_right = 492.0
+offset_bottom = 100.0
+theme = ExtResource("1_n2dy3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1134087924]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=1104516334]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_n2dy3")
+stretch_mode = 4
+
+[node name="Control2" type="Control" parent="HBoxContainer" unique_id=590640815]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="HBoxContainer" unique_id=1232231288]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Labels" unique_id=873555780]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("1_wpko2")
+theme_override_font_sizes/font_size = 64
+text = "$StoreType"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer/Labels" unique_id=1354350723]
+layout_mode = 2
+size_flags_vertical = 6
+text = "$ Descriptivate text"
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer" unique_id=724184053]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
