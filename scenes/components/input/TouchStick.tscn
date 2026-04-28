@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
-[ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyle.tres" id="1"]
-[ext_resource type="Script" path="res://scenes/components/touch_controls/TouchStick.cs" id="2"]
+[ext_resource type="StyleBox" path="res://scenes/components/input/JoystickStyle.tres" id="1"]
+[ext_resource type="Script" path="res://scenes/components/input/TouchStick.cs" id="2"]
 
 [node name="Stick" type="Panel" node_paths=PackedStringArray("DrawStick")]
 offset_left = -128.0

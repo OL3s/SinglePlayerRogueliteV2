@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm3n7pskru04q"]
 
-[ext_resource type="PackedScene" uid="uid://dsu3lvwx7mxxo" path="res://scenes/components/touch_controls/TouchControls.tscn" id="1_8jpqp"]
+[ext_resource type="PackedScene" uid="uid://dsu3lvwx7mxxo" path="res://scenes/components/input/TouchControls.tscn" id="1_8jpqp"]
 [ext_resource type="Script" uid="uid://bc0guxh50bqql" path="res://core/player/Player.cs" id="1_h8ia1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8jpqp"]

@@ -61,6 +61,12 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 
 <img width="800" alt="Blacksmith building example" src="docs/images/blacksmith-building-example.png" />
 
+---
+
+**Inventory**
+
+<img width="800" alt="Inventory example" src="docs/images/example-inventory.png" />
+
 </details>
 
 ## Current Direction
@@ -114,9 +120,10 @@ assets/
   gems/       Gem image assets
 
 scenes/
-  screens/    Top-level game screens such as menus and outpost screens
+  main/       Top-level root scenes such as main menu, character select, and outpost
+  overlays/   Popup and modal scenes displayed above the active main scene
   components/ Reusable scene components and UI pieces
-  startmenu/  Start menu presentation scenes
+  debug/      Test and development scenes
 ```
 
 ## Autoload Usage

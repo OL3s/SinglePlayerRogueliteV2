@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_iliac"]
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_nmjne"]
-[ext_resource type="Script" uid="uid://dwynphf850buu" path="res://scenes/characterSelect/CharacterSelection.cs" id="1_sblgg"]
+[ext_resource type="Script" uid="uid://dwynphf850buu" path="res://scenes/main/character_select/CharacterSelection.cs" id="1_sblgg"]
 [ext_resource type="PackedScene" uid="uid://bdidiwmmk523p" path="res://scenes/components/panels/PanelCareerData.tscn" id="2_i30vl"]
 
 [node name="CharacterSelection" type="Control" unique_id=565005107]

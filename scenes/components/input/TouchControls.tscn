@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dsu3lvwx7mxxo"]
 
-[ext_resource type="Script" uid="uid://bs5cbo4nalw6d" path="res://scenes/components/touch_controls/TouchControls.cs" id="1"]
-[ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyle.tres" id="2"]
-[ext_resource type="StyleBox" path="res://scenes/components/touch_controls/JoystickStyleAlt.tres" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/components/touch_controls/TouchStick.tscn" id="4"]
+[ext_resource type="Script" uid="uid://bs5cbo4nalw6d" path="res://scenes/components/input/TouchControls.cs" id="1"]
+[ext_resource type="StyleBox" path="res://scenes/components/input/JoystickStyle.tres" id="2"]
+[ext_resource type="StyleBox" path="res://scenes/components/input/JoystickStyleAlt.tres" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/components/input/TouchStick.tscn" id="4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kgyjp"]
 

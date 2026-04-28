@@ -1,7 +1,7 @@
 using Godot;
 
 public partial class NewCharacterComponent : Control {
-	private const string OutpostScenePath = "res://scenes/outpost/Outpost.tscn";
+	private const string OutpostScenePath = "res://scenes/main/outpost/Outpost.tscn";
 
 	[Export] public PlayerData PlayerData { get; set; } = new();
 

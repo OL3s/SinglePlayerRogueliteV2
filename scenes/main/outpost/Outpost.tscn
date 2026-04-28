@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dy5tks6jru17m"]
 
-[ext_resource type="PackedScene" uid="uid://ccfxm8netofo0" path="res://scenes/outpost/buildings/buildingTemplate.tscn" id="1_7r7tj"]
+[ext_resource type="PackedScene" uid="uid://ccfxm8netofo0" path="res://scenes/components/outpost/buildingTemplate.tscn" id="1_7r7tj"]
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_bgakn"]
 [ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_6amyp"]
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="2_vumbe"]
 [ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_b38rb"]
 [ext_resource type="PackedScene" uid="uid://cpis4v08h0ebo" path="res://scenes/components/panels/PanelLocation.tscn" id="5_wqu6w"]
 [ext_resource type="PackedScene" uid="uid://fqd6rdrheta3" path="res://scenes/components/panels/PanelPlayerTop.tscn" id="6_imbua"]
-[ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/outpost/screens/BuildingOverlay.tscn" id="8_nw8ct"]
-[ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/screens/StartMenu.tscn" id="9_bgakn"]
+[ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/overlays/building/BuildingOverlay.tscn" id="8_nw8ct"]
+[ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/main/main_menu/StartMenu.tscn" id="9_bgakn"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 

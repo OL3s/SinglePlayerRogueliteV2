@@ -2,7 +2,7 @@ using Godot;
 
 [GlobalClass]
 public partial class ControlGotoScene : Control {
-	private const string NewCharacterScenePath = "res://scenes/characterSelect/characterSelectNew.tscn";
+	private const string NewCharacterScenePath = "res://scenes/main/character_select/characterSelectNew.tscn";
 
 	[Export] public PackedScene SceneToLoad { get; set; }
 	[Export] public bool ChangeScene { get; set; }

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ccfxm8netofo0"]
 
 [ext_resource type="Texture2D" uid="uid://dsqb3fvddhg1s" path="res://assets/outpost/buildings/building_placeholder.svg" id="1_8rcmu"]
-[ext_resource type="Script" uid="uid://bt8a8igubvw8b" path="res://scenes/outpost/buildings/BuildingTemplate.cs" id="2_lm4d7"]
+[ext_resource type="Script" uid="uid://bt8a8igubvw8b" path="res://scenes/components/outpost/BuildingTemplate.cs" id="2_lm4d7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_13jms"]
 size = Vector2(64, 64)

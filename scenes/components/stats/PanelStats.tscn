@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3t78msmcidw4"]
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_r8kxw"]
-[ext_resource type="Script" uid="uid://dx2xl7xqpge8a" path="res://scenes/components/part/PanelStats.cs" id="2_48cim"]
+[ext_resource type="Script" uid="uid://dx2xl7xqpge8a" path="res://scenes/components/stats/PanelStats.cs" id="2_48cim"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_48cim"]
 

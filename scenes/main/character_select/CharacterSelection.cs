@@ -1,9 +1,9 @@
 using Godot;
 
 public partial class CharacterSelection : Control {
-	private const string OutpostScenePath = "res://scenes/outpost/Outpost.tscn";
-	private const string NewCharacterScenePath = "res://scenes/characterSelect/characterSelectNew.tscn";
-	private const string MainMenuScenePath = "res://scenes/screens/StartMenu.tscn";
+	private const string OutpostScenePath = "res://scenes/main/outpost/Outpost.tscn";
+	private const string NewCharacterScenePath = "res://scenes/main/character_select/characterSelectNew.tscn";
+	private const string MainMenuScenePath = "res://scenes/main/main_menu/StartMenu.tscn";
 
 	public override void _Ready() {
 		SetButtonScene("HBoxContainer/PanelButton/VBoxContainer/ContinueButton", OutpostScenePath);
