@@ -1,9 +1,66 @@
 [gd_scene format=3 uid="uid://he56fwxj5s5r"]
 
-[node name="Control" type="Control" unique_id=334815580]
+[ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_2t5lb"]
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_jcnjm"]
+[ext_resource type="Script" uid="uid://dqobolsh01tgq" path="res://scenes/characterSelect/CharacterSelectNew.cs" id="1_xudq2"]
+[ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/screens/StartMenu.tscn" id="2_blqyk"]
+[ext_resource type="PackedScene" uid="uid://cysc3pwblwrox" path="res://scenes/components/character/NewCharacterComponent.tscn" id="3_blqyk"]
+
+[node name="CharacterSelectNew" type="Control" unique_id=334815580]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_jcnjm")
+script = ExtResource("1_xudq2")
+
+[node name="BackButton" type="Button" parent="." unique_id=2147109797]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+text = "X"
+script = ExtResource("1_2t5lb")
+SceneToLoad = ExtResource("2_blqyk")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=309868253]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 67.0
+offset_right = -29.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PanelStats" type="Panel" parent="HBoxContainer" unique_id=535298550]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewCharacterComponent" parent="HBoxContainer/PanelStats" unique_id=1864993258 instance=ExtResource("3_blqyk")]
+layout_mode = 1
+
+[node name="PanelGear" type="Panel" parent="HBoxContainer" unique_id=405982203]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewCharacterComponent" parent="HBoxContainer/PanelGear" unique_id=144411247 instance=ExtResource("3_blqyk")]
+layout_mode = 1
+
+[node name="PanelButton" type="Panel" parent="HBoxContainer" unique_id=1728744691]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewCharacterComponent" parent="HBoxContainer/PanelButton" unique_id=153482096 instance=ExtResource("3_blqyk")]
+layout_mode = 1

@@ -7,7 +7,6 @@ namespace SaveData {
 		[Export] public Biomes CurrentBiome { get; set; } = Biomes.GrasslandsA;
 		[Export] public Locations CurrentLocation { get; set; } = Locations.Village;
 		[Export] public PlayerData PlayerData { get; set; } = new PlayerData();
-		[Export] public StoreItemData StoreData { get; set; } = null;
 		[Export] public Contract CurrentContract { get; set; } = null;
 		[Export] public InventoryData InventoryData { get; set; } = new InventoryData();
 		[Export] public int ContractsCompleted { get; set; } = 0;
@@ -17,7 +16,6 @@ namespace SaveData {
 				+ $"  CurrentBiome={CurrentBiome}\n"
 				+ $"  CurrentLocation={CurrentLocation}\n"
 				+ $"  PlayerData={FormatResource(PlayerData)}\n"
-				+ $"  StoreData={FormatResource(StoreData)}\n"
 				+ $"  CurrentContract={FormatResource(CurrentContract)}\n"
 				+ $"  InventoryData={FormatResource(InventoryData)}\n"
 				+ $"  ContractsCompleted={ContractsCompleted}\n"

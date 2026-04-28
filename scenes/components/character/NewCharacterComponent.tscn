@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cysc3pwblwrox"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_ga2uj"]
+[ext_resource type="PackedScene" uid="uid://b3t78msmcidw4" path="res://scenes/components/part/PanelStats.tscn" id="2_5vqii"]
+[ext_resource type="Script" uid="uid://bnomv47rttrsm" path="res://scenes/components/character/NewCharacterComponent.cs" id="2_gx8io"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ga2uj"]
+
+[node name="NewCharacterComponent" type="Control" unique_id=1864993258]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ga2uj")
+script = ExtResource("2_gx8io")
+
+[node name="PanelStats" parent="." unique_id=1885579756 instance=ExtResource("2_5vqii")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.35300002
+anchor_bottom = 0.772
+offset_left = 48.0
+offset_top = 0.2559967
+offset_right = -58.0
+offset_bottom = -0.25601196
+UseSaveNodeData = false
+
+[node name="Button" type="Button" parent="." unique_id=773450435]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.82600003
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = -0.24804688
+offset_right = -83.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select"
+
+[node name="TopUi" type="VBoxContainer" parent="." unique_id=79827138]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.307
+offset_left = 149.0
+offset_top = 48.0
+offset_right = -160.0
+offset_bottom = 0.06399536
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="TopUi" unique_id=449481150]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture = SubResource("PlaceholderTexture2D_ga2uj")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="TopUi" unique_id=1261824744]
+layout_mode = 2
+size_flags_vertical = 3
+text = "$Character Name"
+horizontal_alignment = 1
+vertical_alignment = 1

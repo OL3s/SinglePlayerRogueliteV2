@@ -7,6 +7,8 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_urxyx"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01qpf"]
+
 [node name="BuildingOverlay" type="Control" unique_id=1224944966]
 layout_mode = 3
 anchors_preset = 15
@@ -107,3 +109,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 100.0
 offset_bottom = -100.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_01qpf")

@@ -21,11 +21,12 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="StatStr" unique_id=1150834241]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.042000003
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 8.0
-offset_right = 80.0
+offset_right = 31.615997
 offset_bottom = -8.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
@@ -33,14 +34,16 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="StatStr" unique_id=1840103329]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 0.38399506
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Strength"
+horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -66,11 +69,12 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="StatAgi" unique_id=2078804690]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.042000003
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 8.0
-offset_right = 80.0
+offset_right = 31.615997
 offset_bottom = -8.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
@@ -78,14 +82,16 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="StatAgi" unique_id=735923346]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 0.38399506
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Agility"
+horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -111,11 +117,12 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="StatArc" unique_id=396915403]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.042000003
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 8.0
-offset_right = 80.0
+offset_right = 31.615997
 offset_bottom = -8.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
@@ -123,14 +130,16 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="StatArc" unique_id=1364201953]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 0.38399506
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Arcana"
+horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -156,11 +165,12 @@ size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="StatVit" unique_id=2024900540]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_right = 0.042000003
 anchor_bottom = 1.0
 offset_left = 16.0
 offset_top = 8.0
-offset_right = 80.0
+offset_right = 31.615997
 offset_bottom = -8.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
@@ -168,14 +178,16 @@ stretch_mode = 5
 
 [node name="LabelName" type="Label" parent="StatVit" unique_id=1885446992]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
+anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 96.0
+offset_left = 0.38399506
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Vitality"
+horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 

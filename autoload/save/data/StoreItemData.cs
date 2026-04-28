@@ -77,11 +77,6 @@ public partial class StoreItemData : Resource {
 		};
 	}
 
-	public static Array<ItemBase> GetItemsForBuildingTypeStatic(MyTypes.BuildingTypes buildingType) {
-		var storeData = SaveNode.Get().StoreData;
-		return storeData.GetItemsForBuildingType(buildingType);
-	}
-
 	private Array<ItemBase> GenerateRandomStoreItemsForBuilding(MyTypes.BuildingTypes buildingType, MyTypes.Biomes biome) {
 		var placeholderimage = new PlaceholderTexture2D();
 		placeholderimage.Size = new Vector2(64, 64);

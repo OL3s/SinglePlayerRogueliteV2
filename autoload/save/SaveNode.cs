@@ -7,13 +7,14 @@ public partial class SaveNode : Node {
 	[Export] public MetaData DefaultMetaData { get; set; } = new MetaData();
 	[Export] public RunData DefaultRunData { get; set; } = new RunData();
 	[Export] public SettingsData DefaultSettingsData { get; set; } = new SettingsData();
+	[Export] public CharacterNameData CharacterNames { get; set; } = new CharacterNameData();
 	[Export] public string SavePath { get; set; } = "user://saves/";
 	public MetaData MetaData { get; set; }
 	public RunData RunData { get; set; }
 	public SettingsData SettingsData { get; set; }
+	public PlayerData[] StartCharacters { get; private set; } = Array.Empty<PlayerData>();
 	public bool HadPlayerDataOnLoad { get; private set; }
 	public PlayerData PlayerData => RunData.PlayerData;
-	public StoreItemData StoreData => RunData.StoreData;
 	public InventoryData InventoryData => RunData.InventoryData;
 	public EquipedItemsData EquipedItemsData => PlayerData.EquipedItems;
 	public static SaveNode Get() => Engine.GetMainLoop() is SceneTree tree ? tree.Root.GetNode<SaveNode>("SaveNode") : throw new InvalidOperationException("SaveNode: Unable to find SaveNode in the scene tree. Ensure that SaveNode is added as a child of the root node and is named 'SaveNode'.");
@@ -31,9 +32,27 @@ public partial class SaveNode : Node {
 			SaveAllData();
 
 		RunData.PlayerData ??= new PlayerData();
-		RunData.StoreData ??= new StoreItemData();
-		RunData.StoreData.GenerateMissingItems(RunData.CurrentBiome);
+		RefreshStartCharacters();
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");
+	}
+
+	public void RefreshStartCharacters() {
+		StartCharacters = new[] { CreateStartCharacter(1), CreateStartCharacter(2), CreateStartCharacter(3) };
+	}
+
+	private PlayerData CreateStartCharacter(int index) {
+		var random = new RandomNumberGenerator();
+		random.Randomize();
+
+		return new PlayerData {
+			PlayerName = CharacterNames.GetRandomName(random),
+			Skills = new PlayerSkillData {
+				StrengthXp = random.RandiRange(0, 300),
+				AgilityXp = random.RandiRange(0, 300),
+				ArcanaXp = random.RandiRange(0, 300),
+				VitalityXp = random.RandiRange(0, 300)
+			}
+		};
 	}
 
 	public void SaveData(SaveResource data, FileType type) {

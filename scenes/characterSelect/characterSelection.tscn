@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d1ag7gm5vb0ht"]
 
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_iliac"]
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_nmjne"]
 [ext_resource type="Script" uid="uid://dwynphf850buu" path="res://scenes/characterSelect/CharacterSelection.cs" id="1_sblgg"]
 [ext_resource type="PackedScene" uid="uid://bdidiwmmk523p" path="res://scenes/components/panels/PanelCareerData.tscn" id="2_i30vl"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_iliac")
 script = ExtResource("1_sblgg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=479273925]
