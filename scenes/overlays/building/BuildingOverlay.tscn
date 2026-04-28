@@ -33,13 +33,17 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_left = 24.0
+offset_top = -104.0
+offset_right = -24.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 16
 metadata/_edit_lock_ = true
 
 [node name="BtnOne" type="Button" parent="BottomUI" unique_id=1807113178]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "$Btn1"
@@ -52,7 +56,7 @@ metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
 [node name="BtnTwo" type="Button" parent="BottomUI" unique_id=959787783]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "$Btn2"
@@ -65,7 +69,7 @@ metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
 [node name="BtnTree" type="Button" parent="BottomUI" unique_id=1175373288]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "$Btn3"
@@ -77,22 +81,30 @@ script = ExtResource("2_cjdsb")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
-[node name="TopUI" type="Panel" parent="." unique_id=1162762457]
-custom_minimum_size = Vector2(0, 100)
+[node name="TopUI" type="Control" parent="." unique_id=1162762457]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="CloseOverlay" type="Button" parent="TopUI" unique_id=1959946455 node_paths=PackedStringArray("CloseTarget")]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(56, 56)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -100.0
-offset_bottom = 100.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
 grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "X"
 script = ExtResource("3_66bgr")
 CloseTarget = NodePath("../..")
@@ -101,12 +113,18 @@ metadata/_custom_type_script = "uid://b5nexivgcopri"
 
 [node name="PanelBuilding" parent="TopUI" unique_id=2082076853 instance=ExtResource("4_mlke7")]
 layout_mode = 1
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 324.0
+offset_bottom = 124.0
 
 [node name="PanelOverlay" type="PanelContainer" parent="." unique_id=642527499]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 100.0
-offset_bottom = -100.0
+offset_left = 24.0
+offset_top = 140.0
+offset_right = -24.0
+offset_bottom = -120.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_01qpf")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemAmulet" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/items/ItemAmulet.cs" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+ItemName = "Wolf Amulet"
+MaxStackSize = 1
+Cost = 50
+ItemID = "item_wolf_amulet"

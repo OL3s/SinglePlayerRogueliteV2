@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemArmor" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/items/ItemArmor.cs" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+ItemName = "Leather Armor"
+MaxStackSize = 1
+Cost = 30
+ItemID = "item_leather_armor"
+ConditionMax = 100
+ConditionCurrent = 100

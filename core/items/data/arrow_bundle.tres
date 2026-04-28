@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemAmmo" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/items/ItemAmmo.cs" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+ItemName = "Arrow Bundle"
+MaxStackSize = 99
+Cost = 5
+ItemID = "item_arrow_bundle"
+CountMax = 99
+CountCurrent = 20

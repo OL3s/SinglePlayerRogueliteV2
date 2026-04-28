@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CodexEntryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/codex/CodexEntryData.cs" id="1_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+Id = "location_village"
+Category = 2
+Subcategory = 0
+Title = "Village"
+Description = "The starting settlement and a safe place between contracts."

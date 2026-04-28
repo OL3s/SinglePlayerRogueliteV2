@@ -17,14 +17,20 @@ theme = ExtResource("1_jcnjm")
 script = ExtResource("1_xudq2")
 
 [node name="BackButton" type="Button" parent="." unique_id=2147109797]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(56, 56)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
 grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "X"
 script = ExtResource("1_2t5lb")
 SceneToLoad = ExtResource("2_blqyk")

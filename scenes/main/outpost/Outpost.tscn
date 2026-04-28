@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://fqd6rdrheta3" path="res://scenes/components/panels/PanelPlayerTop.tscn" id="6_imbua"]
 [ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/overlays/building/BuildingOverlay.tscn" id="8_nw8ct"]
 [ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/main/main_menu/StartMenu.tscn" id="9_bgakn"]
+[ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="10_codex"]
+[ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="11_settings"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 
@@ -30,44 +32,34 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_vumbe")
 
-[node name="TopUI" type="Panel" parent="CanvasLayer/Overlay" unique_id=1800300016]
+[node name="TopUI" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=1800300016]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 100.0
-grow_horizontal = 2
-
-[node name="GoldPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=843888578 instance=ExtResource("4_b38rb")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 236.0
+offset_left = 24.0
 offset_top = 24.0
-offset_right = 388.0
-offset_bottom = 74.0
+offset_right = -24.0
+offset_bottom = 104.0
 grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PlayerPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=1339663068 instance=ExtResource("6_imbua")]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
 
 [node name="LocaltionPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=420231159 instance=ExtResource("5_wqu6w")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -200.0
-offset_right = 200.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(360, 80)
+layout_mode = 2
+
+[node name="GoldPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=843888578 instance=ExtResource("4_b38rb")]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 2
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=466970424]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 416.0
-offset_top = 16.0
-offset_right = 480.0
-offset_bottom = 80.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
 text = "Back"
 icon = SubResource("PlaceholderTexture2D_bgakn")
 text_overrun_behavior = 1
@@ -78,17 +70,9 @@ script = ExtResource("1_bgakn")
 SceneToLoad = ExtResource("9_bgakn")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
 
-[node name="OpenOverlaySettings" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=833163387]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 488.0
-offset_top = 16.0
-offset_right = 568.0
-offset_bottom = 80.0
-grow_horizontal = 2
+[node name="BtnSettings" type="Button" parent="CanvasLayer/Overlay/TopUI" unique_id=833163387]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
 text = "Settings"
 icon = SubResource("PlaceholderTexture2D_b38rb")
 text_overrun_behavior = 1
@@ -96,16 +80,8 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("2_6amyp")
+OverlayScene = ExtResource("11_settings")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-
-[node name="PlayerPanel" parent="CanvasLayer/Overlay/TopUI" unique_id=1339663068 instance=ExtResource("6_imbua")]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -574.0
-offset_right = -274.0
-grow_horizontal = 2
 
 [node name="BottomUI" type="HBoxContainer" parent="CanvasLayer/Overlay" unique_id=398106598]
 layout_mode = 1
@@ -113,12 +89,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -100.0
+offset_left = 24.0
+offset_top = -104.0
+offset_right = -24.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 16
 
 [node name="BtnInventory" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=1063589233]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Inventory"
@@ -130,7 +110,7 @@ script = ExtResource("2_6amyp")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 
 [node name="BtnCharacter" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=1311285667]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Character"
@@ -142,7 +122,7 @@ script = ExtResource("2_6amyp")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 
 [node name="BtnCodex" type="Button" parent="CanvasLayer/Overlay/BottomUI" unique_id=169016246]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Codex"
@@ -151,6 +131,7 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 expand_icon = true
 script = ExtResource("2_6amyp")
+OverlayScene = ExtResource("10_codex")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 
 [node name="World" type="Node2D" parent="." unique_id=1723193871]

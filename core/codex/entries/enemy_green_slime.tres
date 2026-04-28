@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CodexEntryData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://core/codex/CodexEntryData.cs" id="1_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+Id = "enemy_green_slime"
+Category = 1
+Subcategory = 6
+Title = "Green Slime"
+Description = "A small slime creature found near early grassland routes."

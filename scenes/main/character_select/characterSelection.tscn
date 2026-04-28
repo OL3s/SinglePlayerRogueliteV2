@@ -65,6 +65,7 @@ theme_override_constants/separation = 32
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
+modulate = Color(0.2, 0.85, 0.25, 1)
 text = "Continue"
 script = ExtResource("1_nmjne")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
@@ -72,19 +73,26 @@ metadata/_custom_type_script = "uid://cojt55fjm1e35"
 [node name="NewRunButton" type="Button" parent="HBoxContainer/PanelButton/VBoxContainer" unique_id=1955471423]
 layout_mode = 2
 size_flags_vertical = 3
+modulate = Color(1, 0.15, 0.15, 1)
 text = "New Run"
 script = ExtResource("1_nmjne")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
 
 [node name="BackButton" type="Button" parent="." unique_id=328935732]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(56, 56)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -64.0
-offset_bottom = 64.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
 grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "X"
 script = ExtResource("1_nmjne")
 metadata/_custom_type_script = "uid://cojt55fjm1e35"
