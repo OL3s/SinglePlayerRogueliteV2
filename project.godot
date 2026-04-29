@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="SinglePlayerRogueliteV2"
+config/name="The Lost Gems"
 run/main_scene="uid://ctji244a31gb0"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://w8rcsfqx20cj"
 
 [autoload]
 
