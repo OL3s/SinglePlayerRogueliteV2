@@ -4,19 +4,6 @@ using MyTypes;
 using System;
 
 public partial class SaveNode : Node {
-	private static readonly string[] StarterInventoryItemPaths = {
-		"res://core/items/data/iron_sword.tres",
-		"res://core/items/data/hunter_bow.tres",
-		"res://core/items/data/leather_armor.tres",
-		"res://core/items/data/health_potion.tres",
-		"res://core/items/data/arrow_bundle.tres",
-		"res://core/items/data/wolf_amulet.tres",
-		"res://core/items/data/health_potion.tres",
-		"res://core/items/data/arrow_bundle.tres",
-		"res://core/items/data/iron_sword.tres",
-		"res://core/items/data/leather_armor.tres"
-	};
-
 	[Export] public MetaData DefaultMetaData { get; set; } = new MetaData();
 	[Export] public RunData DefaultRunData { get; set; } = new RunData();
 	[Export] public SettingsData DefaultSettingsData { get; set; } = new SettingsData();
@@ -45,23 +32,8 @@ public partial class SaveNode : Node {
 			SaveAllData();
 
 		RunData.PlayerData ??= new PlayerData();
-		EnsureStarterInventoryItems();
 		RefreshStartCharacters();
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");
-	}
-
-	private void EnsureStarterInventoryItems() {
-		RunData.InventoryData ??= new InventoryData();
-
-		for (var i = RunData.InventoryData.Items.Count; i < StarterInventoryItemPaths.Length; i++) {
-			var item = ResourceLoader.Load(StarterInventoryItemPaths[i]) as ItemBase;
-			if (item == null) {
-				GD.PushWarning($"Starter inventory item could not be loaded: {StarterInventoryItemPaths[i]}");
-				continue;
-			}
-
-			RunData.InventoryData.AddItem(item.Duplicate(true) as ItemBase);
-		}
 	}
 
 	public void RefreshStartCharacters() {
@@ -74,6 +46,7 @@ public partial class SaveNode : Node {
 
 		return new PlayerData {
 			PlayerName = CharacterNames.GetRandomName(random),
+			StartingItem = StartingItems.GetRandomItem(random),
 			Skills = new PlayerSkillData {
 				StrengthXp = random.RandiRange(0, 300),
 				AgilityXp = random.RandiRange(0, 300),

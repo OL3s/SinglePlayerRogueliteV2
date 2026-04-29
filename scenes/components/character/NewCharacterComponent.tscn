@@ -41,28 +41,70 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Select"
 
-[node name="TopUi" type="VBoxContainer" parent="." unique_id=79827138]
+[node name="TopUi" type="HBoxContainer" parent="." unique_id=79827138]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.307
-offset_left = 149.0
-offset_top = 48.0
-offset_right = -160.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
 offset_bottom = 0.06399536
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 18
 
-[node name="TextureRect" type="TextureRect" parent="TopUi" unique_id=449481150]
+[node name="PlayerPreview" type="VBoxContainer" parent="TopUi"]
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="PlayerImage" type="TextureRect" parent="TopUi/PlayerPreview" unique_id=449481150]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 texture = SubResource("PlaceholderTexture2D_ga2uj")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="TopUi" unique_id=1261824744]
+[node name="NameLabel" type="Label" parent="TopUi/PlayerPreview" unique_id=1261824744]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 3
 text = "$Character Name"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StartingItem" type="VBoxContainer" parent="TopUi"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="TopUi/StartingItem"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Starting Item"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemIcon" type="TextureRect" parent="TopUi/StartingItem"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture = SubResource("PlaceholderTexture2D_ga2uj")
+stretch_mode = 5
+
+[node name="ItemNameLabel" type="Label" parent="TopUi/StartingItem"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "None"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
