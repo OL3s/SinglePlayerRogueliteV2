@@ -5,7 +5,7 @@ using Godot;
 public static class CodexData {
 	public static readonly IReadOnlyDictionary<CodexCategory, CodexSubcategory[]> Categories = new Dictionary<CodexCategory, CodexSubcategory[]> {
 		{ CodexCategory.Items, new[] { CodexSubcategory.All, CodexSubcategory.Weapons, CodexSubcategory.Armor, CodexSubcategory.Consumables, CodexSubcategory.Ammo, CodexSubcategory.Amulets } },
-		{ CodexCategory.Enemies, new[] { CodexSubcategory.Slimes } },
+		{ CodexCategory.Enemies, new[] { CodexSubcategory.All, CodexSubcategory.Slimes } },
 		{ CodexCategory.Locations, new[] { CodexSubcategory.All } }
 	};
 

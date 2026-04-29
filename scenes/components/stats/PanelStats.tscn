@@ -4,18 +4,21 @@
 [ext_resource type="Script" uid="uid://dx2xl7xqpge8a" path="res://scenes/components/stats/PanelStats.cs" id="2_48cim"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_48cim"]
+size = Vector2(32, 32)
 
 [node name="PanelStats" type="VBoxContainer" unique_id=1885579756]
+custom_minimum_size = Vector2(0, 168)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_r8kxw")
+theme_override_constants/separation = 6
 script = ExtResource("2_48cim")
 
 [node name="StatStr" type="Panel" parent="." unique_id=75430432]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -24,10 +27,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.042000003
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 31.615997
-offset_bottom = -8.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = -6.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
 stretch_mode = 5
@@ -43,7 +46,6 @@ offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Strength"
-horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -63,7 +65,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="StatAgi" type="Panel" parent="." unique_id=176615201]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -72,10 +74,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.042000003
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 31.615997
-offset_bottom = -8.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = -6.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
 stretch_mode = 5
@@ -91,7 +93,6 @@ offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Agility"
-horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -111,7 +112,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="StatArc" type="Panel" parent="." unique_id=1397246923]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -120,10 +121,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.042000003
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 31.615997
-offset_bottom = -8.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = -6.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
 stretch_mode = 5
@@ -139,7 +140,6 @@ offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Arcana"
-horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 
@@ -159,7 +159,7 @@ vertical_alignment = 1
 clip_text = true
 
 [node name="StatVit" type="Panel" parent="." unique_id=1830128517]
-custom_minimum_size = Vector2(0, 16)
+custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -168,10 +168,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.042000003
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 31.615997
-offset_bottom = -8.0
+offset_left = 12.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = -6.0
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_48cim")
 stretch_mode = 5
@@ -187,7 +187,6 @@ offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Vitality"
-horizontal_alignment = 2
 vertical_alignment = 1
 clip_text = true
 

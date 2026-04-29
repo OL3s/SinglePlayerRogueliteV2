@@ -7,7 +7,6 @@ public partial class CodexOverlay : Control {
 
 	private enum ViewMode {
 		EntryGrid,
-		EnemySubcategories,
 		EntryDetails
 	}
 
@@ -71,83 +70,31 @@ public partial class CodexOverlay : Control {
 			child.QueueFree();
 		}
 
-		if (category == CodexCategory.Enemies) {
-			ShowEnemySubcategories();
-			return;
-		}
-
 		UpdateCategoryView(category, CodexSubcategory.All);
 
 		foreach (var subcategory in CodexData.Categories[category]) {
-			var button = new Button {
-				Text = subcategory.ToString(),
-				CustomMinimumSize = new Vector2(120, 48),
-				SizeFlagsHorizontal = SizeFlags.ExpandFill
-			};
+			var button = CreateSubcategoryButton(category, subcategory);
 
 			button.Pressed += () => UpdateCategoryView(category, subcategory);
 			_subcategoryButtons.AddChild(button);
 		}
 	}
 
-	private void ShowEnemySubcategories() {
-		_viewMode = ViewMode.EnemySubcategories;
-		_currentCategory = CodexCategory.Enemies;
-		_currentSubcategory = CodexSubcategory.All;
-		_categoryTitle.Text = CodexCategory.Enemies.ToString();
-		_backButton.Visible = false;
-		_emptyState.Text = "Select an enemy type.";
-		_progressLabel.Text = "";
-		_pageControls.Visible = false;
-		ClearEntryGrid();
-
-		foreach (var child in _subcategoryButtons.GetChildren()) {
-			child.QueueFree();
-		}
-
-		foreach (var subcategory in CodexData.Categories[CodexCategory.Enemies]) {
-			_entryGrid.AddChild(CreateSubcategoryCard(subcategory));
-		}
-	}
-
-	private Button CreateSubcategoryCard(CodexSubcategory subcategory) {
-		var card = CreateGridButton();
-		var layout = CreateCenteredCardLayout();
-
-		var icon = new TextureRect {
-			CustomMinimumSize = new Vector2(88, 88),
-			Texture = new PlaceholderTexture2D(),
-			SizeFlagsHorizontal = SizeFlags.ShrinkCenter,
-			ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional,
-			StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered
-		};
-
-		var title = new Label {
+	private Button CreateSubcategoryButton(CodexCategory category, CodexSubcategory subcategory) {
+		return new Button {
 			Text = subcategory.ToString(),
-			SizeFlagsHorizontal = SizeFlags.ExpandFill,
-			HorizontalAlignment = HorizontalAlignment.Center,
-			AutowrapMode = TextServer.AutowrapMode.WordSmart
+			ClipText = true,
+			Icon = GetSubcategoryIcon(category, subcategory),
+			ExpandIcon = true,
+			CustomMinimumSize = new Vector2(120, 48),
+			SizeFlagsHorizontal = SizeFlags.ExpandFill
 		};
-
-		layout.AddChild(icon);
-		layout.AddChild(title);
-		card.AddChild(layout);
-		card.Pressed += () => ShowEnemyEntries(subcategory);
-
-		return card;
 	}
 
-	private void ShowEnemyEntries(CodexSubcategory subcategory) {
-		_currentCategory = CodexCategory.Enemies;
-		_currentSubcategory = subcategory;
-		_categoryTitle.Text = $"{CodexCategory.Enemies} / {subcategory}";
-		_backButton.Visible = true;
-
-		foreach (var child in _subcategoryButtons.GetChildren()) {
-			child.QueueFree();
-		}
-
-		UpdateCategoryView(CodexCategory.Enemies, subcategory);
+	private Texture2D GetSubcategoryIcon(CodexCategory category, CodexSubcategory subcategory) {
+		return CodexData.GetEntries(category, subcategory)
+			.Select(entry => entry.Icon)
+			.FirstOrDefault(icon => icon != null) ?? new PlaceholderTexture2D();
 	}
 
 	private void UpdateCategoryView(CodexCategory category, CodexSubcategory subcategory) {
@@ -307,22 +254,11 @@ public partial class CodexOverlay : Control {
 			var subcategory = _currentSubcategory;
 			var page = _currentPage;
 
-			if (_currentCategory == CodexCategory.Enemies) {
-				ShowEnemyEntries(subcategory);
-				_currentPage = page;
-				RenderCurrentPage();
-				return;
-			}
-
 			SelectCategory(category);
 			UpdateCategoryView(category, subcategory);
 			_currentPage = page;
 			RenderCurrentPage();
 			return;
-		}
-
-		if (_currentCategory == CodexCategory.Enemies) {
-			ShowEnemySubcategories();
 		}
 	}
 

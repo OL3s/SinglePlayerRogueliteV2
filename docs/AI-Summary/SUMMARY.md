@@ -8,6 +8,9 @@ This folder is for AI assistants to keep project-specific context across coding 
 - Uses `Godot.NET.Sdk/4.6.2` with `net8.0`; Android targets `net9.0`.
 - Main goal: repeatable runs where the player collects three gems by defeating three bosses across runs.
 - Core loop from `README.md`: `Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat`.
+- Biome progression is tiered as `A -> B -> C -> D`: the run starts in an A biome, offers roguelite path choices through one B biome and one C biome, then reaches a D boss biome.
+- Path choice should feel semi-controlled rather than fully deterministic: the player chooses from available/generated paths, and lucky rolls may expose better or more desirable routes.
+- The current diagram model is Grasslands Lv1 start, then Tundra/Desert Lv2, then Icy/Jungle/Lava Lv3, then Ice/Jungle/Lava Boss Lv4. Defeating a boss awards its gem.
 - Android export preset exists; mobile/touch support is important.
 - Phone-exclusive game designed for landscape mode, not desktop-first play.
 - UI and interactable elements should generally be larger than conventional PC UI so they remain usable and readable on phones.
