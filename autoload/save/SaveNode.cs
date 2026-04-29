@@ -4,6 +4,9 @@ using MyTypes;
 using System;
 
 public partial class SaveNode : Node {
+	private const int StartCharacterSkillXpPool = 600;
+	private const float StartCharacterSkillSpikeBias = 3.0f;
+
 	[Export] public MetaData DefaultMetaData { get; set; } = new MetaData();
 	[Export] public RunData DefaultRunData { get; set; } = new RunData();
 	[Export] public SettingsData DefaultSettingsData { get; set; } = new SettingsData();
@@ -43,16 +46,50 @@ public partial class SaveNode : Node {
 	private PlayerData CreateStartCharacter(int index) {
 		var random = new RandomNumberGenerator();
 		random.Randomize();
+		var skills = CreateStartCharacterSkills(random);
 
 		return new PlayerData {
 			PlayerName = CharacterNames.GetRandomName(random),
 			StartingItem = StartingItems.GetRandomItem(random),
-			Skills = new PlayerSkillData {
-				StrengthXp = random.RandiRange(0, 300),
-				AgilityXp = random.RandiRange(0, 300),
-				ArcanaXp = random.RandiRange(0, 300),
-				VitalityXp = random.RandiRange(0, 300)
+			Skills = skills
+		};
+	}
+
+	private static PlayerSkillData CreateStartCharacterSkills(RandomNumberGenerator random) {
+		var xp = new int[4];
+		var fractionalRemainders = new float[4];
+		var weights = new float[4];
+		var totalWeight = 0.0f;
+
+		for (var i = 0; i < weights.Length; i++) {
+			weights[i] = Mathf.Pow(random.RandfRange(0.0001f, 1.0f), StartCharacterSkillSpikeBias);
+			totalWeight += weights[i];
+		}
+
+		var assignedXp = 0;
+		for (var i = 0; i < xp.Length; i++) {
+			var exactXp = StartCharacterSkillXpPool * (weights[i] / totalWeight);
+			xp[i] = Mathf.FloorToInt(exactXp);
+			fractionalRemainders[i] = exactXp - xp[i];
+			assignedXp += xp[i];
+		}
+
+		for (var i = StartCharacterSkillXpPool - assignedXp; i > 0; i--) {
+			var bestIndex = 0;
+			for (var j = 1; j < fractionalRemainders.Length; j++) {
+				if (fractionalRemainders[j] > fractionalRemainders[bestIndex])
+					bestIndex = j;
 			}
+
+			xp[bestIndex]++;
+			fractionalRemainders[bestIndex] = -1.0f;
+		}
+
+		return new PlayerSkillData {
+			StrengthXp = xp[0],
+			AgilityXp = xp[1],
+			ArcanaXp = xp[2],
+			VitalityXp = xp[3]
 		};
 	}
 

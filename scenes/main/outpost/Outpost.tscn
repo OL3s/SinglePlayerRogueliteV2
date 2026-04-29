@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dy5tks6jru17m"]
+[gd_scene format=3 uid="uid://dy5tks6jru17m"]
 
 [ext_resource type="PackedScene" uid="uid://ccfxm8netofo0" path="res://scenes/components/outpost/buildingTemplate.tscn" id="1_7r7tj"]
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_bgakn"]
@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/main/main_menu/StartMenu.tscn" id="9_bgakn"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="10_codex"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="11_settings"]
-[ext_resource type="PackedScene" path="res://scenes/overlays/inventory/InventoryOverlay.tscn" id="12_inventory"]
+[ext_resource type="PackedScene" uid="uid://b8o2ydskyt0q1" path="res://scenes/overlays/inventory/InventoryOverlay.tscn" id="12_inventory"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/character/CharacterOverlay.tscn" id="13_character"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
