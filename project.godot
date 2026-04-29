@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="The Lost Gems"
+config/name="Triad of Descents"
+config/description="Roguelite"
+config/version="v0.1"
 run/main_scene="uid://ctji244a31gb0"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
