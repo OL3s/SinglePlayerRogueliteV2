@@ -1,4 +1,4 @@
-# SinglePlayerRoguelite
+# Triad of Descent
 
 Godot 4.6 C# single-player roguelite project.
 
