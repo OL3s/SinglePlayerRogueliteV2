@@ -8,5 +8,7 @@ ItemName = "Leather Armor"
 MaxStackSize = 1
 Cost = 30
 ItemID = "item_leather_armor"
+HasCondition = true
 ConditionMax = 100
+ConditionDefault = 100
 ConditionCurrent = 100

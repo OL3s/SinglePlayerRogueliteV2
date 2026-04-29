@@ -4,12 +4,15 @@ using Godot;
 
 [GlobalClass]
 public partial class ItemConsumable : ItemBase {
-	[Export] public int CountMax { get; set; } = 0;
-	[Export] public int CountCurrent { get; set; } = 0;
-	public ItemConsumable() { }
-	public ItemConsumable(string itemName, DependencyLevel? useDependency, Texture2D icon, int maxStackSize, int cost, int countMax, int countCurrent)
-		: base(itemName, useDependency, icon, maxStackSize, cost) {
-		CountMax = countMax;
-		CountCurrent = countCurrent;
+	public ItemConsumable() {
+		IsConsumable = true;
+	}
+
+	public ItemConsumable(string itemName, ItemDependency? dependencies, Texture2D icon, int maxStackSize, int cost, int useCountMax, int useCountDefault)
+		: base(itemName, dependencies, icon, maxStackSize, cost) {
+		IsConsumable = true;
+		UseCountMax = useCountMax;
+		UseCountDefault = useCountDefault;
+		UseCountCurrent = useCountDefault;
 	}
 }

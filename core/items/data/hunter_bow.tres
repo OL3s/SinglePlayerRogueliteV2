@@ -8,5 +8,7 @@ ItemName = "Hunter Bow"
 MaxStackSize = 1
 Cost = 35
 ItemID = "item_hunter_bow"
+HasCondition = true
 ConditionMax = 100
+ConditionDefault = 100
 ConditionCurrent = 100

@@ -8,5 +8,7 @@ ItemName = "Iron Sword"
 MaxStackSize = 1
 Cost = 25
 ItemID = "item_iron_sword"
+HasCondition = true
 ConditionMax = 100
+ConditionDefault = 100
 ConditionCurrent = 100

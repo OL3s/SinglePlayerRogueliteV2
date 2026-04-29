@@ -84,13 +84,23 @@ public partial class StoreItemData : Resource {
 		return new Array<ItemBase>() {
 			new ItemBase($"{buildingType} Item 1", null, placeholderimage, 10, 100),
 			new ItemConsumable($"{buildingType} Consumable 1", null, placeholderimage, 10, 50, 5, 5),
-			new ItemEquipable($"{buildingType} Equipable 1", null, placeholderimage, 1, 200, placeholderimage, 100, 100, null),
-			new ItemArmor($"{buildingType} Armor 1", null, placeholderimage, 1, 300, 100, 100,
+			new ItemEquipable($"{buildingType} Equipable 1", null, placeholderimage, 1, 200, placeholderimage) {
+				HasCondition = true,
+				ConditionMax = 100,
+				ConditionDefault = 100,
+				ConditionCurrent = 100
+			},
+			new ItemArmor($"{buildingType} Armor 1", null, placeholderimage, 1, 300,
 				new Defence(
 					new Dictionary<DamageType, float> { { DamageType.Slashing, 35f }, { DamageType.Fire, 20f } },
 					new Dictionary<StatusEffectType, float> { { StatusEffectType.Burn, 0.5f } }
 				)
-			)
+			) {
+				HasCondition = true,
+				ConditionMax = 100,
+				ConditionDefault = 100,
+				ConditionCurrent = 100
+			}
 		};
 	}
 

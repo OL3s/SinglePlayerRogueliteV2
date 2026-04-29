@@ -5,15 +5,16 @@ using MyTypes;
 
 [GlobalClass]
 public partial class ItemAmmo : ItemBase {
-	[Export] public int CountMax { get; set; } = 0;
-	[Export] public int CountCurrent { get; set; } = 0;
-	[Export] public AmmoType Type { get; set; } = AmmoType.None;
-	public ItemAmmo() { }
+	public ItemAmmo() {
+		IsConsumable = true;
+	}
 
-	public ItemAmmo(string itemName, DependencyLevel? useDependency, Texture2D icon, int maxStackSize, int cost, int countMax, int countCurrent, AmmoType type)
-		: base(itemName, useDependency, icon, maxStackSize, cost) {
-		CountMax = countMax;
-		CountCurrent = countCurrent;
-		Type = type;
+	public ItemAmmo(string itemName, ItemDependency? dependencies, Texture2D icon, int maxStackSize, int cost, int useCountMax, int useCountDefault, AmmoType ammoType)
+		: base(itemName, dependencies, icon, maxStackSize, cost) {
+		IsConsumable = true;
+		UseCountMax = useCountMax;
+		UseCountDefault = useCountDefault;
+		UseCountCurrent = useCountDefault;
+		AmmoType = ammoType;
 	}
 }
