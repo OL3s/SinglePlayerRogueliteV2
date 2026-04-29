@@ -1,4 +1,4 @@
-# SinglePlayerRoguelite
+# Triad of Shards
 
 Godot 4.6 C# single-player roguelite project.
 
