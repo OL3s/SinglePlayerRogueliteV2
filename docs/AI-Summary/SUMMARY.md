@@ -106,7 +106,8 @@ This folder is for AI assistants to keep project-specific context across coding 
 - `ApplyTick()` delegates ticking to active status effects.
 - Items inherit from `ItemBase`, a `[GlobalClass] Resource` with exported name, dependency set, icon, stack size, cost, generated `ItemID`, optional use counts, optional condition, and optional ammo type.
 - Item subclasses include equipable, armor, consumable, ammo, and amulet resources.
-- Item dependency classes live under `core/items/dependencies/`; `ItemDependency` is the container for requirements like skill level, mana, and ammo type.
+- Item dependency classes live under `core/items/dependencies/`; `ItemDependency` is the container for requirements like skill level, mana, stamina, and ammo type.
+- `ItemUseContext` is the mutable context for real item use. Use `CanUse` for checks and `TryUse` when mana, stamina, ammo counts, item use counts, or condition should actually change.
 - Sample item resources are in `core/items/data/` and are currently hardcoded into `CodexData`.
 
 ## Codex

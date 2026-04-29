@@ -13,17 +13,39 @@ public partial class ItemDependency : Resource {
 		Dependencies.Add(dependency);
 	}
 
-	public static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null) {
+	internal static bool CanExecute(Array<Dependency> dependencies, ItemUseContext context) {
 		foreach (var dependency in dependencies) {
-			if (dependency != null && !dependency.IsMet(playerSkills, ammoType, mana))
+			if (dependency != null && !dependency.IsMet(context))
 				return false;
 		}
 
 		return true;
 	}
 
-	public bool CanExecute(PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null) {
-		return CanExecute(Dependencies, playerSkills, ammoType, mana);
+	internal static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null, int? stamina = null) {
+		return CanExecute(dependencies, new ItemUseContext {
+			PlayerSkills = playerSkills,
+			AmmoType = ammoType,
+			Mana = mana,
+			Stamina = stamina
+		});
+	}
+
+	internal bool CanExecute(ItemUseContext context) {
+		return CanExecute(Dependencies, context);
+	}
+
+	internal bool CanExecute(PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null, int? stamina = null) {
+		return CanExecute(Dependencies, playerSkills, ammoType, mana, stamina);
+	}
+
+	internal bool ApplyCosts(ItemUseContext context) {
+		foreach (var dependency in Dependencies) {
+			if (dependency != null && !dependency.ApplyCost(context))
+				return false;
+		}
+
+		return true;
 	}
 
 	public AmmoType? GetRequiredAmmoType() {
@@ -37,6 +59,14 @@ public partial class ItemDependency : Resource {
 	public int? GetManaCost() {
 		foreach (var dependency in Dependencies) {
 			if (dependency is DependencyMana manaDependency) return manaDependency.Cost;
+		}
+
+		return null;
+	}
+
+	public int? GetStaminaCost() {
+		foreach (var dependency in Dependencies) {
+			if (dependency is DependencyStamina staminaDependency) return staminaDependency.Cost;
 		}
 
 		return null;

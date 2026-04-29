@@ -39,11 +39,23 @@ public partial class ItemBase : Resource {
 		ItemID = Guid.NewGuid().ToString();
 	}
 
-	public bool CanUse(PlayerSkillData? playerSkills = null, AmmoType? ammoType = null, int? mana = null) {
-		if (IsEmpty || IsBroken)
+	public bool CanUse(ItemUseContext context) {
+		if (context == null || IsEmpty || IsBroken || !HasEnoughUses(context.UseCountCost))
 			return false;
 
-		return Dependencies == null || Dependencies.CanExecute(playerSkills, ammoType, mana);
+		return Dependencies == null || Dependencies.CanExecute(context);
+	}
+
+	public bool TryUse(ItemUseContext context) {
+		if (!CanUse(context))
+			return false;
+
+		if (Dependencies != null && !Dependencies.ApplyCosts(context))
+			return false;
+
+		ConsumeUse(context.UseCountCost);
+		ApplyConditionDamage(context.ConditionDamage);
+		return true;
 	}
 
 	public void ResetRuntimeValues() {
@@ -51,21 +63,26 @@ public partial class ItemBase : Resource {
 		ConditionCurrent = ConditionDefault;
 	}
 
-	public bool TryConsumeUse(int amount = 1) {
+	internal bool ConsumeUse(int amount = 1) {
 		if (!IsConsumable)
 			return true;
 
-		if (amount <= 0)
+		amount = Mathf.Max(0, amount);
+		if (amount == 0)
 			return true;
 
-		if (UseCountCurrent < amount)
+		if (!HasEnoughUses(amount))
 			return false;
 
 		UseCountCurrent -= amount;
 		return true;
 	}
 
-	public void ApplyConditionDamage(int amount) {
+	private bool HasEnoughUses(int amount) {
+		return !IsConsumable || UseCountCurrent >= Mathf.Max(0, amount);
+	}
+
+	private void ApplyConditionDamage(int amount) {
 		if (!HasCondition || amount <= 0)
 			return;
 

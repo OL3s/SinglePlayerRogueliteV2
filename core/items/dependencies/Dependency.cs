@@ -1,7 +1,10 @@
 using Godot;
-using MyTypes;
 
 [GlobalClass]
 public abstract partial class Dependency : Resource {
-	public abstract bool IsMet(PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null);
+	internal abstract bool IsMet(ItemUseContext context);
+
+	internal virtual bool ApplyCost(ItemUseContext context) {
+		return true;
+	}
 }

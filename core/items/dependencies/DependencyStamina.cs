@@ -1,15 +1,14 @@
 using Godot;
-using MyTypes;
 
 [GlobalClass]
-public partial class DependencyMana : Dependency {
+public partial class DependencyStamina : Dependency {
 	[Export] public int Cost { get; set; }
 
 	internal override bool IsMet(ItemUseContext context) {
-		return context?.Mana != null && context.Mana >= Cost;
+		return context?.Stamina != null && context.Stamina >= Cost;
 	}
 
 	internal override bool ApplyCost(ItemUseContext context) {
-		return context != null && context.SpendMana(Cost);
+		return context != null && context.SpendStamina(Cost);
 	}
 }
