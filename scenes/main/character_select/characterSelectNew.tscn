@@ -16,26 +16,6 @@ grow_vertical = 2
 theme = ExtResource("1_jcnjm")
 script = ExtResource("1_xudq2")
 
-[node name="BackButton" type="Button" parent="." unique_id=2147109797]
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 80.0
-grow_horizontal = 0
-modulate = Color(1, 0.15, 0.15, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-text = "X"
-script = ExtResource("1_2t5lb")
-SceneToLoad = ExtResource("2_blqyk")
-metadata/_custom_type_script = "uid://cojt55fjm1e35"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=309868253]
 layout_mode = 1
 anchors_preset = 15
@@ -70,3 +50,23 @@ size_flags_horizontal = 3
 
 [node name="NewCharacterComponent" parent="HBoxContainer/PanelButton" unique_id=153482096 instance=ExtResource("3_blqyk")]
 layout_mode = 1
+
+[node name="BackButton" type="Button" parent="." unique_id=2147109797]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("1_2t5lb")
+SceneToLoad = ExtResource("2_blqyk")
+metadata/_custom_type_script = "uid://cojt55fjm1e35"

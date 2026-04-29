@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://bewk1qfwxhqaf"]
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_codex_theme"]
 [ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="2_codex_close"]
-[ext_resource type="Script" path="res://scenes/overlays/main_menu/CodexOverlay.cs" id="3_codex_controller"]
+[ext_resource type="Script" uid="uid://boqlcsdoxu0km" path="res://scenes/overlays/main_menu/CodexOverlay.cs" id="3_codex_controller"]
 
-[node name="CodexOverlay" type="Control"]
+[node name="CodexOverlay" type="Control" unique_id=518954888]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +14,7 @@ grow_vertical = 2
 theme = ExtResource("1_codex_theme")
 script = ExtResource("3_codex_controller")
 
-[node name="Panel" type="ColorRect" parent="."]
+[node name="Panel" type="ColorRect" parent="." unique_id=1396613412]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,37 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.39308554, 0.3930855, 0.39308548, 1)
 
-[node name="TopUI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CloseOverlay" type="Button" parent="TopUI" node_paths=PackedStringArray("CloseTarget")]
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 80.0
-grow_horizontal = 0
-modulate = Color(1, 0.15, 0.15, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-text = "X"
-script = ExtResource("2_codex_close")
-CloseTarget = NodePath("../..")
-CloseAllOverlayChildren = true
-metadata/_custom_type_script = "uid://b5nexivgcopri"
-
-[node name="Content" type="HBoxContainer" parent="."]
+[node name="Content" type="HBoxContainer" parent="." unique_id=1345812454]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,102 +36,123 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 24
 
-[node name="CategoryPanel" type="PanelContainer" parent="Content"]
+[node name="CategoryPanel" type="PanelContainer" parent="Content" unique_id=1960401385]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/CategoryPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/CategoryPanel" unique_id=329340979]
 layout_mode = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="CategoryLayout" type="VBoxContainer" parent="Content/CategoryPanel/MarginContainer"]
+[node name="CategoryLayout" type="VBoxContainer" parent="Content/CategoryPanel/MarginContainer" unique_id=723228147]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Title" type="Label" parent="Content/CategoryPanel/MarginContainer/CategoryLayout"]
+[node name="Title" type="Label" parent="Content/CategoryPanel/MarginContainer/CategoryLayout" unique_id=786066015]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Categories"
 horizontal_alignment = 1
 
-[node name="CategoryButtons" type="VBoxContainer" parent="Content/CategoryPanel/MarginContainer/CategoryLayout"]
+[node name="CategoryButtons" type="VBoxContainer" parent="Content/CategoryPanel/MarginContainer/CategoryLayout" unique_id=670985094]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="RightPanel" type="PanelContainer" parent="Content"]
+[node name="RightPanel" type="PanelContainer" parent="Content" unique_id=306762561]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/RightPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/RightPanel" unique_id=335467880]
 layout_mode = 2
 theme_override_constants/margin_left = 24
 theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="RightLayout" type="VBoxContainer" parent="Content/RightPanel/MarginContainer"]
+[node name="RightLayout" type="VBoxContainer" parent="Content/RightPanel/MarginContainer" unique_id=1518137668]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="CategoryTitle" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="CategoryTitle" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=1558178302]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Items"
 
-[node name="BackButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="BackButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=1852680488]
 custom_minimum_size = Vector2(120, 48)
 layout_mode = 2
 text = "Back"
 
-[node name="SubcategoryButtons" type="HBoxContainer" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="SubcategoryButtons" type="HBoxContainer" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=1181173965]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="EmptyState" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="EmptyState" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=384611058]
 layout_mode = 2
 text = "Select an item filter."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EntryGrid" type="GridContainer" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="EntryGrid" type="GridContainer" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=2096087208]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-columns = 5
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
+columns = 5
 
-[node name="PageControls" type="HBoxContainer" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="PageControls" type="HBoxContainer" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=477637118]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="PreviousPageButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls"]
+[node name="PreviousPageButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls" unique_id=1322255748]
 custom_minimum_size = Vector2(120, 56)
 layout_mode = 2
 text = "< Prev"
 
-[node name="PageLabel" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls"]
+[node name="PageLabel" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls" unique_id=738635160]
 custom_minimum_size = Vector2(160, 56)
 layout_mode = 2
 text = "Page 1 / 1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextPageButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls"]
+[node name="NextPageButton" type="Button" parent="Content/RightPanel/MarginContainer/RightLayout/PageControls" unique_id=754753114]
 custom_minimum_size = Vector2(120, 56)
 layout_mode = 2
 text = "Next >"
 
-[node name="ProgressLabel" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout"]
+[node name="ProgressLabel" type="Label" parent="Content/RightPanel/MarginContainer/RightLayout" unique_id=1240384011]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Entries: 0"
 horizontal_alignment = 1
+
+[node name="CloseOverlay" type="Button" parent="." unique_id=768727022 node_paths=PackedStringArray("CloseTarget")]
+modulate = Color(1, 0.15, 0.15, 1)
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("2_codex_close")
+CloseTarget = NodePath("..")
+CloseAllOverlayChildren = true
+metadata/_custom_type_script = "uid://b5nexivgcopri"

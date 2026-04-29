@@ -81,37 +81,7 @@ script = ExtResource("2_cjdsb")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 metadata/_edit_lock_ = true
 
-[node name="TopUI" type="Control" parent="." unique_id=1162762457]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CloseOverlay" type="Button" parent="TopUI" unique_id=1959946455 node_paths=PackedStringArray("CloseTarget")]
-custom_minimum_size = Vector2(56, 56)
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -80.0
-offset_top = 24.0
-offset_right = -24.0
-offset_bottom = 80.0
-grow_horizontal = 0
-modulate = Color(1, 0.15, 0.15, 1)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
-text = "X"
-script = ExtResource("3_66bgr")
-CloseTarget = NodePath("../..")
-CloseAllOverlayChildren = true
-metadata/_custom_type_script = "uid://b5nexivgcopri"
-
-[node name="PanelBuilding" parent="TopUI" unique_id=2082076853 instance=ExtResource("4_mlke7")]
+[node name="PanelBuilding" parent="." unique_id=2082076853 instance=ExtResource("4_mlke7")]
 layout_mode = 1
 offset_left = 24.0
 offset_top = 24.0
@@ -128,3 +98,24 @@ offset_top = 140.0
 offset_right = -24.0
 offset_bottom = -120.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_01qpf")
+
+[node name="CloseOverlay" type="Button" parent="." unique_id=1959946455 node_paths=PackedStringArray("CloseTarget")]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("3_66bgr")
+CloseTarget = NodePath("..")
+CloseAllOverlayChildren = true
+metadata/_custom_type_script = "uid://b5nexivgcopri"

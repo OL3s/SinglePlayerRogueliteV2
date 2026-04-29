@@ -21,16 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.39308554, 0.3930855, 0.39308548, 1)
 
-[node name="TopUI" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="CloseOverlay" type="Button" parent="TopUI" node_paths=PackedStringArray("CloseTarget")]
+[node name="CloseOverlay" type="Button" parent="." node_paths=PackedStringArray("CloseTarget")]
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 1
 anchors_preset = 1
@@ -47,6 +38,6 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 text = "X"
 script = ExtResource("2_character_close")
-CloseTarget = NodePath("../..")
+CloseTarget = NodePath("..")
 CloseAllOverlayChildren = true
 metadata/_custom_type_script = "uid://b5nexivgcopri"
