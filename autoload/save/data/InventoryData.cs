@@ -13,6 +13,43 @@ public partial class InventoryData : Resource {
 		Items.Remove(item);
 	}
 
+	public bool TryEquipItem(ItemBase item, EquipedItemsData equipedItems) {
+		return TryEquipItem(item, equipedItems, false);
+	}
+
+	public bool TryEquipOffhandItem(ItemBase item, EquipedItemsData equipedItems) {
+		return TryEquipItem(item, equipedItems, true);
+	}
+
+	public bool TryUnequipItem(ItemBase item, EquipedItemsData equipedItems) {
+		if (item == null || equipedItems == null)
+			return false;
+
+		if (!equipedItems.TryUnequipItem(item))
+			return false;
+
+		AddItem(item);
+		return true;
+	}
+
+	private bool TryEquipItem(ItemBase item, EquipedItemsData equipedItems, bool offhand) {
+		if (item == null || equipedItems == null || !Items.Contains(item))
+			return false;
+
+		var equipped = offhand
+			? equipedItems.TryEquipOffhandItem(item, out var replacedItem)
+			: equipedItems.TryEquipItem(item, out replacedItem);
+
+		if (!equipped)
+			return false;
+
+		RemoveItem(item);
+		if (replacedItem != null)
+			AddItem(replacedItem);
+
+		return true;
+	}
+
 	public ItemBase GetItemByID(string itemID) {
 		foreach (var item in Items) {
 			if (item.ItemID == itemID)

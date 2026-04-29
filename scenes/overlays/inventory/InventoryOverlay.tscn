@@ -1,0 +1,397 @@
+[gd_scene format=3 uid="uid://b8o2ydskyt0q1"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_inventory_theme"]
+[ext_resource type="Script" uid="uid://br0l3k8cyw40p" path="res://scenes/overlays/inventory/InventoryOverlay.cs" id="2_inventory_controller"]
+[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_inventory_close"]
+[ext_resource type="PackedScene" uid="uid://b3t78msmcidw4" path="res://scenes/components/stats/PanelStats.tscn" id="4_panel_stats"]
+[ext_resource type="Script" uid="uid://ci1vvue40nntn" path="res://scenes/overlays/inventory/ItemInventory.cs" id="5_item_inventory"]
+[ext_resource type="Script" uid="uid://dhpuunmll22km" path="res://scenes/overlays/inventory/InventoryDetails.cs" id="6_inventory_details"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_inventory"]
+size = Vector2(64, 64)
+
+[node name="InventoryOverlay" type="Control" unique_id=98342949]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_inventory_theme")
+script = ExtResource("2_inventory_controller")
+
+[node name="Panel" type="ColorRect" parent="." unique_id=817436390]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39308554, 0.3930855, 0.39308548, 1)
+
+[node name="TopUI" type="Control" parent="." unique_id=1856344995]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CloseOverlay" type="Button" parent="TopUI" unique_id=649396216 node_paths=PackedStringArray("CloseTarget")]
+modulate = Color(1, 0.15, 0.15, 1)
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("3_inventory_close")
+CloseTarget = NodePath("../..")
+CloseAllOverlayChildren = true
+metadata/_custom_type_script = "uid://b5nexivgcopri"
+
+[node name="Content" type="HBoxContainer" parent="." unique_id=562226941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 80.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="EquipmentPanel" type="PanelContainer" parent="Content" unique_id=1791362550]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/EquipmentPanel" unique_id=1996660020]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="EquipmentLayout" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer" unique_id=442468928]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1312900472]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Equipment"
+horizontal_alignment = 1
+
+[node name="EquipmentBody" type="HBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1717993757]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="LeftSlots" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=1329016761]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Slot1" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=830175978]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Main Hand"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot2" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=1908044315]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Off Hand"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot3" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=1747773721]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Armor"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PlayerPreview" type="PanelContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=854291563]
+custom_minimum_size = Vector2(144, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerImage" type="TextureRect" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/PlayerPreview" unique_id=377644031]
+custom_minimum_size = Vector2(128, 224)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_inventory")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightSlots" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=1812551557]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Slot4" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=2046230241]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Amulet"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot5" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=647505300]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Ammo"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot6" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=1591692130]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Consumable"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PanelStats" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1126613467 instance=ExtResource("4_panel_stats")]
+layout_mode = 2
+
+[node name="InventoryPanel" type="PanelContainer" parent="Content" unique_id=1811961060]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/InventoryPanel" unique_id=1878877484]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="InventoryLayout" type="VBoxContainer" parent="Content/InventoryPanel/MarginContainer" unique_id=132130422]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=723141690]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="FilterButtons" type="HBoxContainer" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=886295715]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="InventoryGrid" type="GridContainer" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=57064246]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="Item1" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=1607358934]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item2" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=106042543]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item3" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=1484110414]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item4" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=868435114]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item5" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=1934352771]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item6" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=27688108]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item7" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=1284148774]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="Item8" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid" unique_id=1564103702]
+custom_minimum_size = Vector2(136, 92)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Empty"
+icon = SubResource("PlaceholderTexture2D_inventory")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+script = ExtResource("5_item_inventory")
+
+[node name="EmptyInventoryLabel" type="Label" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=441576636]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "You have no items."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PageControls" type="HBoxContainer" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=913806143]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PreviousPageButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/PageControls" unique_id=1274285940]
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+text = "< Prev"
+
+[node name="PageLabel" type="Label" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/PageControls" unique_id=896037051]
+custom_minimum_size = Vector2(180, 56)
+layout_mode = 2
+text = "Page 1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPageButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/PageControls" unique_id=496435780]
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+text = "Next >"
+
+[node name="Details" type="VBoxContainer" parent="Content/InventoryPanel/MarginContainer/InventoryLayout" unique_id=624683617]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+theme_override_constants/separation = 8
+script = ExtResource("6_inventory_details")
+
+[node name="DetailsLabel" type="Label" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details" unique_id=214537901]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tap an item to see details."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ActionButtons" type="HBoxContainer" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details" unique_id=994243353]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="EquipButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details/ActionButtons" unique_id=1688881871]
+visible = false
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Equip"
+
+[node name="OffhandButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details/ActionButtons" unique_id=685206726]
+visible = false
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Offhand"
+
+[node name="UnequipButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details/ActionButtons" unique_id=1561378143]
+visible = false
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Unequip"
