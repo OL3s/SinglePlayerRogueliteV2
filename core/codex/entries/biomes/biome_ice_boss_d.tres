@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CodexEntryData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://core/codex/CodexEntryData.cs" id="1_entry"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+Id = "biome_ice_boss_d"
+Category = 2
+Subcategory = 10
+Title = "Ice Boss"
+Description = "A final boss biome at the end of an ice-focused route. Defeating its boss awards the blue gem."
+Icon = SubResource("PlaceholderTexture2D_entry")
