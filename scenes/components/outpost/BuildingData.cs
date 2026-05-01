@@ -88,4 +88,38 @@ public partial class BuildingData : Resource {
 
 		GlobalOverlay.Get()?.AddChild(overlay);
 	}
+
+	public override string ToString() {
+		return $"BuildingData(Name={LabelName}, Description={Description}, Buttons={FormatButtons(OverlayButtons)}, StorefrontItems={FormatItems(StorefrontItems)})";
+	}
+
+	private static string FormatButtons(Array<BuildingOverlayButtonData> buttons) {
+		if (buttons == null || buttons.Count == 0)
+			return "[]";
+
+		var result = "[";
+		for (var i = 0; i < buttons.Count; i++) {
+			if (i > 0)
+				result += ", ";
+
+			result += buttons[i]?.LabelName ?? "None";
+		}
+
+		return result + "]";
+	}
+
+	private static string FormatItems(Array<ItemBase> items) {
+		if (items == null || items.Count == 0)
+			return "[]";
+
+		var result = "[";
+		for (var i = 0; i < items.Count; i++) {
+			if (i > 0)
+				result += ", ";
+
+			result += items[i]?.ItemName ?? "None";
+		}
+
+		return result + "]";
+	}
 }
