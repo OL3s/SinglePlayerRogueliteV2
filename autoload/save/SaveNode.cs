@@ -29,6 +29,7 @@ public partial class SaveNode : Node {
 	public void ExecuteReady() {
 		DirAccess.MakeDirRecursiveAbsolute(SavePath);
 		LoadAllData();
+		ApplySettings();
 
 		if (!FilesExist())
 			SaveAllData();
@@ -168,6 +169,7 @@ public partial class SaveNode : Node {
 		MetaData = DuplicateSaveResource(DefaultMetaData);
 		RunData = null;
 		SettingsData = DuplicateSaveResource(DefaultSettingsData);
+		ApplySettings();
 		RefreshStartCharacters();
 		SaveAllData();
 	}
@@ -226,5 +228,24 @@ public partial class SaveNode : Node {
 
 	private static T DuplicateSaveResource<T>(T resource) where T : Resource {
 		return resource?.Duplicate(true) as T;
+	}
+
+	public void ApplySettings() {
+		if (SettingsData == null)
+			return;
+
+		ApplyBusSettings("SFX", SettingsData.SfxVolumePercent, SettingsData.SfxEnabled);
+		ApplyBusSettings("Music", SettingsData.MusicVolumePercent, SettingsData.MusicEnabled);
+	}
+
+	private static void ApplyBusSettings(string busName, float volumePercent, bool enabled) {
+		var busIndex = AudioServer.GetBusIndex(busName);
+		if (busIndex < 0) {
+			GD.PushWarning($"SaveNode: Audio bus '{busName}' was not found.");
+			return;
+		}
+
+		AudioServer.SetBusMute(busIndex, !enabled);
+		AudioServer.SetBusVolumeDb(busIndex, Mathf.LinearToDb(Mathf.Clamp(volumePercent, 0.0f, 100.0f) / 100.0f));
 	}
 }
