@@ -18,7 +18,7 @@ public partial class SaveNode : Node {
 	public PlayerData[] StartCharacters { get; private set; } = Array.Empty<PlayerData>();
 	public bool HadPlayerDataOnLoad { get; private set; }
 	public PlayerData PlayerData => RunData.PlayerData;
-	public InventoryData InventoryData => RunData.InventoryData;
+	public InventoryData InventoryData => PlayerData.InventoryData;
 	public EquipedItemsData EquipedItemsData => PlayerData.EquipedItems;
 	public static SaveNode Get() => Engine.GetMainLoop() is SceneTree tree ? tree.Root.GetNode<SaveNode>("SaveNode") : throw new InvalidOperationException("SaveNode: Unable to find SaveNode in the scene tree. Ensure that SaveNode is added as a child of the root node and is named 'SaveNode'.");
 	public override void _Ready() {
@@ -35,6 +35,7 @@ public partial class SaveNode : Node {
 			SaveAllData();
 
 		RunData.PlayerData ??= new PlayerData();
+		RunData.PlayerData.InventoryData ??= new InventoryData();
 		RefreshStartCharacters();
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");
 	}
@@ -172,6 +173,15 @@ public partial class SaveNode : Node {
 		RunData.OutpostBuildings = null;
 		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}. Outpost buildings cleared.");
 		SaveRunData();
+	}
+
+	public void WipeRun() {
+		GD.Print("WipeRun: resetting run data.");
+		RunData = new RunData();
+		MetaData ??= new MetaData();
+		MetaData.RunCount++;
+		GD.Print($"WipeRun: run count increased to {MetaData.RunCount}.");
+		SaveMetaData();
 	}
 
 	public void SaveAllData() {
