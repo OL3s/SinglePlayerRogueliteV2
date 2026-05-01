@@ -2,9 +2,10 @@ using Godot;
 
 public partial class BuildingTemplate : Node2D {
 	private const ulong OpenDebounceMs = 250;
+	private const string BuildingOverlayPath = "res://scenes/overlays/building/BuildingOverlay.tscn";
 
-	[Export] public PackedScene OverlayScene { get; set; }
-	[Export] public Texture2D TextureHouse { get; set; }
+	[Export] public PackedScene BuildingOverlayScene { get; set; } = GD.Load<PackedScene>(BuildingOverlayPath);
+	[Export] public BuildingData BuildingData { get; set; } = new();
 
 	private Sprite2D _houseSprite;
 	private Area2D _area;
@@ -25,8 +26,8 @@ public partial class BuildingTemplate : Node2D {
 	}
 
 	private void ApplyExportedValues() {
-		if (_houseSprite != null && TextureHouse != null)
-			_houseSprite.Texture = TextureHouse;
+		if (_houseSprite != null && BuildingData?.BuildingTexture != null)
+			_houseSprite.Texture = BuildingData.BuildingTexture;
 	}
 
 	private void OnAreaInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
@@ -39,8 +40,8 @@ public partial class BuildingTemplate : Node2D {
 
 		_lastOpenTimeMs = now;
 
-		if (OverlayScene == null) {
-			GD.PushWarning($"{nameof(BuildingTemplate)} on '{Name}' has no overlay scene configured.");
+		if (BuildingOverlayScene == null) {
+			GD.PushWarning($"{nameof(BuildingTemplate)} on '{Name}' could not load BuildingOverlay.");
 			return;
 		}
 
@@ -50,7 +51,11 @@ public partial class BuildingTemplate : Node2D {
 			return;
 		}
 
-		overlay.AddOverlay(OverlayScene);
+		var overlayInstance = BuildingOverlayScene.Instantiate();
+		if (overlayInstance is BuildingOverlay buildingOverlay)
+			buildingOverlay.Update(BuildingData);
+
+		overlay.AddChild(overlayInstance);
 	}
 
 	private static bool IsPressed(InputEvent @event) {

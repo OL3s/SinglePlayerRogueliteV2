@@ -1,11 +1,9 @@
 [gd_scene format=3 uid="uid://hwrt00phvgys"]
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_01qpf"]
-[ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_cjdsb"]
+[ext_resource type="Script" uid="uid://bmqhj3sdl0fnb" path="res://scenes/overlays/building/BuildingOverlay.cs" id="2_qrp73"]
 [ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_66bgr"]
 [ext_resource type="PackedScene" uid="uid://cbit1hetoxuyt" path="res://scenes/components/panels/PanelBuilding.tscn" id="4_mlke7"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_urxyx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01qpf"]
 
@@ -17,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_01qpf")
+script = ExtResource("2_qrp73")
 
 [node name="Panel" type="ColorRect" parent="." unique_id=164256524]
 layout_mode = 1
@@ -42,45 +41,6 @@ grow_vertical = 0
 theme_override_constants/separation = 16
 metadata/_edit_lock_ = true
 
-[node name="BtnOne" type="Button" parent="BottomUI" unique_id=1807113178]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "$Btn1"
-icon = SubResource("PlaceholderTexture2D_urxyx")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-script = ExtResource("2_cjdsb")
-metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-metadata/_edit_lock_ = true
-
-[node name="BtnTwo" type="Button" parent="BottomUI" unique_id=959787783]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "$Btn2"
-icon = SubResource("PlaceholderTexture2D_urxyx")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-script = ExtResource("2_cjdsb")
-metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-metadata/_edit_lock_ = true
-
-[node name="BtnTree" type="Button" parent="BottomUI" unique_id=1175373288]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "$Btn3"
-icon = SubResource("PlaceholderTexture2D_urxyx")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-script = ExtResource("2_cjdsb")
-metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-metadata/_edit_lock_ = true
-
 [node name="PanelBuilding" parent="." unique_id=2082076853 instance=ExtResource("4_mlke7")]
 layout_mode = 1
 offset_left = 24.0
@@ -99,7 +59,40 @@ offset_right = -24.0
 offset_bottom = -120.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_01qpf")
 
+[node name="CenterContent" type="HBoxContainer" parent="PanelOverlay" unique_id=645034186]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="OwnerPortrait" type="TextureRect" parent="PanelOverlay/CenterContent" unique_id=665627996]
+custom_minimum_size = Vector2(220, 260)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DialoguePanel" type="PanelContainer" parent="PanelOverlay/CenterContent" unique_id=1932082057]
+custom_minimum_size = Vector2(520, 220)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelOverlay/CenterContent/DialoguePanel" unique_id=215597545]
+layout_mode = 2
+
+[node name="OwnerText" type="RichTextLabel" parent="PanelOverlay/CenterContent/DialoguePanel/MarginContainer" unique_id=1638818097]
+layout_mode = 2
+bbcode_enabled = true
+text = "Welcome."
+fit_content = true
+scroll_active = false
+vertical_alignment = 2
+
 [node name="CloseOverlay" type="Button" parent="." unique_id=1959946455 node_paths=PackedStringArray("CloseTarget")]
+modulate = Color(1, 0.15, 0.15, 1)
 custom_minimum_size = Vector2(56, 56)
 layout_mode = 1
 anchors_preset = 1
@@ -110,10 +103,9 @@ offset_top = 24.0
 offset_right = -24.0
 offset_bottom = 80.0
 grow_horizontal = 0
-modulate = Color(1, 0.15, 0.15, 1)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 text = "X"
 script = ExtResource("3_66bgr")
 CloseTarget = NodePath("..")
