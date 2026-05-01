@@ -1,11 +1,12 @@
-[gd_scene format=3 uid="uid://d1ag7gm5vb0ht"]
+[gd_scene format=3 uid="uid://c1fhu7u3k6v5a"]
 
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_iliac"]
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_nmjne"]
-[ext_resource type="Script" uid="uid://dwynphf850buu" path="res://scenes/main/character_select/CharacterSelection.cs" id="1_sblgg"]
-[ext_resource type="PackedScene" uid="uid://bdidiwmmk523p" path="res://scenes/components/panels/PanelCareerData.tscn" id="2_i30vl"]
+[ext_resource type="Script" path="res://scenes/main/character_select/RunOverview.cs" id="1_sblgg"]
+[ext_resource type="PackedScene" path="res://scenes/components/panels/PanelRunMetadata.tscn" id="2_i30vl"]
+[ext_resource type="PackedScene" path="res://scenes/components/equipment/EquipmentPanel.tscn" id="3_7ix3o"]
 
-[node name="CharacterSelection" type="Control" unique_id=565005107]
+[node name="RunOverview" type="Control" unique_id=565005107]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,18 +29,26 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="PanelStats" type="Panel" parent="HBoxContainer" unique_id=422848442]
+[node name="PanelRunMetadata" type="Panel" parent="HBoxContainer" unique_id=422848442]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="PanelCareerData" parent="HBoxContainer/PanelStats" unique_id=357901048 instance=ExtResource("2_i30vl")]
+[node name="PanelRunMetadata" parent="HBoxContainer/PanelRunMetadata" unique_id=357901048 instance=ExtResource("2_i30vl")]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 11.0
+offset_top = 11.0
 offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="PanelGear" type="Panel" parent="HBoxContainer" unique_id=1772211458]
+[node name="PanelGear" parent="HBoxContainer" unique_id=1772211458 instance=ExtResource("3_7ix3o")]
 layout_mode = 2
 size_flags_horizontal = 3
+EnableButtonPresses = false
 
 [node name="PanelButton" type="Panel" parent="HBoxContainer" unique_id=1963934283]
 custom_minimum_size = Vector2(300, 0)

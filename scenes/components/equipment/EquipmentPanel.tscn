@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://b0t8j3e6wvdv1"]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_equipment_theme"]
+[ext_resource type="Script" path="res://scenes/components/equipment/EquipmentPanel.cs" id="2_equipment_controller"]
+[ext_resource type="PackedScene" uid="uid://b3t78msmcidw4" path="res://scenes/components/stats/PanelStats.tscn" id="3_panel_stats"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_equipment"]
+size = Vector2(64, 64)
+
+[node name="EquipmentPanel" type="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_equipment_theme")
+script = ExtResource("2_equipment_controller")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="EquipmentLayout" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="MarginContainer/EquipmentLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Equipment"
+horizontal_alignment = 1
+
+[node name="EquipmentBody" type="HBoxContainer" parent="MarginContainer/EquipmentLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="LeftSlots" type="VBoxContainer" parent="MarginContainer/EquipmentLayout/EquipmentBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Slot1" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Main Hand"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot2" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Off Hand"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot3" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Armor"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PlayerPreview" type="PanelContainer" parent="MarginContainer/EquipmentLayout/EquipmentBody"]
+custom_minimum_size = Vector2(144, 240)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayerImage" type="TextureRect" parent="MarginContainer/EquipmentLayout/EquipmentBody/PlayerPreview"]
+custom_minimum_size = Vector2(128, 224)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_equipment")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RightSlots" type="VBoxContainer" parent="MarginContainer/EquipmentLayout/EquipmentBody"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Slot4" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/RightSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Amulet"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot5" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/RightSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Ammo"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Slot6" type="Button" parent="MarginContainer/EquipmentLayout/EquipmentBody/RightSlots"]
+custom_minimum_size = Vector2(104, 76)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Consumable"
+icon = SubResource("PlaceholderTexture2D_equipment")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="PanelStats" parent="MarginContainer/EquipmentLayout" instance=ExtResource("3_panel_stats")]
+layout_mode = 2

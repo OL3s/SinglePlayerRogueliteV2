@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CodexEntryData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://core/codex/CodexEntryData.cs" id="1_entry"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+Id = "biome_desert_b"
+Category = 2
+Subcategory = 8
+Title = "Desert"
+Description = "A hotter route option after the grasslands. Dry, exposed paths offer an alternate branch through the early run."
+Icon = SubResource("PlaceholderTexture2D_entry")

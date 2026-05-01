@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_inventory_theme"]
 [ext_resource type="Script" uid="uid://br0l3k8cyw40p" path="res://scenes/overlays/inventory/InventoryOverlay.cs" id="2_inventory_controller"]
 [ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_inventory_close"]
-[ext_resource type="PackedScene" uid="uid://b3t78msmcidw4" path="res://scenes/components/stats/PanelStats.tscn" id="4_panel_stats"]
+[ext_resource type="PackedScene" path="res://scenes/components/equipment/EquipmentPanel.tscn" id="4_equipment_panel"]
 [ext_resource type="Script" uid="uid://ci1vvue40nntn" path="res://scenes/overlays/inventory/ItemInventory.cs" id="5_item_inventory"]
 [ext_resource type="Script" uid="uid://dhpuunmll22km" path="res://scenes/overlays/inventory/InventoryDetails.cs" id="6_inventory_details"]
 
@@ -42,127 +42,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="EquipmentPanel" type="PanelContainer" parent="Content" unique_id=1791362550]
+[node name="EquipmentPanel" parent="Content" unique_id=1791362550 instance=ExtResource("4_equipment_panel")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Content/EquipmentPanel" unique_id=1996660020]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="EquipmentLayout" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer" unique_id=442468928]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Title" type="Label" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1312900472]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Equipment"
-horizontal_alignment = 1
-
-[node name="EquipmentBody" type="HBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1717993757]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 12
-
-[node name="LeftSlots" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=1329016761]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 12
-
-[node name="Slot1" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=830175978]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Main Hand"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Slot2" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=1908044315]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Off Hand"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Slot3" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots" unique_id=1747773721]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Armor"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="PlayerPreview" type="PanelContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=854291563]
-custom_minimum_size = Vector2(144, 240)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="PlayerImage" type="TextureRect" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/PlayerPreview" unique_id=377644031]
-custom_minimum_size = Vector2(128, 224)
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_inventory")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="RightSlots" type="VBoxContainer" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody" unique_id=1812551557]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 12
-
-[node name="Slot4" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=2046230241]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Amulet"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Slot5" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=647505300]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Ammo"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="Slot6" type="Button" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots" unique_id=1591692130]
-custom_minimum_size = Vector2(104, 76)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-text = "Consumable"
-icon = SubResource("PlaceholderTexture2D_inventory")
-icon_alignment = 1
-vertical_icon_alignment = 0
-expand_icon = true
-
-[node name="PanelStats" parent="Content/EquipmentPanel/MarginContainer/EquipmentLayout" unique_id=1126613467 instance=ExtResource("4_panel_stats")]
-layout_mode = 2
 
 [node name="InventoryPanel" type="PanelContainer" parent="Content" unique_id=1811961060]
 layout_mode = 2

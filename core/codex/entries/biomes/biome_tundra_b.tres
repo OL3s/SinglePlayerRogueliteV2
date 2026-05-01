@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="CodexEntryData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://core/codex/CodexEntryData.cs" id="1_entry"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_entry"]
+
+[resource]
+script = ExtResource("1_entry")
+Id = "biome_tundra_b"
+Category = 2
+Subcategory = 8
+Title = "Tundra"
+Description = "A colder route option after the grasslands. Open frozen terrain marks the first branch toward harder contracts."
+Icon = SubResource("PlaceholderTexture2D_entry")

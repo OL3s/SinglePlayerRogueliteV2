@@ -50,7 +50,7 @@ public partial class CodexOverlay : Control {
 	private void BuildCategoryButtons() {
 		foreach (var category in CodexData.Categories.Keys) {
 			var button = new Button {
-				Text = category.ToString(),
+				Text = GetCategoryDisplayName(category),
 				CustomMinimumSize = new Vector2(0, 64),
 				SizeFlagsHorizontal = SizeFlags.ExpandFill
 			};
@@ -63,8 +63,10 @@ public partial class CodexOverlay : Control {
 	private void SelectCategory(CodexCategory category) {
 		_currentCategory = category;
 		_currentSubcategory = CodexSubcategory.All;
-		_categoryTitle.Text = category.ToString();
+		_categoryTitle.Text = GetCategoryDisplayName(category);
 		_backButton.Visible = false;
+		_subcategoryButtons.Visible = true;
+		_emptyState.Visible = true;
 
 		foreach (var child in _subcategoryButtons.GetChildren()) {
 			child.QueueFree();
@@ -82,7 +84,7 @@ public partial class CodexOverlay : Control {
 
 	private Button CreateSubcategoryButton(CodexCategory category, CodexSubcategory subcategory) {
 		return new Button {
-			Text = subcategory.ToString(),
+			Text = GetSubcategoryDisplayName(subcategory),
 			ClipText = true,
 			Icon = GetSubcategoryIcon(category, subcategory),
 			ExpandIcon = true,
@@ -194,8 +196,10 @@ public partial class CodexOverlay : Control {
 		_viewMode = ViewMode.EntryDetails;
 		_categoryTitle.Text = entry.Title;
 		_backButton.Visible = true;
+		_subcategoryButtons.Visible = false;
+		_emptyState.Visible = false;
 		_pageControls.Visible = false;
-		_progressLabel.Text = $"{entry.Category} / {entry.Subcategory}";
+		_progressLabel.Text = $"{GetCategoryDisplayName(entry.Category)} / {GetSubcategoryDisplayName(entry.Subcategory)}";
 
 		foreach (var child in _subcategoryButtons.GetChildren()) {
 			child.QueueFree();
@@ -208,7 +212,7 @@ public partial class CodexOverlay : Control {
 
 	private Control CreateDetailCard(CodexEntryData entry) {
 		var card = new PanelContainer {
-			CustomMinimumSize = new Vector2(360, 420)
+			CustomMinimumSize = new Vector2(360, 360)
 		};
 
 		var layout = new VBoxContainer {
@@ -216,7 +220,7 @@ public partial class CodexOverlay : Control {
 		};
 
 		var icon = new TextureRect {
-			CustomMinimumSize = new Vector2(180, 180),
+			CustomMinimumSize = new Vector2(152, 152),
 			Texture = entry.Icon ?? new PlaceholderTexture2D(),
 			ExpandMode = TextureRect.ExpandModeEnum.FitWidthProportional,
 			StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered
@@ -229,7 +233,7 @@ public partial class CodexOverlay : Control {
 		title.AddThemeFontSizeOverride("font_size", 32);
 
 		var meta = new Label {
-			Text = $"{entry.Category} / {entry.Subcategory}",
+			Text = $"{GetCategoryDisplayName(entry.Category)} / {GetSubcategoryDisplayName(entry.Subcategory)}",
 			HorizontalAlignment = HorizontalAlignment.Center
 		};
 
@@ -266,5 +270,20 @@ public partial class CodexOverlay : Control {
 		foreach (var child in _entryGrid.GetChildren()) {
 			child.QueueFree();
 		}
+	}
+
+	private static string GetCategoryDisplayName(CodexCategory category) {
+		return category switch {
+			CodexCategory.Biomes => "Regions",
+			_ => category.ToString()
+		};
+	}
+
+	private static string GetSubcategoryDisplayName(CodexSubcategory subcategory) {
+		var name = subcategory.ToString();
+		var separatorIndex = name.IndexOf('_');
+		var displayName = separatorIndex >= 0 ? name[(separatorIndex + 1)..] : name;
+
+		return displayName.Replace('_', ' ');
 	}
 }

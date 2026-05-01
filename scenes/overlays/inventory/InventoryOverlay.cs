@@ -13,16 +13,7 @@ public partial class InventoryOverlay : Control {
 		typeof(ItemConsumable)
 	};
 
-	private readonly string[] _equipmentSlotNames = {
-		"Main Hand",
-		"Off Hand",
-		"Armor",
-		"Amulet",
-		"Ammo",
-		"Consumable"
-	};
-
-	private Button[] _equipmentButtons;
+	private EquipmentPanel _equipmentPanel;
 	private ItemInventory[] _inventoryButtons;
 	private HBoxContainer _filterButtons;
 	private GridContainer _inventoryGrid;
@@ -37,15 +28,7 @@ public partial class InventoryOverlay : Control {
 	private int _currentPage;
 
 	public override void _Ready() {
-		_equipmentButtons = new[] {
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots/Slot1"),
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots/Slot2"),
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots/Slot3"),
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots/Slot4"),
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots/Slot5"),
-			GetNode<Button>("Content/EquipmentPanel/MarginContainer/EquipmentLayout/EquipmentBody/RightSlots/Slot6")
-		};
-
+		_equipmentPanel = GetNode<EquipmentPanel>("Content/EquipmentPanel");
 		_inventoryButtons = Enumerable.Range(1, 8)
 			.Select(index => GetNode<ItemInventory>($"Content/InventoryPanel/MarginContainer/InventoryLayout/InventoryGrid/Item{index}"))
 			.ToArray();
@@ -63,10 +46,7 @@ public partial class InventoryOverlay : Control {
 		_details.EquipPressed += OnEquipPressed;
 		_details.OffhandPressed += OnOffhandPressed;
 		_details.UnequipPressed += OnUnequipPressed;
-		for (var i = 0; i < _equipmentButtons.Length; i++) {
-			var slotIndex = i;
-			_equipmentButtons[i].Pressed += () => OnEquipmentSlotPressed(slotIndex);
-		}
+		_equipmentPanel.EquipmentSlotPressed += OnEquipmentSlotPressed;
 
 		foreach (var button in _inventoryButtons) {
 			button.Pressed += () => OnInventoryBoxPressed(button);
@@ -74,7 +54,7 @@ public partial class InventoryOverlay : Control {
 
 		LoadItems();
 		BuildFilterButtons();
-		RenderEquipmentSlots();
+		_equipmentPanel.Render();
 		RenderInventoryPage();
 	}
 
@@ -110,39 +90,13 @@ public partial class InventoryOverlay : Control {
 		return button;
 	}
 
-	private void RenderEquipmentSlots() {
-		var equippedItems = GetEquippedItems();
-
-		for (var i = 0; i < _equipmentButtons.Length; i++) {
-			var slotName = _equipmentSlotNames[i];
-			var item = equippedItems[i];
-			var text = item?.ItemName ?? "Empty";
-			_equipmentButtons[i].Text = $"{slotName}\n{text}";
-			_equipmentButtons[i].Icon = GetItemIcon(item);
-		}
-	}
-
-	private void OnEquipmentSlotPressed(int slotIndex) {
-		var item = GetEquippedItems()[slotIndex];
-		var slotName = _equipmentSlotNames[slotIndex];
+	private void OnEquipmentSlotPressed(int slotIndex, ItemBase item, string slotName) {
 		if (item == null) {
 			ShowMessage($"{slotName}: Empty");
 			return;
 		}
 
 		_details.ShowItem(item, $"{slotName}\n{FormatItemDetails(item)}", false, false, true);
-	}
-
-	private ItemBase[] GetEquippedItems() {
-		var equipped = SaveNode.Get()?.EquipedItemsData;
-		return new ItemBase[] {
-			equipped?.MainHandItem,
-			equipped?.OffHandItem,
-			equipped?.ArmorItem,
-			equipped?.AmuletItem,
-			equipped?.AmmoItem,
-			equipped?.ConsumableItem
-		};
 	}
 
 	private void SetFilter(Type itemType) {
@@ -240,7 +194,7 @@ public partial class InventoryOverlay : Control {
 			return;
 		}
 
-		RenderEquipmentSlots();
+		_equipmentPanel.Render();
 		RenderInventoryPage();
 		ShowMessage($"Unequipped {item.ItemName}.");
 	}
@@ -260,17 +214,9 @@ public partial class InventoryOverlay : Control {
 		}
 
 		SignalHandler.EmitSignalItemEquippedStatic(item);
-		RenderEquipmentSlots();
+		_equipmentPanel.Render();
 		RenderInventoryPage();
 		ShowMessage($"Equipped {item.ItemName}{(offhand ? " to off hand" : "")}." );
-	}
-
-	private Texture2D GetItemIcon(ItemBase item) {
-		if (item is ItemEquipable equipable && equipable.EquippedTexture != null) {
-			return equipable.EquippedTexture;
-		}
-
-		return item?.Icon ?? _placeholderIcon;
 	}
 
 	private static string FormatItemDetails(ItemBase item) {
