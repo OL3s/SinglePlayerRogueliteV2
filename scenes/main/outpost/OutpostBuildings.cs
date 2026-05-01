@@ -48,6 +48,7 @@ public partial class OutpostBuildings : Node2D {
 
 	private static Array<BuildingData> GenerateMockBuildings() {
 		var placeholderTexture = new PlaceholderTexture2D { Size = new Vector2I(64, 64) };
+		var storefrontScene = GD.Load<PackedScene>("res://scenes/overlays/storefront/StorefrontOverlay.tscn");
 
 		return new Array<BuildingData> {
 			new() {
@@ -60,7 +61,17 @@ public partial class OutpostBuildings : Node2D {
 					new() {
 						IconPath = "",
 						LabelName = "Forge"
+					},
+					new() {
+						IconPath = "",
+						LabelName = "Shop",
+						PathController = storefrontScene
 					}
+				},
+				StorefrontItems = new Array<ItemBase> {
+					new ItemBase("Iron Sword", null, placeholderTexture, 1, 100),
+					new ItemBase("Repair Kit", null, placeholderTexture, 5, 40),
+					new ItemBase("Steel Buckler", null, placeholderTexture, 1, 140)
 				}
 			}
 		};

@@ -12,6 +12,7 @@ public partial class BuildingData : Resource {
 	[Export] public double OwnerTextRevealSeconds { get; set; } = 1.5;
 	[Export] public Texture2D BuildingTexture { get; set; }
 	[Export] public Array<BuildingOverlayButtonData> OverlayButtons { get; set; } = new();
+	[Export] public Array<ItemBase> StorefrontItems { get; set; } = new();
 
 	public void Generate(BuildingOverlay overlay) {
 		if (overlay == null)
@@ -75,12 +76,16 @@ public partial class BuildingData : Resource {
 		return ResourceLoader.Load<Texture2D>(iconPath) ?? _fallbackIcon;
 	}
 
-	private static void OpenPathController(BuildingOverlayButtonData buttonData) {
+	private void OpenPathController(BuildingOverlayButtonData buttonData) {
 		if (buttonData.PathController == null) {
 			GD.PushWarning($"Building overlay button '{buttonData.LabelName}' has no path controller configured.");
 			return;
 		}
 
-		GlobalOverlay.Get()?.AddOverlay(buttonData.PathController);
+		var overlay = buttonData.PathController.Instantiate();
+		if (overlay is StorefrontOverlay storefrontOverlay)
+			storefrontOverlay.Update(this);
+
+		GlobalOverlay.Get()?.AddChild(overlay);
 	}
 }
