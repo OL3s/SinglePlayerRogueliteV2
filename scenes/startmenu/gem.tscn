@@ -13,7 +13,7 @@ offset_right = -1024.0
 offset_bottom = -520.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 script = ExtResource("1_r6t6j")
 
 [node name="Background" type="TextureRect" parent="." unique_id=22563225]
