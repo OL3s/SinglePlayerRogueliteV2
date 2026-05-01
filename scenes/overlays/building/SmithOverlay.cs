@@ -39,7 +39,7 @@ public partial class SmithOverlay : Control {
 		_currentPage = 0;
 		_selectedItem = null;
 		_items = SaveNode.Get()?.InventoryData?.Items?
-			.Where(item => item != null && item.IsCompatibleWith(MyTypes.OutpostBuildingCompatibility.Smith))
+			.Where(item => item != null && item.HasCompatibility(MyTypes.OutpostBuildingCompatibility.Smith))
 			.ToArray() ?? System.Array.Empty<ItemBase>();
 	}
 
@@ -105,14 +105,14 @@ public partial class SmithOverlay : Control {
 		if (_selectedItem == null) {
 			_previewIcon.Texture = _placeholderIcon;
 			_previewDetails.Text = _items.Length == 0
-				? "No smith-compatible items found."
-				: "Select an item to test smith compatibility.";
+				? "No items are explicitly marked for smith upgrades."
+				: "Select an item that is explicitly marked for smith upgrades.";
 			_selectButton.Disabled = true;
 			return;
 		}
 
 		_previewIcon.Texture = _selectedItem.Icon ?? _placeholderIcon;
-		_previewDetails.Text = $"{_selectedItem.ItemName}\nCompatible with smith. Upgrade logic comes later.";
+		_previewDetails.Text = $"{_selectedItem.ItemName}\nExplicitly marked for smith upgrades. Upgrade logic comes later.";
 		_selectButton.Disabled = false;
 	}
 
