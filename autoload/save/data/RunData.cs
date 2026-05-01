@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using MyTypes;
 
 namespace SaveData {
@@ -9,6 +10,7 @@ namespace SaveData {
 		[Export] public PlayerData PlayerData { get; set; } = new PlayerData();
 		[Export] public Contract CurrentContract { get; set; } = null;
 		[Export] public InventoryData InventoryData { get; set; } = new InventoryData();
+		[Export] public Array<BuildingData> OutpostBuildings { get; set; }
 		[Export] public int ContractsCompleted { get; set; } = 0;
 		[Export] public int Gold { get; set; } = 100;
 		public override string ToString() {
@@ -18,6 +20,7 @@ namespace SaveData {
 				+ $"  PlayerData={FormatResource(PlayerData)}\n"
 				+ $"  CurrentContract={FormatResource(CurrentContract)}\n"
 				+ $"  InventoryData={FormatResource(InventoryData)}\n"
+				+ $"  OutpostBuildings={OutpostBuildings?.Count ?? 0}\n"
 				+ $"  ContractsCompleted={ContractsCompleted}\n"
 				+ $"  Gold={Gold}";
 		}

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://cd5blmxgvl3oe" path="res://scenes/components/outpost/BuildingData.cs" id="1_inn"]
+
+[resource]
+script = ExtResource("1_inn")
+LabelName = "Inn"
+Description = "Rest, recover, and prepare for the next contract."
+OwnerText = "Welcome in. Take a seat, warm up, and breathe before the road calls again."

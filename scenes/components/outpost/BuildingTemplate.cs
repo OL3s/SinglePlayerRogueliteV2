@@ -2,11 +2,10 @@ using Godot;
 
 public partial class BuildingTemplate : Node2D {
 	private const ulong OpenDebounceMs = 250;
+	private const string BuildingOverlayPath = "res://scenes/overlays/building/BuildingOverlay.tscn";
 
-	[Export] public PackedScene OverlayScene { get; set; }
-	[Export] public Texture2D TextureHouse { get; set; }
-	[Export] public Texture2D TextureIcon { get; set; }
-	[Export] public string DisplayName { get; set; } = "Building";
+	[Export] public PackedScene BuildingOverlayScene { get; set; } = GD.Load<PackedScene>(BuildingOverlayPath);
+	[Export] public BuildingData BuildingData { get; set; } = new();
 	[Export] public Vector2 PromptOffset { get; set; } = new(0, -108);
 
 	private Sprite2D _houseSprite;
@@ -34,14 +33,14 @@ public partial class BuildingTemplate : Node2D {
 	}
 
 	private void ApplyExportedValues() {
-		if (_houseSprite != null && TextureHouse != null)
-			_houseSprite.Texture = TextureHouse;
+		if (_houseSprite != null && BuildingData?.BuildingTexture != null)
+			_houseSprite.Texture = BuildingData.BuildingTexture;
 
-		if (_promptIcon != null && TextureIcon != null)
-			_promptIcon.Texture = TextureIcon;
+		if (_promptIcon != null && BuildingData?.BuildingTexture != null)
+			_promptIcon.Texture = BuildingData.BuildingTexture;
 
 		if (_promptLabel != null)
-			_promptLabel.Text = DisplayName;
+			_promptLabel.Text = BuildingData?.LabelName ?? "Building";
 
 		UpdatePromptPosition();
 	}
@@ -67,8 +66,8 @@ public partial class BuildingTemplate : Node2D {
 
 		_lastOpenTimeMs = now;
 
-		if (OverlayScene == null) {
-			GD.PushWarning($"{nameof(BuildingTemplate)} on '{Name}' has no overlay scene configured.");
+		if (BuildingOverlayScene == null) {
+			GD.PushWarning($"{nameof(BuildingTemplate)} on '{Name}' could not load BuildingOverlay.");
 			return;
 		}
 
@@ -78,7 +77,11 @@ public partial class BuildingTemplate : Node2D {
 			return;
 		}
 
-		overlay.AddOverlay(OverlayScene);
+		var overlayInstance = BuildingOverlayScene.Instantiate();
+		if (overlayInstance is BuildingOverlay buildingOverlay)
+			buildingOverlay.Update(BuildingData);
+
+		overlay.AddChild(overlayInstance);
 	}
 
 	private static bool IsPressed(InputEvent @event) {
