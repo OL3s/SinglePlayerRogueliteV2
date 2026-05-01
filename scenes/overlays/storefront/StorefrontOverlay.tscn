@@ -1,0 +1,155 @@
+[gd_scene format=3]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_theme"]
+[ext_resource type="Script" uid="uid://c1ljtdokxvm2b" path="res://scenes/overlays/storefront/StorefrontOverlay.cs" id="2_script"]
+[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_close"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_preview"]
+size = Vector2(64, 64)
+
+[node name="StorefrontOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.393086, 0.393086, 0.393086, 1)
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 88.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="StorePanel" type="PanelContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/StorePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="StoreLayout" type="VBoxContainer" parent="Content/StorePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Content/StorePanel/MarginContainer/StoreLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Storefront"
+horizontal_alignment = 1
+
+[node name="ItemGrid" type="GridContainer" parent="Content/StorePanel/MarginContainer/StoreLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="EmptyLabel" type="Label" parent="Content/StorePanel/MarginContainer/StoreLayout"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Nothing is for sale right now."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviewPanel" type="PanelContainer" parent="Content"]
+custom_minimum_size = Vector2(260, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="PreviewLayout" type="VBoxContainer" parent="Content/PreviewPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PreviewTitle" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Preview"
+horizontal_alignment = 1
+
+[node name="PreviewIcon" type="TextureRect" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("PlaceholderTexture2D_preview")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PreviewDetails" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+custom_minimum_size = Vector2(0, 96)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select an item to preview it."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PriceLabel" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Price: -"
+horizontal_alignment = 1
+
+[node name="PurchaseButton" type="Button" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+custom_minimum_size = Vector2(160, 56)
+layout_mode = 2
+size_flags_horizontal = 4
+disabled = true
+text = "Purchase"
+
+[node name="CloseOverlay" type="Button" parent="." node_paths=PackedStringArray("CloseTarget")]
+modulate = Color(1, 0.15, 0.15, 1)
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("3_close")
+CloseTarget = NodePath("..")
+CloseAllOverlayChildren = true
+metadata/_custom_type_script = "uid://b5nexivgcopri"
