@@ -157,6 +157,23 @@ public partial class SaveNode : Node {
 		DeleteData(FileType.Settings);
 	}
 
+	public void CompleteContract() {
+		var contract = RunData?.CurrentContract;
+		if (contract == null) {
+			GD.PushWarning("CompleteContract called without an active contract.");
+			return;
+		}
+
+		GD.Print($"CompleteContract: moving to {contract.Biome} / {contract.EndLocation}.");
+		RunData.CurrentBiome = contract.Biome;
+		RunData.CurrentLocation = contract.EndLocation;
+		RunData.ContractsCompleted++;
+		RunData.CurrentContract = null;
+		RunData.OutpostBuildings = null;
+		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}. Outpost buildings cleared.");
+		SaveRunData();
+	}
+
 	public void SaveAllData() {
 		SaveMetaData();
 		SaveRunData();
