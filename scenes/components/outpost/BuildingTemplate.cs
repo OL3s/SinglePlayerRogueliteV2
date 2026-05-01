@@ -6,13 +6,20 @@ public partial class BuildingTemplate : Node2D {
 
 	[Export] public PackedScene BuildingOverlayScene { get; set; } = GD.Load<PackedScene>(BuildingOverlayPath);
 	[Export] public BuildingData BuildingData { get; set; } = new();
+	[Export] public Vector2 PromptOffset { get; set; } = new(0, -108);
 
 	private Sprite2D _houseSprite;
+	private Control _prompt;
+	private TextureRect _promptIcon;
+	private Label _promptLabel;
 	private Area2D _area;
 	private ulong _lastOpenTimeMs;
 
 	public override void _Ready() {
 		_houseSprite = GetNodeOrNull<Sprite2D>("SpriteHouse");
+		_prompt = GetNodeOrNull<Control>("ClickPanel");
+		_promptIcon = GetNodeOrNull<TextureRect>("ClickPanel/Icon");
+		_promptLabel = GetNodeOrNull<Label>("ClickPanel/LabelPanel/Label");
 		_area = GetNodeOrNull<Area2D>("Area2D");
 
 		ApplyExportedValues();
@@ -28,6 +35,25 @@ public partial class BuildingTemplate : Node2D {
 	private void ApplyExportedValues() {
 		if (_houseSprite != null && BuildingData?.BuildingTexture != null)
 			_houseSprite.Texture = BuildingData.BuildingTexture;
+
+		if (_promptIcon != null && BuildingData?.BuildingTexture != null)
+			_promptIcon.Texture = BuildingData.BuildingTexture;
+
+		if (_promptLabel != null)
+			_promptLabel.Text = BuildingData?.LabelName ?? "Building";
+
+		UpdatePromptPosition();
+	}
+
+	public override void _Process(double delta) {
+		UpdatePromptPosition();
+	}
+
+	private void UpdatePromptPosition() {
+		if (_prompt == null)
+			return;
+
+		_prompt.GlobalPosition = GlobalPosition + PromptOffset - new Vector2(_prompt.Size.X * 0.5f, 0);
 	}
 
 	private void OnAreaInputEvent(Node viewport, InputEvent @event, long shapeIdx) {
