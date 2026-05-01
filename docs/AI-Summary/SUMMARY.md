@@ -132,11 +132,11 @@ This folder is for AI assistants to keep project-specific context across coding 
 
 ## UI And Scenes
 
-- Main flows currently include start menu, character selection, new character selection, and outpost.
-- `CharacterSelection` wires continue/new-run/back buttons to outpost, new character select, and start menu scenes.
+- Main flows currently include start menu, run overview, new character selection, and outpost.
+- `RunOverview` wires continue/new-run/back buttons to outpost, new character select, and start menu scenes.
 - `Outpost.tscn` main overlay buttons are split between `TopUI` and `BottomUI`: `ExitButton` changes back to `StartMenu`, `BtnSettings` opens `SettingsOverlay`, `BtnInventory` opens `InventoryOverlay`, `BtnCharacter` opens `CharacterOverlay`, and `BtnCodex` opens `CodexOverlay`.
 - `BuildingTemplate` opens an exported overlay scene when clicked/touched through its `Area2D`, with a 250ms debounce.
-- Panel components display stats, gold, career data, location, building information, and player top UI.
+- Panel components display stats, gold, run metadata, location, building information, and player top UI.
 - Design UI for landscape phones first. Prefer big readable labels, generous spacing, and large touch targets over compact PC-style layouts.
 - Many UI scenes rely on exact node paths. When editing `.tscn` structure, update corresponding C# paths.
 

@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class CharacterSelection : Control {
+public partial class RunOverview : Control {
 	private const string OutpostScenePath = "res://scenes/main/outpost/Outpost.tscn";
 	private const string NewCharacterScenePath = "res://scenes/main/character_select/characterSelectNew.tscn";
 	private const string MainMenuScenePath = "res://scenes/main/main_menu/StartMenu.tscn";
