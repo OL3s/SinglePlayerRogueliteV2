@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_f84f2"]
 [ext_resource type="Script" uid="uid://c43vpjm3f8d4i" path="res://core/ui/ControlGotoScene.cs" id="2_2xbjv"]
 [ext_resource type="Script" uid="uid://dioyjiomklqq1" path="res://scenes/main/main_menu/StartMenu.cs" id="2_ks6tn"]
-[ext_resource type="PackedScene" path="res://scenes/main/character_select/RunOverview.tscn" id="3_fkdaq"]
+[ext_resource type="PackedScene" uid="uid://c1fhu7u3k6v5a" path="res://scenes/main/character_select/RunOverview.tscn" id="3_fkdaq"]
 [ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="3_w37gf"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="4_settings"]
 [ext_resource type="PackedScene" uid="uid://bewk1qfwxhqaf" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="5_codex"]

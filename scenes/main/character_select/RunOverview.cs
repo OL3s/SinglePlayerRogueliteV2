@@ -8,7 +8,17 @@ public partial class RunOverview : Control {
 	public override void _Ready() {
 		SetButtonScene("HBoxContainer/PanelButton/VBoxContainer/ContinueButton", OutpostScenePath);
 		SetButtonScene("HBoxContainer/PanelButton/VBoxContainer/NewRunButton", NewCharacterScenePath);
+		UpdateNewRunButtonVisibility();
 		SetButtonScene("BackButton", MainMenuScenePath);
+	}
+
+	private void UpdateNewRunButtonVisibility() {
+		var newRunButton = GetNodeOrNull<Button>("HBoxContainer/PanelButton/VBoxContainer/NewRunButton");
+		if (newRunButton == null)
+			return;
+
+		var runData = SaveNode.Get()?.RunData;
+		newRunButton.Visible = runData?.PlayerData == null || runData.ContractsCompleted >= 1;
 	}
 
 	private void SetButtonScene(string buttonPath, string scenePath) {
