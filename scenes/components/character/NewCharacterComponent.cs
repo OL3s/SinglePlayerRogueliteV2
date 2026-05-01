@@ -46,12 +46,11 @@ public partial class NewCharacterComponent : Control {
 		var saveNode = SaveNode.Get();
 		saveNode.WipeRun();
 		saveNode.RunData.PlayerData = PlayerData.Duplicate(true) as PlayerData ?? new PlayerData();
-		saveNode.RunData.InventoryData = new InventoryData();
+		saveNode.RunData.PlayerData.InventoryData = new InventoryData();
 
 		if (PlayerData.StartingItem != null)
-			saveNode.RunData.InventoryData.AddItem(PlayerData.StartingItem.Duplicate(true) as ItemBase);
+			saveNode.RunData.PlayerData.InventoryData.AddItem(PlayerData.StartingItem.Duplicate(true) as ItemBase);
 
-		saveNode.SaveRunData();
 		saveNode.RefreshStartCharacters();
 
 		CallDeferred(MethodName.GoToOutpost);
