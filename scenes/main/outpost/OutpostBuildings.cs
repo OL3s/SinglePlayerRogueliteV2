@@ -2,8 +2,7 @@ using Godot;
 using Godot.Collections;
 
 public partial class OutpostBuildings : Node2D {
-	private const int MinGeneratedBuildings = 1;
-	private const int MaxGeneratedBuildings = 3;
+	private const int MinGeneratedBuildings = 0;
 	private static readonly string[] PossibleBuildingPaths = {
 		"res://core/buildings/data/blacksmith.tres",
 		"res://core/buildings/data/jeweler.tres",
@@ -16,8 +15,8 @@ public partial class OutpostBuildings : Node2D {
 		var saveNode = SaveNode.Get();
 		var buildings = saveNode.RunData.OutpostBuildings;
 
-		if (buildings == null) {
-			buildings = GenerateMockBuildings();
+		if (buildings == null || buildings.Count != GetChildCount()) {
+			buildings = GenerateOutpostBuildings();
 			saveNode.RunData.OutpostBuildings = buildings;
 			saveNode.SaveRunData();
 		}
@@ -31,8 +30,8 @@ public partial class OutpostBuildings : Node2D {
 			return;
 		}
 
-		var slotIndex = 0;
-		foreach (var buildingData in buildings) {
+		for (var slotIndex = 0; slotIndex < buildings.Count; slotIndex++) {
+			var buildingData = buildings[slotIndex];
 			if (buildingData == null)
 				continue;
 
@@ -43,7 +42,6 @@ public partial class OutpostBuildings : Node2D {
 			var building = BuildingTemplateScene.Instantiate<BuildingTemplate>();
 			building.BuildingData = buildingData;
 			slot.AddChild(building);
-			slotIndex++;
 		}
 	}
 
@@ -54,23 +52,39 @@ public partial class OutpostBuildings : Node2D {
 		return GetChild(index) as Node2D;
 	}
 
-	private static Array<BuildingData> GenerateMockBuildings() {
+	private Array<BuildingData> GenerateOutpostBuildings() {
 		var buildings = new Array<BuildingData>();
 		var remainingPaths = new Array<string>(PossibleBuildingPaths);
+		var remainingSlots = new Array<int>();
 		var random = new RandomNumberGenerator();
 		random.Randomize();
-		var buildingCount = random.RandiRange(MinGeneratedBuildings, Mathf.Min(MaxGeneratedBuildings, remainingPaths.Count));
+
+		for (var slotIndex = 0; slotIndex < GetChildCount(); slotIndex++) {
+			buildings.Add(null);
+			remainingSlots.Add(slotIndex);
+		}
+
+		var maxBuildingCount = Mathf.Min(remainingPaths.Count, remainingSlots.Count);
+		var buildingCount = random.RandiRange(MinGeneratedBuildings, maxBuildingCount);
 
 		for (var i = 0; i < buildingCount; i++) {
 			var pathIndex = random.RandiRange(0, remainingPaths.Count - 1);
 			var buildingPath = remainingPaths[pathIndex];
 			remainingPaths.RemoveAt(pathIndex);
+			var slotIndex = TakeRandomSlot(remainingSlots, random);
 
 			var buildingData = ResourceLoader.Load<BuildingData>(buildingPath);
 			if (buildingData != null)
-				buildings.Add(buildingData);
+				buildings[slotIndex] = buildingData;
 		}
 
 		return buildings;
+	}
+
+	private static int TakeRandomSlot(Array<int> slots, RandomNumberGenerator random) {
+		var slotListIndex = random.RandiRange(0, slots.Count - 1);
+		var slotIndex = slots[slotListIndex];
+		slots.RemoveAt(slotListIndex);
+		return slotIndex;
 	}
 }

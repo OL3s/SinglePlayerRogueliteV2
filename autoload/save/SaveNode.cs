@@ -157,6 +157,13 @@ public partial class SaveNode : Node {
 		DeleteData(FileType.Settings);
 	}
 
+	public void WipeRun() {
+		RunData = new RunData();
+		MetaData ??= new MetaData();
+		MetaData.RunCount++;
+		SaveMetaData();
+	}
+
 	public void SaveAllData() {
 		SaveMetaData();
 		SaveRunData();
