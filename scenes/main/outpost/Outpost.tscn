@@ -4,12 +4,14 @@
 [ext_resource type="Script" uid="uid://cojt55fjm1e35" path="res://core/ui/ChangeOverlayScene.cs" id="1_bgakn"]
 [ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="2_6amyp"]
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="2_vumbe"]
+[ext_resource type="Resource" path="res://scenes/components/outpost/contract_building_data.tres" id="3_contract_data"]
+[ext_resource type="Script" uid="uid://gifxs8nfold4" path="res://scenes/main/outpost/OutpostBuildings.cs" id="4_3fain"]
 [ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_b38rb"]
+[ext_resource type="Resource" path="res://scenes/components/outpost/inn_building_data.tres" id="4_inn_data"]
 [ext_resource type="PackedScene" uid="uid://cpis4v08h0ebo" path="res://scenes/components/panels/PanelLocation.tscn" id="5_wqu6w"]
 [ext_resource type="PackedScene" uid="uid://fqd6rdrheta3" path="res://scenes/components/panels/PanelPlayerTop.tscn" id="6_imbua"]
-[ext_resource type="PackedScene" uid="uid://hwrt00phvgys" path="res://scenes/overlays/building/BuildingOverlay.tscn" id="8_nw8ct"]
 [ext_resource type="PackedScene" uid="uid://ctji244a31gb0" path="res://scenes/main/main_menu/StartMenu.tscn" id="9_bgakn"]
-[ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="10_codex"]
+[ext_resource type="PackedScene" uid="uid://bewk1qfwxhqaf" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="10_codex"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="11_settings"]
 [ext_resource type="PackedScene" uid="uid://b8o2ydskyt0q1" path="res://scenes/overlays/inventory/InventoryOverlay.tscn" id="12_inventory"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/character/CharacterOverlay.tscn" id="13_character"]
@@ -141,21 +143,26 @@ metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
 
 [node name="World" type="Node2D" parent="." unique_id=1723193871]
 
-[node name="Building" parent="World" unique_id=1511369869 instance=ExtResource("1_7r7tj")]
-position = Vector2(204, 393)
-OverlayScene = ExtResource("8_nw8ct")
+[node name="OutpostBuildings" type="Node2D" parent="World" unique_id=1143238284]
+script = ExtResource("4_3fain")
+BuildingTemplateScene = ExtResource("1_7r7tj")
 
-[node name="Building2" parent="World" unique_id=780541550 instance=ExtResource("1_7r7tj")]
+[node name="RandomSlot1" type="Node2D" parent="World/OutpostBuildings" unique_id=1511369869]
+position = Vector2(204, 393)
+
+[node name="RandomSlot2" type="Node2D" parent="World/OutpostBuildings" unique_id=780541550]
 position = Vector2(414, 252)
 
-[node name="Building3" parent="World" unique_id=1997029538 instance=ExtResource("1_7r7tj")]
-position = Vector2(575, 478)
-
-[node name="Building4" parent="World" unique_id=1919299272 instance=ExtResource("1_7r7tj")]
+[node name="RandomSlot3" type="Node2D" parent="World/OutpostBuildings" unique_id=1919299272]
 position = Vector2(721, 259)
+
+[node name="Contract" parent="World" unique_id=1997029538 instance=ExtResource("1_7r7tj")]
+position = Vector2(575, 478)
+BuildingData = ExtResource("3_contract_data")
+
+[node name="Inn" parent="World" unique_id=1162120890 instance=ExtResource("1_7r7tj")]
+position = Vector2(891, 402)
+BuildingData = ExtResource("4_inn_data")
 
 [node name="Camera2D" type="Camera2D" parent="World" unique_id=2010866043]
 position = Vector2(576, 324)
-
-[node name="Building5" parent="World" unique_id=1162120890 instance=ExtResource("1_7r7tj")]
-position = Vector2(891, 402)

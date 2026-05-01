@@ -2,6 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://dsqb3fvddhg1s" path="res://assets/outpost/buildings/building_placeholder.svg" id="1_8rcmu"]
 [ext_resource type="Script" uid="uid://bt8a8igubvw8b" path="res://scenes/components/outpost/BuildingTemplate.cs" id="2_lm4d7"]
+[ext_resource type="Script" uid="uid://cd5blmxgvl3oe" path="res://scenes/components/outpost/BuildingData.cs" id="3_building_data"]
+
+[sub_resource type="Resource" id="Resource_building_data"]
+script = ExtResource("3_building_data")
+LabelName = "Building"
+Description = "Interact with this building."
+OwnerText = "Welcome. What do you need?"
+BuildingTexture = ExtResource("1_8rcmu")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_13jms"]
 size = Vector2(64, 64)
@@ -11,7 +19,7 @@ radius = 61.03278
 
 [node name="Building" type="Node2D" unique_id=1511369869]
 script = ExtResource("2_lm4d7")
-TextureHouse = ExtResource("1_8rcmu")
+BuildingData = SubResource("Resource_building_data")
 
 [node name="SpriteHouse" type="Sprite2D" parent="." unique_id=333691828]
 texture = ExtResource("1_8rcmu")
