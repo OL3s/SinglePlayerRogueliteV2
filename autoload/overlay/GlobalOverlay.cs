@@ -47,6 +47,7 @@ public partial class GlobalOverlay : CanvasLayer {
 
 		EnsurePopupBlurBackdrop();
 		CloseInfoPopup();
+		MoveChild(_popupBlurBackdrop, GetChildCount() - 1);
 
 		_activeInfoPopup = InfoPopupPanelScene.Instantiate<InfoPopupPanel>();
 		_popupBlurBackdrop.Visible = true;

@@ -3,7 +3,17 @@ using Godot;
 public partial class PanelStats : VBoxContainer {
 	[Export] public bool UseSaveNodeData { get; set; } = true;
 	[Export] public PlayerSkillData SkillXp { get; set; } = new();
-	[Export] public bool SkillDescriptionIsClickable { get; set; } = false;
+
+	private bool _skillDescriptionIsClickable;
+
+	[Export]
+	public bool SkillDescriptionIsClickable {
+		get => _skillDescriptionIsClickable;
+		set {
+			_skillDescriptionIsClickable = value;
+			UpdateSkillRowStates();
+		}
+	}
 
 	private Label _labelStrengthValue;
 	private Label _labelAgilityValue;
@@ -15,7 +25,8 @@ public partial class PanelStats : VBoxContainer {
 		_labelAgilityValue = GetNodeOrNull<Label>("StatAgi/LabelValue");
 		_labelArcanaValue = GetNodeOrNull<Label>("StatArc/LabelValue");
 		_labelVitalityValue = GetNodeOrNull<Label>("StatVit/LabelValue");
-		ConfigureSkillRows();
+		ConnectSkillRows();
+		UpdateSkillRowStates();
 
 		Update();
 	}
@@ -34,14 +45,42 @@ public partial class PanelStats : VBoxContainer {
 			label.Text = text;
 	}
 
-	private void ConfigureSkillRows() {
-		ConfigureSkillRow("StatStr", "Strength", "Strength improves direct physical power.");
-		ConfigureSkillRow("StatAgi", "Agility", "Agility improves speed and dexterity.");
-		ConfigureSkillRow("StatArc", "Arcana", "Arcana improves magical power and effects.");
-		ConfigureSkillRow("StatVit", "Vitality", "Vitality improves survivability and endurance.");
+	private void ConnectSkillRows() {
+		ConnectSkillRow("StatStr", "Strength", "Strength improves direct physical power.");
+		ConnectSkillRow("StatAgi", "Agility", "Agility improves speed and dexterity.");
+		ConnectSkillRow("StatArc", "Arcana", "Arcana improves magical power and effects.");
+		ConnectSkillRow("StatVit", "Vitality", "Vitality improves survivability and endurance.");
 	}
 
-	private void ConfigureSkillRow(string path, string title, string description) {
+	private void UpdateSkillRowStates() {
+		ApplySkillRowState("StatStr", "Strength improves direct physical power.");
+		ApplySkillRowState("StatAgi", "Agility improves speed and dexterity.");
+		ApplySkillRowState("StatArc", "Arcana improves magical power and effects.");
+		ApplySkillRowState("StatVit", "Vitality improves survivability and endurance.");
+	}
+
+	private void ConnectSkillRow(string path, string title, string description) {
+		var row = GetNodeOrNull<Control>(path);
+		if (row == null)
+			return;
+
+		foreach (var child in row.GetChildren()) {
+			if (child is Control controlChild)
+				controlChild.MouseFilter = MouseFilterEnum.Ignore;
+		}
+
+		row.GuiInput += inputEvent => {
+			if (!SkillDescriptionIsClickable)
+				return;
+
+			if (inputEvent is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
+				return;
+
+			GlobalOverlay.Get()?.ShowBlurredPopup(title, description);
+		};
+	}
+
+	private void ApplySkillRowState(string path, string description) {
 		var row = GetNodeOrNull<Control>(path);
 		if (row == null)
 			return;
@@ -49,22 +88,6 @@ public partial class PanelStats : VBoxContainer {
 		row.MouseDefaultCursorShape = SkillDescriptionIsClickable
 			? CursorShape.PointingHand
 			: CursorShape.Arrow;
-		row.TooltipText = SkillDescriptionIsClickable ? description : string.Empty;
 		row.Modulate = SkillDescriptionIsClickable ? new Color(0.55f, 1.0f, 0.55f, 1.0f) : Colors.White;
-
-		foreach (var child in row.GetChildren()) {
-			if (child is Control controlChild)
-				controlChild.MouseFilter = MouseFilterEnum.Ignore;
-		}
-
-		if (!SkillDescriptionIsClickable)
-			return;
-
-		row.GuiInput += inputEvent => {
-			if (inputEvent is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
-				return;
-
-			GlobalOverlay.Get()?.ShowBlurredPopup(title, description);
-		};
 	}
 }

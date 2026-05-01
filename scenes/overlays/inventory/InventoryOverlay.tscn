@@ -46,6 +46,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+SkillDescriptionIsClickable = true
 
 [node name="InventoryPanel" type="PanelContainer" parent="Content" unique_id=1811961060]
 layout_mode = 2
