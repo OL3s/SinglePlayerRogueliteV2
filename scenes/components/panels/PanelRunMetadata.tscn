@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/components/panels/PanelRunMetadata.cs" id="2_script"]
 
 [node name="PanelRunMetadata" type="Control"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,36 +19,36 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="Content"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "Run Overview"
 horizontal_alignment = 1
 
 [node name="Rows" type="VBoxContainer" parent="Content"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
 [node name="PlayerNameRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/PlayerNameRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/PlayerNameRow/MarginContainer"]
 layout_mode = 2
@@ -61,21 +61,21 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/PlayerNameRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "Player"
 clip_text = true
 
 [node name="BiomeRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/BiomeRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/BiomeRow/MarginContainer"]
 layout_mode = 2
@@ -88,21 +88,21 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/BiomeRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "Unknown"
 clip_text = true
 
 [node name="LocationRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/LocationRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/LocationRow/MarginContainer"]
 layout_mode = 2
@@ -115,21 +115,21 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/LocationRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "Unknown"
 clip_text = true
 
 [node name="CurrentLevelRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/CurrentLevelRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/CurrentLevelRow/MarginContainer"]
 layout_mode = 2
@@ -142,21 +142,21 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/CurrentLevelRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "-"
 clip_text = true
 
 [node name="ContractsCompletedRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/ContractsCompletedRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/ContractsCompletedRow/MarginContainer"]
 layout_mode = 2
@@ -169,21 +169,21 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/ContractsCompletedRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "0"
 clip_text = true
 
 [node name="CurrentContractRow" type="PanelContainer" parent="Content/Rows"]
-custom_minimum_size = Vector2(0, 92)
+custom_minimum_size = Vector2(0, 78)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Rows/CurrentContractRow"]
 layout_mode = 2
-theme_override_constants/margin_left = 14
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 14
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 6
 
 [node name="Entry" type="VBoxContainer" parent="Content/Rows/CurrentContractRow/MarginContainer"]
 layout_mode = 2
@@ -196,7 +196,7 @@ clip_text = true
 
 [node name="Value" type="Label" parent="Content/Rows/CurrentContractRow/MarginContainer/Entry"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 24
 text = "None"
 autowrap_mode = 3
 clip_text = true

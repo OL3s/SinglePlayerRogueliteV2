@@ -35,8 +35,15 @@ size_flags_horizontal = 3
 
 [node name="PanelRunMetadata" parent="HBoxContainer/PanelRunMetadata" unique_id=357901048 instance=ExtResource("2_i30vl")]
 layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 11.0
+offset_top = 11.0
 offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelGear" parent="HBoxContainer" unique_id=1772211458 instance=ExtResource("3_7ix3o")]
 layout_mode = 2
