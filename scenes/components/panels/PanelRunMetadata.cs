@@ -26,7 +26,7 @@ public partial class PanelRunMetadata : Control {
 		SetLabelText(_labelPlayerName, string.IsNullOrWhiteSpace(playerName) ? "Player" : playerName);
 		SetLabelText(_labelBiome, runData == null ? "Unknown" : FormatBiomeName(runData));
 		SetLabelText(_labelLocation, runData == null ? "Unknown" : FormatEnumName(runData.CurrentLocation.ToString()));
-		SetLabelText(_labelCurrentLevel, runData?.PlayerData?.Skills?.GetTotalLevel().ToString() ?? "0");
+		SetLabelText(_labelCurrentLevel, runData?.PlayerData?.GetCurrentRunLevel().ToString() ?? "0");
 		SetLabelText(_labelContractsCompleted, runData?.ContractsCompleted.ToString() ?? "0");
 		SetLabelText(_labelCurrentContract, FormatCurrentContract(runData?.CurrentContract));
 	}

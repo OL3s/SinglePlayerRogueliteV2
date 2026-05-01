@@ -62,11 +62,12 @@ public partial class StorefrontOverlay : Control {
 	}
 
 	private Button CreateItemButton(ItemBase item) {
+		var itemCount = GetDisplayedItemCount(item);
 		var button = new Button {
 			CustomMinimumSize = new Vector2(132, 92),
 			SizeFlagsHorizontal = SizeFlags.ExpandFill,
 			SizeFlagsVertical = SizeFlags.ExpandFill,
-			Text = item.ItemName,
+			Text = itemCount > 1 ? $"{item.ItemName} x{itemCount}" : item.ItemName,
 			Icon = item.Icon ?? _placeholderIcon,
 			IconAlignment = HorizontalAlignment.Center,
 			VerticalIconAlignment = VerticalAlignment.Top,
@@ -133,6 +134,18 @@ public partial class StorefrontOverlay : Control {
 	}
 
 	private static string FormatItemDetails(ItemBase item) {
-		return $"{item.ItemName}\nStack: {item.MaxStackSize}";
+		var itemCount = GetDisplayedItemCount(item);
+		var countText = itemCount > 1 ? $"\nCount: {itemCount}" : string.Empty;
+		return $"{item.ItemName}\nStack: {item.MaxStackSize}{countText}";
+	}
+
+	private static int GetDisplayedItemCount(ItemBase item) {
+		if (item == null)
+			return 0;
+
+		if (item.IsConsumable && item.UseCountCurrent > 1)
+			return item.UseCountCurrent;
+
+		return item.MaxStackSize;
 	}
 }

@@ -30,6 +30,11 @@ text = "Data"
 layout_mode = 2
 text = "Manage local save data."
 
+[node name="FirstRunTipsToggle" type="CheckBox" parent="Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Enable first-run tips"
+
 [node name="WipeAllDataButton" type="Button" parent="Layout"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2

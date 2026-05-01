@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="11_settings"]
 [ext_resource type="PackedScene" uid="uid://b8o2ydskyt0q1" path="res://scenes/overlays/inventory/InventoryOverlay.tscn" id="12_inventory"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/character/CharacterOverlay.tscn" id="13_character"]
+[ext_resource type="Script" path="res://scenes/main/outpost/Outpost.cs" id="14_outpost_script"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bgakn"]
 
@@ -23,6 +24,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6amyp"]
 
 [node name="Root" type="Node" unique_id=1748825370]
+script = ExtResource("14_outpost_script")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=812051596]
 
