@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using SaveData;
 
 public partial class OutpostBuildings : Node2D {
 	private const int MinGeneratedBuildings = 0;
@@ -16,11 +17,14 @@ public partial class OutpostBuildings : Node2D {
 		if (saveNode.RunData == null)
 			return;
 
-		var buildings = saveNode.RunData.OutpostBuildings;
+		var outpostData = saveNode.RunData.OutpostData;
+		var buildings = outpostData?.Buildings;
 
 		if (buildings == null || buildings.Count != GetChildCount()) {
 			buildings = GenerateOutpostBuildings();
-			saveNode.RunData.OutpostBuildings = buildings;
+			saveNode.RunData.OutpostData = new OutpostData {
+				Buildings = buildings
+			};
 			saveNode.SaveRunData();
 		}
 

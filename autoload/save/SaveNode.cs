@@ -184,7 +184,7 @@ public partial class SaveNode : Node {
 		RunData.CurrentLocation = contract.EndLocation;
 		RunData.ContractsCompleted++;
 		RunData.CurrentContract = null;
-		RunData.OutpostBuildings = null;
+		RunData.OutpostData = null;
 		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}. Outpost buildings cleared.");
 		SaveRunData();
 	}
