@@ -28,6 +28,8 @@ text = "Sound"
 
 [node name="Description" type="Label" parent="Layout"]
 layout_mode = 2
+size_flags_horizontal = 3
+autowrap_mode = 3
 text = "Adjust SFX and music volume. Changes are saved when applied."
 
 [node name="Controls" type="VBoxContainer" parent="Layout"]
