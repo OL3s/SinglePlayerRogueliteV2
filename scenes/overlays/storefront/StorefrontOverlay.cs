@@ -101,7 +101,7 @@ public partial class StorefrontOverlay : Control {
 
 	private bool CanPurchase(ItemBase item) {
 		var saveNode = SaveNode.Get();
-		return item != null && saveNode?.RunData != null && saveNode.RunData.Gold >= item.Cost;
+		return item != null && saveNode?.RunData != null && saveNode.InventoryData != null && saveNode.RunData.Gold >= item.Cost;
 	}
 
 	private void PurchaseSelectedItem() {
@@ -111,6 +111,9 @@ public partial class StorefrontOverlay : Control {
 		}
 
 		var saveNode = SaveNode.Get();
+		if (saveNode?.InventoryData == null)
+			return;
+
 		saveNode.RunData.Gold -= _selectedItem.Cost;
 		saveNode.InventoryData.AddItem(_selectedItem);
 		_buildingData.StorefrontItems.Remove(_selectedItem);

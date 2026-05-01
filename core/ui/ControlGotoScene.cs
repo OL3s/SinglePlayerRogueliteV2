@@ -38,7 +38,7 @@ public partial class ControlGotoScene : Control {
 
 	private PackedScene GetSceneToLoad() {
 		var saveNode = SaveNode.Get();
-		if (!saveNode.HadPlayerDataOnLoad)
+		if (saveNode.PlayerData == null)
 			return ResourceLoader.Load<PackedScene>(NewCharacterScenePath);
 
 		return SceneToLoad;

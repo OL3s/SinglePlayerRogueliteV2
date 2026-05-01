@@ -13,6 +13,9 @@ public partial class OutpostBuildings : Node2D {
 
 	public override void _Ready() {
 		var saveNode = SaveNode.Get();
+		if (saveNode.RunData == null)
+			return;
+
 		var buildings = saveNode.RunData.OutpostBuildings;
 
 		if (buildings == null || buildings.Count != GetChildCount()) {

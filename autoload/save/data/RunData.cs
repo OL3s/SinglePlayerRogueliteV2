@@ -7,7 +7,7 @@ namespace SaveData {
 	public partial class RunData : SaveResource {
 		[Export] public Biomes CurrentBiome { get; set; } = Biomes.GrasslandsA;
 		[Export] public Locations CurrentLocation { get; set; } = Locations.Village;
-		[Export] public PlayerData PlayerData { get; set; } = new PlayerData();
+		[Export] public PlayerData PlayerData { get; set; }
 		[Export] public Contract CurrentContract { get; set; } = null;
 		[Export] public Array<BuildingData> OutpostBuildings { get; set; }
 		[Export] public int ContractsCompleted { get; set; } = 0;
