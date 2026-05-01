@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://dsqb3fvddhg1s" path="res://assets/outpost/buildings/building_placeholder.svg" id="1_8rcmu"]
 [ext_resource type="Script" uid="uid://bt8a8igubvw8b" path="res://scenes/components/outpost/BuildingTemplate.cs" id="2_lm4d7"]
+[ext_resource type="Script" uid="uid://enkabhmf46kb" path="res://scenes/overlays/building/BuildingOverlayButtonData.cs" id="3_0o4qr"]
 [ext_resource type="Script" uid="uid://cd5blmxgvl3oe" path="res://scenes/components/outpost/BuildingData.cs" id="3_building_data"]
+[ext_resource type="Script" uid="uid://cesnllliaw0ql" path="res://core/items/ItemBase.cs" id="4_uxm22"]
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="6_i7hfi"]
 
 [sub_resource type="Resource" id="Resource_building_data"]
 script = ExtResource("3_building_data")
-LabelName = "Building"
 Description = "Interact with this building."
 OwnerText = "Welcome. What do you need?"
 BuildingTexture = ExtResource("1_8rcmu")
@@ -15,15 +17,15 @@ BuildingTexture = ExtResource("1_8rcmu")
 size = Vector2(64, 64)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_label_panel"]
+content_margin_left = 8.0
+content_margin_top = 3.0
+content_margin_right = 8.0
+content_margin_bottom = 3.0
 bg_color = Color(0.08, 0.07, 0.06, 0.82)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
-content_margin_left = 8.0
-content_margin_top = 3.0
-content_margin_right = 8.0
-content_margin_bottom = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_13jms"]
 radius = 61.03278
@@ -43,6 +45,7 @@ offset_top = -108.0
 offset_right = 48.0
 offset_bottom = -28.0
 mouse_filter = 2
+theme = ExtResource("6_i7hfi")
 
 [node name="Icon" type="TextureRect" parent="ClickPanel" unique_id=790543333]
 layout_mode = 1
@@ -70,7 +73,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_label_panel")
 
 [node name="Label" type="Label" parent="ClickPanel/LabelPanel" unique_id=429572716]
 layout_mode = 2
-mouse_filter = 2
 text = "Building"
 horizontal_alignment = 1
 vertical_alignment = 1
