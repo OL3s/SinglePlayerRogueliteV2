@@ -17,7 +17,11 @@ public partial class PlayerSkillData : Resource {
 	[Export] public int VitalityXp { get; set; } = 0;
 
 	public int GetLevel(int currentXp) {
-		return (currentXp / XpPerLevel) + 1;
+		return GetLevelFromXp(currentXp);
+	}
+
+	public static int GetLevelFromXp(int currentXp) {
+		return (Mathf.Max(0, currentXp) / XpPerLevel) + 1;
 	}
 
 	public int GetXp(PlayerSkillType skillType) {
@@ -52,6 +56,10 @@ public partial class PlayerSkillData : Resource {
 
 	public int GetTotalLevel() {
 		return GetStrengthLevel() + GetAgilityLevel() + GetArcanaLevel() + GetVitalityLevel();
+	}
+
+	public int GetTotalXp() {
+		return StrengthXp + AgilityXp + ArcanaXp + VitalityXp;
 	}
 
 	public override string ToString() {

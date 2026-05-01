@@ -77,6 +77,49 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 - Shared combat, item, and progression systems in reusable C# code
 - Autoload-based global systems for save data, overlays, and signals
 
+## Character Visual Structure Plan
+
+<details>
+<summary>Show Structure Plan</summary>
+
+Planned ingame character visuals should use a loose procedural `Node2D` puppet instead of starting with a bone/skeleton setup.
+
+Recommended structure:
+
+- gameplay root stays on `CharacterBody2D`
+- visuals live under a separate `VisualRoot`
+- body parts use separate nodes such as:
+- `Body`
+- `Head`
+- `LeftArmPivot`
+- `RightArmPivot`
+- `LeftLegPivot`
+- `RightLegPivot`
+
+Animation direction:
+
+- use math-driven motion first
+- walking bob with `sin`
+- arm and leg swing from movement speed
+- body tilt from movement direction
+- smoothing with `lerp` / `lerp_angle`
+
+Equipment direction:
+
+- weapons and armor should attach to body-part nodes
+- armor should support separate visual pieces where needed
+- do not assume one static player sprite for all equipment states
+
+Art direction for reuse:
+
+- use the same SVG source art for inventory and ingame visuals where possible
+- treat SVG as source art, then use imported `Texture2D` assets in Godot
+- keep one visual language across inventory icons, held items, and armor visuals
+
+This is intended to keep the character dynamic, lightweight to animate, and easy to extend with armor and weapon visuals later.
+
+</details>
+
 ## Project Status
 
 - Core combat and data models are in place

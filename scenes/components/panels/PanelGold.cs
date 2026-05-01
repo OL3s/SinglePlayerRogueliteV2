@@ -17,7 +17,7 @@ public partial class PanelGold : Control {
 		if (_label == null)
 			return;
 
-		UpdateGold(SaveNode.Get().RunData.Gold);
+		UpdateGold(SaveNode.Get()?.RunData?.Gold ?? 0);
 	}
 
 	private void OnGoldAmountChanged(int goldAmount) {

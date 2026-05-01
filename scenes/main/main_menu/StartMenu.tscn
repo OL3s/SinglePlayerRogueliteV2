@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_f84f2"]
 [ext_resource type="Script" uid="uid://c43vpjm3f8d4i" path="res://core/ui/ControlGotoScene.cs" id="2_2xbjv"]
 [ext_resource type="Script" uid="uid://dioyjiomklqq1" path="res://scenes/main/main_menu/StartMenu.cs" id="2_ks6tn"]
-[ext_resource type="PackedScene" path="res://scenes/main/character_select/RunOverview.tscn" id="3_fkdaq"]
+[ext_resource type="PackedScene" uid="uid://c1fhu7u3k6v5a" path="res://scenes/main/character_select/RunOverview.tscn" id="3_fkdaq"]
 [ext_resource type="Script" uid="uid://bn7lsfu8p7umr" path="res://core/ui/OpenOverlay.cs" id="3_w37gf"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/main_menu/SettingsOverlay.tscn" id="4_settings"]
 [ext_resource type="PackedScene" uid="uid://bewk1qfwxhqaf" path="res://scenes/overlays/main_menu/CodexOverlay.tscn" id="5_codex"]
@@ -50,24 +50,6 @@ expand_icon = true
 script = ExtResource("3_w37gf")
 OverlayScene = ExtResource("4_settings")
 metadata/_custom_type_script = "uid://bn7lsfu8p7umr"
-
-[node name="ControlGotoScene" type="Control" parent="." unique_id=1576324752]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -486.0
-offset_top = -289.125
-offset_right = 486.0
-offset_bottom = 193.125
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("2_2xbjv")
-SceneToLoad = ExtResource("3_fkdaq")
-ChangeScene = true
-metadata/_custom_type_script = "uid://c43vpjm3f8d4i"
 
 [node name="Label" type="Label" parent="." unique_id=1277470694]
 layout_mode = 1
@@ -190,3 +172,21 @@ theme_override_font_sizes/font_size = 108
 text = "Triad of Descent"
 label_settings = SubResource("LabelSettings_ks6tn")
 horizontal_alignment = 1
+
+[node name="ControlGotoScene" type="Control" parent="." unique_id=1576324752]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -486.0
+offset_top = -289.125
+offset_right = 486.0
+offset_bottom = 193.125
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_2xbjv")
+SceneToLoad = ExtResource("3_fkdaq")
+ChangeScene = true
+metadata/_custom_type_script = "uid://c43vpjm3f8d4i"

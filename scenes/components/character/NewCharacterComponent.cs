@@ -44,12 +44,13 @@ public partial class NewCharacterComponent : Control {
 
 	private void OnSelectPressed() {
 		var saveNode = SaveNode.Get();
-		saveNode.RunData.PlayerData = PlayerData;
-		saveNode.RunData.InventoryData = new InventoryData();
-		if (PlayerData.StartingItem != null)
-			saveNode.RunData.InventoryData.AddItem(PlayerData.StartingItem.Duplicate(true) as ItemBase);
+		saveNode.WipeRun();
+		saveNode.RunData.PlayerData = PlayerData.Duplicate(true) as PlayerData ?? new PlayerData();
+		saveNode.RunData.PlayerData.InventoryData = new InventoryData();
 
-		saveNode.SaveRunData();
+		if (PlayerData.StartingItem != null)
+			saveNode.RunData.PlayerData.InventoryData.AddItem(PlayerData.StartingItem.Duplicate(true) as ItemBase);
+
 		saveNode.RefreshStartCharacters();
 
 		CallDeferred(MethodName.GoToOutpost);

@@ -33,6 +33,17 @@ namespace MyTypes {
 		Enchanter,
 	}
 
+	public enum OutpostBuildingCompatibility {
+		None = 0,
+		General = 1,
+		Smith = 2,
+		Jewelry = 3,
+		Alchemy = 4,
+		Fletching = 5,
+		Arcana = 6,
+		Enchanting = 7,
+	}
+
 	public enum AmmoType {
 		None,
 		Arrow

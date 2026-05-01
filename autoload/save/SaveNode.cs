@@ -16,10 +16,9 @@ public partial class SaveNode : Node {
 	public RunData RunData { get; set; }
 	public SettingsData SettingsData { get; set; }
 	public PlayerData[] StartCharacters { get; private set; } = Array.Empty<PlayerData>();
-	public bool HadPlayerDataOnLoad { get; private set; }
-	public PlayerData PlayerData => RunData.PlayerData;
-	public InventoryData InventoryData => RunData.InventoryData;
-	public EquipedItemsData EquipedItemsData => PlayerData.EquipedItems;
+	public PlayerData PlayerData => RunData?.PlayerData;
+	public InventoryData InventoryData => PlayerData?.InventoryData;
+	public EquipedItemsData EquipedItemsData => PlayerData?.EquipedItems;
 	public static SaveNode Get() => Engine.GetMainLoop() is SceneTree tree ? tree.Root.GetNode<SaveNode>("SaveNode") : throw new InvalidOperationException("SaveNode: Unable to find SaveNode in the scene tree. Ensure that SaveNode is added as a child of the root node and is named 'SaveNode'.");
 	public override void _Ready() {
 		if (DefaultMetaData == null || DefaultRunData == null || DefaultSettingsData == null) throw new InvalidOperationException("DefaultMetaData, DefaultRunData, and DefaultSettingsData must be assigned in the inspector.");
@@ -30,11 +29,11 @@ public partial class SaveNode : Node {
 	public void ExecuteReady() {
 		DirAccess.MakeDirRecursiveAbsolute(SavePath);
 		LoadAllData();
+		ApplySettings();
 
 		if (!FilesExist())
 			SaveAllData();
 
-		RunData.PlayerData ??= new PlayerData();
 		RefreshStartCharacters();
 		GD.Print("SaveNode is ready. MetaData, RunData, and SettingsData have been initialized.");
 	}
@@ -51,6 +50,7 @@ public partial class SaveNode : Node {
 		return new PlayerData {
 			PlayerName = CharacterNames.GetRandomName(random),
 			StartingItem = StartingItems.GetRandomItem(random),
+			StartingTotalSkillXp = skills.GetTotalXp(),
 			Skills = skills
 		};
 	}
@@ -148,13 +148,57 @@ public partial class SaveNode : Node {
 	public bool RunDataExists() => FileExists(FileType.Run);
 	public bool SettingsDataExists() => FileExists(FileType.Settings);
 	public void SaveMetaData() => SaveData(MetaData, FileType.Meta);
-	public void SaveRunData() => SaveData(RunData, FileType.Run);
+	public void SaveRunData() {
+		if (RunData == null) {
+			DeleteRunData();
+			return;
+		}
+
+		SaveData(RunData, FileType.Run);
+	}
 	public void SaveSettingsData() => SaveData(SettingsData, FileType.Settings);
 
 	public void DeleteAllData() {
 		DeleteData(FileType.Meta);
 		DeleteData(FileType.Run);
 		DeleteData(FileType.Settings);
+	}
+
+	public void WipeAllData() {
+		GD.Print("WipeAllData: deleting all save files and restoring defaults.");
+		DeleteAllData();
+		MetaData = DuplicateSaveResource(DefaultMetaData);
+		RunData = null;
+		SettingsData = DuplicateSaveResource(DefaultSettingsData);
+		ApplySettings();
+		RefreshStartCharacters();
+		SaveAllData();
+	}
+
+	public void CompleteContract() {
+		var contract = RunData?.CurrentContract;
+		if (contract == null) {
+			GD.PushWarning("CompleteContract called without an active contract.");
+			return;
+		}
+
+		GD.Print($"CompleteContract: moving to {contract.Biome} / {contract.EndLocation}.");
+		RunData.CurrentBiome = contract.Biome;
+		RunData.CurrentLocation = contract.EndLocation;
+		RunData.ContractsCompleted++;
+		RunData.CurrentContract = null;
+		RunData.OutpostData = null;
+		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}. Outpost buildings cleared.");
+		SaveRunData();
+	}
+
+	public void WipeRun() {
+		GD.Print("WipeRun: resetting run data.");
+		RunData = DuplicateSaveResource(DefaultRunData);
+		MetaData ??= new MetaData();
+		MetaData.RunCount++;
+		GD.Print($"WipeRun: run count increased to {MetaData.RunCount}.");
+		SaveMetaData();
 	}
 
 	public void SaveAllData() {
@@ -164,17 +208,14 @@ public partial class SaveNode : Node {
 	}
 
 	public void LoadAllData() {
-		var loadedRunData = LoadData(FileType.Run) as RunData;
-		HadPlayerDataOnLoad = loadedRunData?.PlayerData != null;
-
 		MetaData = LoadData(FileType.Meta) as MetaData ?? DefaultMetaData;
-		RunData = loadedRunData ?? DefaultRunData;
+		RunData = LoadData(FileType.Run) as RunData;
 		SettingsData = LoadData(FileType.Settings) as SettingsData ?? DefaultSettingsData;
 
 		if (MetaData.IsFirstTimePlayer) GD.Print("First time player detected. Tutorial gameplay enabled.");
 
 		GD.Print(MetaData.ToString());
-		GD.Print(RunData.ToString());
+		GD.Print(RunData?.ToString() ?? "RunData: None");
 		GD.Print(SettingsData.ToString());
 	}
 
@@ -184,5 +225,28 @@ public partial class SaveNode : Node {
 		return FileAccess.FileExists(GetSavePath(FileType.Meta)) &&
 			   FileAccess.FileExists(GetSavePath(FileType.Run)) &&
 			   FileAccess.FileExists(GetSavePath(FileType.Settings));
+	}
+
+	private static T DuplicateSaveResource<T>(T resource) where T : Resource {
+		return resource?.Duplicate(true) as T;
+	}
+
+	public void ApplySettings() {
+		if (SettingsData == null)
+			return;
+
+		ApplyBusSettings("SFX", SettingsData.SfxVolumePercent, SettingsData.SfxEnabled);
+		ApplyBusSettings("Music", SettingsData.MusicVolumePercent, SettingsData.MusicEnabled);
+	}
+
+	private static void ApplyBusSettings(string busName, float volumePercent, bool enabled) {
+		var busIndex = AudioServer.GetBusIndex(busName);
+		if (busIndex < 0) {
+			GD.PushWarning($"SaveNode: Audio bus '{busName}' was not found.");
+			return;
+		}
+
+		AudioServer.SetBusMute(busIndex, !enabled);
+		AudioServer.SetBusVolumeDb(busIndex, Mathf.LinearToDb(Mathf.Clamp(volumePercent, 0.0f, 100.0f) / 100.0f));
 	}
 }

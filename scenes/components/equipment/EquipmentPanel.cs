@@ -5,8 +5,10 @@ public partial class EquipmentPanel : PanelContainer {
 	public delegate void EquipmentSlotPressedEventHandler(int slotIndex, ItemBase item, string slotName);
 
 	private bool _enableButtonPresses = true;
+	private bool _skillDescriptionIsClickable;
 	private bool _useSaveNodeData = true;
 	private EquipedItemsData _equipedItems;
+	private PanelStats _panelStats;
 
 	[Export]
 	public bool EnableButtonPresses {
@@ -14,6 +16,15 @@ public partial class EquipmentPanel : PanelContainer {
 		set {
 			_enableButtonPresses = value;
 			ApplyInteractionState();
+		}
+	}
+
+	[Export]
+	public bool SkillDescriptionIsClickable {
+		get => _skillDescriptionIsClickable;
+		set {
+			_skillDescriptionIsClickable = value;
+			ApplyStatsInteractionState();
 		}
 	}
 
@@ -48,6 +59,7 @@ public partial class EquipmentPanel : PanelContainer {
 	private PlaceholderTexture2D _placeholderIcon = new() { Size = new Vector2I(64, 64) };
 
 	public override void _Ready() {
+		_panelStats = GetNodeOrNull<PanelStats>("MarginContainer/EquipmentLayout/PanelStats");
 		_equipmentButtons = new[] {
 			GetNode<Button>("MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots/Slot1"),
 			GetNode<Button>("MarginContainer/EquipmentLayout/EquipmentBody/LeftSlots/Slot2"),
@@ -63,6 +75,7 @@ public partial class EquipmentPanel : PanelContainer {
 		}
 
 		ApplyInteractionState();
+		ApplyStatsInteractionState();
 		Render();
 	}
 
@@ -89,6 +102,13 @@ public partial class EquipmentPanel : PanelContainer {
 			button.FocusMode = EnableButtonPresses ? FocusModeEnum.All : FocusModeEnum.None;
 			button.MouseFilter = EnableButtonPresses ? MouseFilterEnum.Stop : MouseFilterEnum.Ignore;
 		}
+	}
+
+	private void ApplyStatsInteractionState() {
+		if (_panelStats == null)
+			return;
+
+		_panelStats.SkillDescriptionIsClickable = SkillDescriptionIsClickable;
 	}
 
 	private void OnEquipmentSlotPressed(int slotIndex) {

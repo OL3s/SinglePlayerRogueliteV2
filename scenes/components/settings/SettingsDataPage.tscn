@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/components/settings/SettingsDataPage.cs" id="2_script"]
+
+[node name="SettingsDataPage" type="MarginContainer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Heading" type="Label" parent="Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Data"
+
+[node name="Description" type="Label" parent="Layout"]
+layout_mode = 2
+text = "Manage local save data."
+
+[node name="FirstRunTipsToggle" type="CheckBox" parent="Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Enable first-run tips"
+
+[node name="WipeAllDataButton" type="Button" parent="Layout"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Wipe All Data"
+
+[node name="Warning" type="Label" parent="Layout"]
+layout_mode = 2
+text = "This permanently removes all saved progress and settings."
+autowrap_mode = 3
+
+[node name="WipeConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "Wipe All Data"
+ok_button_text = "Wipe Data"
+dialog_text = "This will permanently delete all saved data. This cannot be undone. Continue?"

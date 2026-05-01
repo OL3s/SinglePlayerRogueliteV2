@@ -1,0 +1,169 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/overlays/building/SmithOverlay.cs" id="2_script"]
+[ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_close"]
+[ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_gold"]
+
+[node name="SmithOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39308554, 0.3930855, 0.39308548, 1)
+
+[node name="Content" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 96.0
+offset_right = -32.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="GoldPanel" parent="." unique_id=843888581 instance=ExtResource("4_gold")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 24.0
+offset_right = -96.0
+offset_bottom = 80.0
+grow_horizontal = 0
+
+[node name="ItemPanel" type="PanelContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/ItemPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="ItemLayout" type="VBoxContainer" parent="Content/ItemPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Content/ItemPanel/MarginContainer/ItemLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Smith Items"
+horizontal_alignment = 1
+
+[node name="EmptyLabel" type="Label" parent="Content/ItemPanel/MarginContainer/ItemLayout"]
+layout_mode = 2
+text = "No smith-compatible items found."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemGrid" type="GridContainer" parent="Content/ItemPanel/MarginContainer/ItemLayout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 2
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+
+[node name="PreviewPanel" type="PanelContainer" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/PreviewPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="PreviewLayout" type="VBoxContainer" parent="Content/PreviewPanel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Forge"
+
+[node name="PreviewIcon" type="TextureRect" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PreviewDetails" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Select an item to test smith compatibility."
+autowrap_mode = 3
+
+[node name="SelectButton" type="Button" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "Select"
+
+[node name="PageControls" type="HBoxContainer" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PreviousPageButton" type="Button" parent="Content/PreviewPanel/MarginContainer/PreviewLayout/PageControls"]
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+text = "< Prev"
+
+[node name="PageLabel" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout/PageControls"]
+custom_minimum_size = Vector2(160, 56)
+layout_mode = 2
+text = "Page 1 / 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextPageButton" type="Button" parent="Content/PreviewPanel/MarginContainer/PreviewLayout/PageControls"]
+custom_minimum_size = Vector2(120, 56)
+layout_mode = 2
+text = "Next >"
+
+[node name="CloseOverlay" type="Button" parent="." node_paths=PackedStringArray("CloseTarget")]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = 80.0
+grow_horizontal = 0
+modulate = Color(1, 0.15, 0.15, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+text = "X"
+script = ExtResource("3_close")
+CloseTarget = NodePath("..")
+CloseAllOverlayChildren = true
+metadata/_custom_type_script = "uid://b5nexivgcopri"

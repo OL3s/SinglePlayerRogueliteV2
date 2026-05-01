@@ -1,6 +1,11 @@
-[gd_resource type="Resource" script_class="ItemEquipable" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="ItemEquipable" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://core/items/ItemEquipable.cs" id="1_item"]
+[ext_resource type="Script" path="res://core/items/ItemOutpostCompatibilityData.cs" id="2_compatibility"]
+
+[sub_resource type="Resource" id="Resource_compatibility"]
+script = ExtResource("2_compatibility")
+CompatibleBuildings = Array[int]([2])
 
 [resource]
 script = ExtResource("1_item")
@@ -8,6 +13,7 @@ ItemName = "Iron Sword"
 MaxStackSize = 1
 Cost = 25
 ItemID = "item_iron_sword"
+OutpostCompatibility = SubResource("Resource_compatibility")
 HasCondition = true
 ConditionMax = 100
 ConditionDefault = 100

@@ -37,6 +37,8 @@ This folder is for AI assistants to keep project-specific context across coding 
 ## AI Detail File Index
 
 - `docs/AI-Summary/Item-System-Goal.md`: item-system intent, generic dependencies, consumables, condition/durability, ammo, and future extensibility.
+- `docs/AI-Summary/Outpost-System.md`: outpost building generation, `BuildingData`, permanent/random slots, saved run data, and building overlay flow.
+- `docs/AI-Summary/Visual-Character-Plan.md`: procedural player visual structure plan, part-based animation direction, and shared item/equipment art usage.
 
 ## Godot Setup
 
@@ -96,6 +98,7 @@ This folder is for AI assistants to keep project-specific context across coding 
 ## Core Data Models
 
 - `RunData` tracks current biome, current location, current contract, inventory, completed contracts, gold, and active player data.
+- `RunData.OutpostBuildings` stores generated outpost `BuildingData` resources for the current run; `null` means the outpost has not generated its random buildings yet.
 - `PlayerData` tracks player name, equipped items, and skill data.
 - `MetaData`, `SettingsData`, `InventoryData`, `EquipedItemsData`, `PlayerSkillData`, and store data live under `autoload/save/data/`.
 - Shared enums live in `core/types/Types.cs` under `MyTypes` and `SaveData` namespaces.
@@ -135,7 +138,10 @@ This folder is for AI assistants to keep project-specific context across coding 
 - Main flows currently include start menu, run overview, new character selection, and outpost.
 - `RunOverview` wires continue/new-run/back buttons to outpost, new character select, and start menu scenes.
 - `Outpost.tscn` main overlay buttons are split between `TopUI` and `BottomUI`: `ExitButton` changes back to `StartMenu`, `BtnSettings` opens `SettingsOverlay`, `BtnInventory` opens `InventoryOverlay`, `BtnCharacter` opens `CharacterOverlay`, and `BtnCodex` opens `CodexOverlay`.
-- `BuildingTemplate` opens an exported overlay scene when clicked/touched through its `Area2D`, with a 250ms debounce.
+- `Outpost.tscn` has permanent `Contract` and `Inn` building template instances under `World`, plus generated slots under `World/OutpostBuildings` named `RandomSlot1`, `RandomSlot2`, and `RandomSlot3`.
+- `OutpostBuildings.cs` checks `SaveNode.RunData.OutpostBuildings`, generates mock building data when null, saves it to run data, and instantiates `buildingTemplate.tscn` into random slots.
+- `BuildingTemplate` always opens `BuildingOverlay.tscn` when clicked/touched through its `Area2D`, with a 250ms debounce, and passes its `BuildingData` into the overlay.
+- `BuildingOverlay` should stay thin; `BuildingData.Generate(BuildingOverlay)` owns regenerating title, description, owner portrait, RPG-style rich text dialogue, and bottom action buttons.
 - Panel components display stats, gold, run metadata, location, building information, and player top UI.
 - Design UI for landscape phones first. Prefer big readable labels, generous spacing, and large touch targets over compact PC-style layouts.
 - Many UI scenes rely on exact node paths. When editing `.tscn` structure, update corresponding C# paths.
