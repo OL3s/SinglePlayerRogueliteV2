@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="BuildingData" load_steps=8 format=3]
+
+[ext_resource type="Script" uid="uid://cd5blmxgvl3oe" path="res://scenes/components/outpost/BuildingData.cs" id="1_building"]
+[ext_resource type="Script" uid="uid://enkabhmf46kb" path="res://scenes/overlays/building/BuildingOverlayButtonData.cs" id="2_button"]
+[ext_resource type="PackedScene" path="res://scenes/overlays/storefront/StorefrontOverlay.tscn" id="3_storefront"]
+[ext_resource type="Resource" path="res://core/items/data/health_potion.tres" id="4_health_potion"]
+[ext_resource type="Resource" path="res://core/items/data/arrow_bundle.tres" id="5_arrow_bundle"]
+[ext_resource type="Resource" path="res://core/items/data/hunter_bow.tres" id="6_hunter_bow"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_building"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_shop_button"]
+script = ExtResource("2_button")
+LabelName = "Shop"
+PathController = ExtResource("3_storefront")
+
+[resource]
+script = ExtResource("1_building")
+LabelName = "General Goods"
+Description = "Basic travel supplies for contracts and recovery."
+OwnerText = "Nothing fancy, nothing cursed, and mostly nothing that bites. Tell me what you're missing."
+OwnerTexture = SubResource("PlaceholderTexture2D_building")
+BuildingTexture = SubResource("PlaceholderTexture2D_building")
+OverlayButtons = Array[Resource]([SubResource("Resource_shop_button")])
+StorefrontItems = Array[Resource]([ExtResource("4_health_potion"), ExtResource("5_arrow_bundle"), ExtResource("6_hunter_bow")])

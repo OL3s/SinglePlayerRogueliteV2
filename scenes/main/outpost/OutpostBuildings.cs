@@ -2,6 +2,14 @@ using Godot;
 using Godot.Collections;
 
 public partial class OutpostBuildings : Node2D {
+	private const int MinGeneratedBuildings = 1;
+	private const int MaxGeneratedBuildings = 3;
+	private static readonly string[] PossibleBuildingPaths = {
+		"res://core/buildings/data/blacksmith.tres",
+		"res://core/buildings/data/jeweler.tres",
+		"res://core/buildings/data/general_goods.tres"
+	};
+
 	[Export] public PackedScene BuildingTemplateScene { get; set; }
 
 	public override void _Ready() {
@@ -47,33 +55,22 @@ public partial class OutpostBuildings : Node2D {
 	}
 
 	private static Array<BuildingData> GenerateMockBuildings() {
-		var placeholderTexture = new PlaceholderTexture2D { Size = new Vector2I(64, 64) };
-		var storefrontScene = GD.Load<PackedScene>("res://scenes/overlays/storefront/StorefrontOverlay.tscn");
+		var buildings = new Array<BuildingData>();
+		var remainingPaths = new Array<string>(PossibleBuildingPaths);
+		var random = new RandomNumberGenerator();
+		random.Randomize();
+		var buildingCount = random.RandiRange(MinGeneratedBuildings, Mathf.Min(MaxGeneratedBuildings, remainingPaths.Count));
 
-		return new Array<BuildingData> {
-			new() {
-				LabelName = "Blacksmith",
-				Description = "Forge, repair, and improve equipment.",
-				OwnerText = "Steel remembers every strike. Bring me coin and materials, and I'll make your gear remember victory.",
-				BuildingTexture = placeholderTexture,
-				OwnerTexture = placeholderTexture,
-				OverlayButtons = new Array<BuildingOverlayButtonData> {
-					new() {
-						IconPath = "",
-						LabelName = "Forge"
-					},
-					new() {
-						IconPath = "",
-						LabelName = "Shop",
-						PathController = storefrontScene
-					}
-				},
-				StorefrontItems = new Array<ItemBase> {
-					new ItemBase("Iron Sword", null, placeholderTexture, 1, 100),
-					new ItemBase("Repair Kit", null, placeholderTexture, 5, 40),
-					new ItemBase("Steel Buckler", null, placeholderTexture, 1, 140)
-				}
-			}
-		};
+		for (var i = 0; i < buildingCount; i++) {
+			var pathIndex = random.RandiRange(0, remainingPaths.Count - 1);
+			var buildingPath = remainingPaths[pathIndex];
+			remainingPaths.RemoveAt(pathIndex);
+
+			var buildingData = ResourceLoader.Load<BuildingData>(buildingPath);
+			if (buildingData != null)
+				buildings.Add(buildingData);
+		}
+
+		return buildings;
 	}
 }

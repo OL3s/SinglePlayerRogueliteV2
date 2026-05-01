@@ -7,6 +7,13 @@
 [ext_resource type="Resource" path="res://core/items/data/health_potion.tres" id="5_health_potion"]
 [ext_resource type="Resource" path="res://core/items/data/leather_armor.tres" id="6_leather_armor"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_building"]
+size = Vector2(64, 64)
+
+[sub_resource type="Resource" id="Resource_forge_button"]
+script = ExtResource("2_button")
+LabelName = "Forge"
+
 [sub_resource type="Resource" id="Resource_shop_button"]
 script = ExtResource("2_button")
 LabelName = "Shop"
@@ -14,8 +21,10 @@ PathController = ExtResource("3_storefront")
 
 [resource]
 script = ExtResource("1_building")
-LabelName = "Storefront"
-Description = "Buy useful supplies before leaving the outpost."
-OwnerText = "Coin on the counter, goods in the bag. Take a look before the roads take their share."
-OverlayButtons = Array[Resource]([SubResource("Resource_shop_button")])
+LabelName = "Blacksmith"
+Description = "Forge, repair, and improve equipment."
+OwnerText = "Steel remembers every strike. Bring me coin and materials, and I'll make your gear remember victory."
+OwnerTexture = SubResource("PlaceholderTexture2D_building")
+BuildingTexture = SubResource("PlaceholderTexture2D_building")
+OverlayButtons = Array[Resource]([SubResource("Resource_forge_button"), SubResource("Resource_shop_button")])
 StorefrontItems = Array[Resource]([ExtResource("4_iron_sword"), ExtResource("5_health_potion"), ExtResource("6_leather_armor")])
