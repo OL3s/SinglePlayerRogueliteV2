@@ -38,6 +38,7 @@ This folder is for AI assistants to keep project-specific context across coding 
 
 - `docs/AI-Summary/Item-System-Goal.md`: item-system intent, generic dependencies, consumables, condition/durability, ammo, and future extensibility.
 - `docs/AI-Summary/Outpost-System.md`: outpost building generation, `BuildingData`, permanent/random slots, saved run data, and building overlay flow.
+- `docs/AI-Summary/Visual-Character-Plan.md`: procedural player visual structure plan, part-based animation direction, and shared item/equipment art usage.
 
 ## Godot Setup
 
