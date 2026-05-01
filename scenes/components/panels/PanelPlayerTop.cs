@@ -11,8 +11,8 @@ public partial class PanelPlayerTop : Control {
 	}
 
 	public void Update() {
-		var runData = SaveNode.Get().RunData;
-		var playerData = runData.PlayerData;
+		var runData = SaveNode.Get()?.RunData;
+		var playerData = runData?.PlayerData;
 
 		if (_labelName != null)
 			_labelName.Text = string.IsNullOrWhiteSpace(playerData?.PlayerName) ? "Player" : playerData.PlayerName;

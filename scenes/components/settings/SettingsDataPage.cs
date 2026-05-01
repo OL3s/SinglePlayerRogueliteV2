@@ -1,6 +1,8 @@
 using Godot;
 
 public partial class SettingsDataPage : MarginContainer {
+	private const string StartMenuScenePath = "res://scenes/main/main_menu/StartMenu.tscn";
+
 	private Button _wipeAllDataButton;
 	private ConfirmationDialog _wipeConfirmationDialog;
 
@@ -18,5 +20,7 @@ public partial class SettingsDataPage : MarginContainer {
 
 	private void OnWipeAllDataConfirmed() {
 		SaveNode.Get().WipeAllData();
+		var startMenuScene = ResourceLoader.Load<PackedScene>(StartMenuScenePath);
+		GlobalOverlay.Get()?.ChangeRootScene(startMenuScene);
 	}
 }

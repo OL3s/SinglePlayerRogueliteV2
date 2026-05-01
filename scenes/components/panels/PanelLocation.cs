@@ -12,13 +12,13 @@ public partial class PanelLocation : Control {
 	}
 
 	public void Update() {
-		var runData = SaveNode.Get().RunData;
+		var runData = SaveNode.Get()?.RunData;
 
 		if (_labelBiome != null)
-			_labelBiome.Text = FormatBiomeName(runData);
+			_labelBiome.Text = runData == null ? "Unknown" : FormatBiomeName(runData);
 
 		if (_labelLocationWave != null)
-			_labelLocationWave.Text = $"{runData.CurrentLocation} : W{runData.ContractsCompleted + 1}";
+			_labelLocationWave.Text = runData == null ? "Unknown : W0" : $"{runData.CurrentLocation} : W{runData.ContractsCompleted + 1}";
 	}
 
 	private static string FormatBiomeName(RunData runData) {
