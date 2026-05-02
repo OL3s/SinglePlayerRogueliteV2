@@ -182,13 +182,16 @@ public partial class SaveNode : Node {
 			return;
 		}
 
-		GD.Print($"CompleteContract: moving to {contract.Biome} / {contract.EndLocation}.");
+		var previousBiome = RunData.CurrentBiome;
+		GD.Print($"CompleteContract: moving to {contract.Biome}.");
 		RunData.CurrentBiome = contract.Biome;
-		RunData.CurrentLocation = contract.EndLocation;
 		RunData.ContractsCompleted++;
+		RunData.CurrentBiomeContractsCompleted = previousBiome == contract.Biome
+			? RunData.CurrentBiomeContractsCompleted + 1
+			: 0;
 		RunData.CurrentContract = null;
 		RunData.OutpostData = null;
-		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}. Outpost buildings cleared.");
+		GD.Print($"CompleteContract: contracts completed is now {RunData.ContractsCompleted}, current biome contracts completed is {RunData.CurrentBiomeContractsCompleted}. Outpost buildings cleared.");
 		SaveRunData();
 	}
 

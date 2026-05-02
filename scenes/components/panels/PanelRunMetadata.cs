@@ -40,7 +40,7 @@ public partial class PanelRunMetadata : Control {
 		if (contract == null)
 			return "None";
 
-		return $"{FormatBiomeName(contract.Biome.ToString())} -> {FormatEnumName(contract.EndLocation.ToString())}";
+		return FormatBiomeName(contract.Biome.ToString());
 	}
 
 	private static string FormatBiomeName(RunData runData) {

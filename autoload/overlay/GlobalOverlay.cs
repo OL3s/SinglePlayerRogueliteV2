@@ -56,6 +56,13 @@ public partial class GlobalOverlay : CanvasLayer {
 		_activeInfoPopup.Closed += OnInfoPopupClosed;
 	}
 
+	public void ShowDesktopGameplayNotice() {
+		ShowBlurredPopup(
+			"Mobile-first gameplay",
+			"This game is mainly built for phone gameplay. It still runs on desktop, but the controls and interface are designed around touch and portrait-style play."
+		);
+	}
+
 	public void CloseTopOverlay() {
 		if (GodotObject.IsInstanceValid(_activeInfoPopup)) {
 			CloseInfoPopup();
