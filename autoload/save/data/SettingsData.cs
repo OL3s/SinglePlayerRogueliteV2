@@ -16,8 +16,12 @@ namespace SaveData {
 		[Export]
 		public bool MusicEnabled { get; set; } = true;
 
+		[ExportGroup("Gameplay")]
+		[Export]
+		public bool EnableFirstRunTips { get; set; } = true;
+
 		public override string ToString() {
-			return $"SettingsData: DataVersion={DataVersion}, SfxVolumePercent={SfxVolumePercent}, SfxEnabled={SfxEnabled}, MusicVolumePercent={MusicVolumePercent}, MusicEnabled={MusicEnabled}";
+			return $"SettingsData: DataVersion={DataVersion}, SfxVolumePercent={SfxVolumePercent}, SfxEnabled={SfxEnabled}, MusicVolumePercent={MusicVolumePercent}, MusicEnabled={MusicEnabled}, EnableFirstRunTips={EnableFirstRunTips}";
 		}
 	}
 }

@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_theme"]
 [ext_resource type="Script" uid="uid://c1ljtdokxvm2b" path="res://scenes/overlays/storefront/StorefrontOverlay.cs" id="2_script"]
 [ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_close"]
+[ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="4_gold"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_preview"]
 size = Vector2(64, 64)
@@ -38,6 +39,17 @@ offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
+
+[node name="GoldPanel" parent="." unique_id=843888580 instance=ExtResource("4_gold")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 24.0
+offset_right = -96.0
+offset_bottom = 80.0
+grow_horizontal = 0
 
 [node name="StorePanel" type="PanelContainer" parent="Content"]
 layout_mode = 2

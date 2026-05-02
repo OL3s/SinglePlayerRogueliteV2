@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Theme" uid="uid://2us73xfo2hnd" path="res://assets/style/DefaultTheme.tres" id="1_theme"]
+[ext_resource type="Script" path="res://scenes/components/panels/InfoPopupPanel.cs" id="2_script"]
+
+[node name="InfoPopupPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("1_theme")
+script = ExtResource("2_script")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Layout" type="VBoxContainer" parent="CenterContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/Panel/MarginContainer/Layout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Info"
+horizontal_alignment = 1
+
+[node name="Image" type="TextureRect" parent="CenterContainer/Panel/MarginContainer/Layout"]
+visible = false
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="BodyText" type="RichTextLabel" parent="CenterContainer/Panel/MarginContainer/Layout"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 3
+
+[node name="OkButton" type="Button" parent="CenterContainer/Panel/MarginContainer/Layout"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "OK"

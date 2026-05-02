@@ -46,6 +46,9 @@ theme_override_constants/separation = 16
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+SkillDescriptionIsClickable = true
+DisableEmptySlotPresses = true
+HideEmptySlotIcons = true
 
 [node name="InventoryPanel" type="PanelContainer" parent="Content" unique_id=1811961060]
 layout_mode = 2
@@ -231,6 +234,7 @@ alignment = 1
 
 [node name="EquipButton" type="Button" parent="Content/InventoryPanel/MarginContainer/InventoryLayout/Details/ActionButtons" unique_id=1688881871]
 visible = false
+modulate = Color(0.2, 0.75, 0.2, 1)
 custom_minimum_size = Vector2(120, 48)
 layout_mode = 2
 text = "Equip"

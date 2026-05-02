@@ -19,6 +19,6 @@ public partial class PanelPlayerTop : Control {
 
 
 		if (_labelLevel != null)
-			_labelLevel.Text = $"Level {playerData?.Skills?.GetTotalLevel() ?? 0}";
+			_labelLevel.Text = $"Level {playerData?.GetCurrentRunLevel() ?? 0}";
 	}
 }

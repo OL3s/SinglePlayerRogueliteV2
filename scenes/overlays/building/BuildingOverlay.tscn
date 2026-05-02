@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bmqhj3sdl0fnb" path="res://scenes/overlays/building/BuildingOverlay.cs" id="2_qrp73"]
 [ext_resource type="Script" uid="uid://b5nexivgcopri" path="res://core/ui/CloseOverlay.cs" id="3_66bgr"]
 [ext_resource type="PackedScene" uid="uid://cbit1hetoxuyt" path="res://scenes/components/panels/PanelBuilding.tscn" id="4_mlke7"]
+[ext_resource type="PackedScene" uid="uid://b1kf2xl55ull2" path="res://scenes/components/panels/PanelGold.tscn" id="5_gold"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01qpf"]
 
@@ -47,6 +48,17 @@ offset_left = 24.0
 offset_top = 24.0
 offset_right = 324.0
 offset_bottom = 124.0
+
+[node name="GoldPanel" parent="." unique_id=843888579 instance=ExtResource("5_gold")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 24.0
+offset_right = -96.0
+offset_bottom = 104.0
+grow_horizontal = 0
 
 [node name="PanelOverlay" type="PanelContainer" parent="." unique_id=642527499]
 layout_mode = 1

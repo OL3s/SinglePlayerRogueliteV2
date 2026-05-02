@@ -22,6 +22,25 @@ Start -> Choose Path -> Fight -> Upgrade -> Boss -> Reward -> Repeat
 
 <img width="800" alt="Game loop diagram" src="docs/images/game-loop-diagram.png" />
 
+## Graphic Style (Decision Pending)
+
+The project is currently evaluating two art pipelines:
+
+### Option A — Pixel Art (preferred direction)
+- Top-down 2D pixel art
+- Strong readability and silhouette clarity
+- Supports fast iteration and content-heavy design
+- Fits procedural character system and equipment layering
+
+### Option B — SVG / Vector
+- Resolution-independent assets
+- Cleaner UI integration
+- Easier scaling across devices
+- Requires additional work for depth, lighting, and game feel
+
+Final decision will be locked before full asset production begins.
+
+**Rule:** Do not mix pipelines.
 ## Visual References
 
 <details open>

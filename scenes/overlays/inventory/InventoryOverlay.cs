@@ -118,15 +118,15 @@ public partial class InventoryOverlay : Control {
 			var itemIndex = _currentPage * ItemsPerPage + i;
 			var button = _inventoryButtons[i];
 
-			button.Disabled = false;
-
 			if (itemIndex >= visibleItems.Count) {
 				button.Clear(_placeholderIcon);
 				button.Visible = false;
+				button.Disabled = true;
 				continue;
 			}
 
 			button.Visible = true;
+			button.Disabled = false;
 			button.SetItem(visibleItems[itemIndex], _placeholderIcon);
 		}
 
@@ -160,11 +160,6 @@ public partial class InventoryOverlay : Control {
 	}
 
 	private void OnInventoryBoxPressed(ItemInventory button) {
-		if (!button.HasItem) {
-			ShowMessage("Empty inventory box.");
-			return;
-		}
-
 		ShowDetails(button.Item);
 	}
 

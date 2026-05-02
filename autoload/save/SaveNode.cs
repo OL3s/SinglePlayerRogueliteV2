@@ -50,6 +50,7 @@ public partial class SaveNode : Node {
 		return new PlayerData {
 			PlayerName = CharacterNames.GetRandomName(random),
 			StartingItem = StartingItems.GetRandomItem(random),
+			StartingTotalSkillXp = skills.GetTotalXp(),
 			Skills = skills
 		};
 	}
