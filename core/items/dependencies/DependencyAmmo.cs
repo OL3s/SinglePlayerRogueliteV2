@@ -6,14 +6,14 @@ public partial class DependencyAmmo : Dependency {
 	[Export] public AmmoType AmmoType { get; set; }
 	[Export] public int UseCountCost { get; set; } = 1;
 
-	internal override bool IsMet(ItemUseContext context) {
-		if (context?.CurrentAmmoType == null || context.CurrentAmmoType != AmmoType)
+	internal override bool IsMet(ActionContext context) {
+		if (context is not ItemUseContext itemContext || itemContext.CurrentAmmoType == null || itemContext.CurrentAmmoType != AmmoType)
 			return false;
 
-		return context.AmmoItem == null || !context.AmmoItem.IsConsumable || context.AmmoItem.UseCountCurrent >= UseCountCost;
+		return itemContext.AmmoItem == null || !itemContext.AmmoItem.IsConsumable || itemContext.AmmoItem.UseCountCurrent >= UseCountCost;
 	}
 
-	internal override bool ApplyCost(ItemUseContext context) {
-		return context != null && context.ConsumeAmmo(UseCountCost);
+	internal override bool ApplyCost(ActionContext context) {
+		return context is ItemUseContext itemContext && itemContext.ConsumeAmmo(UseCountCost);
 	}
 }

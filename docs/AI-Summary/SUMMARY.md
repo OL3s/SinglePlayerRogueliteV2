@@ -113,7 +113,11 @@ This folder is for AI assistants to keep project-specific context across coding 
 - Items inherit from `ItemBase`, a `[GlobalClass] Resource` with exported name, dependency set, icon, stack size, cost, generated `ItemID`, optional use counts, optional condition, and optional ammo type.
 - Item subclasses include equipable, armor, consumable, ammo, and amulet resources.
 - Item dependency classes live under `core/items/dependencies/`; `ItemDependency` is the container for requirements like skill level, mana, stamina, and ammo type.
-- `ItemUseContext` is the mutable context for real item use. Use `CanUse` for checks and `TryUse` when mana, stamina, ammo counts, item use counts, or condition should actually change.
+- `ActionContext` is the shared runtime state for generic player actions and generic dependencies.
+- `ItemUseContext` inherits from `ActionContext` and adds item-specific state such as ammo, use-count cost, and condition damage.
+- `PlayerAction` is the reusable effect layer for item use and future player-triggered abilities; dependencies remain the separate requirement/cost layer.
+- `ItemUsable` is the shared usable-item base. `PlayerAction` should live on usable item types like `ItemEquipable` and `ItemConsumable`, not on `ItemBase`.
+- `ItemUseContext` is the mutable context for real item use. Use `CanUse` for checks and `TryUse` when mana, stamina, ammo counts, item use counts, condition, or assigned `PlayerAction` execution should actually change.
 - Sample item resources are in `core/items/data/` and are currently hardcoded into `CodexData`.
 
 ## Codex
