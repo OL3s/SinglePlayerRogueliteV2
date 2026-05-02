@@ -12,7 +12,7 @@ public partial class ItemBase : Resource {
 	[Export] public int MaxStackSize { get; set; } = 1;
 	[Export] public int Cost { get; set; } = 0;
 	[Export] public string ItemID { get; set; }
-	[Export] public ItemOutpostCompatibilityData OutpostCompatibility { get; set; }
+	[Export] public ItemOutpostCompatibilityData? OutpostCompatibility { get; set; }
 	[Export] public bool IsConsumable { get; set; } = false;
 	[Export] public int UseCountMax { get; set; } = 0;
 	[Export] public int UseCountDefault { get; set; } = 0;

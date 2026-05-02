@@ -11,6 +11,7 @@ namespace SaveData {
 		[Export] public Contract CurrentContract { get; set; } = null;
 		[Export] public OutpostData OutpostData { get; set; }
 		[Export] public int ContractsCompleted { get; set; } = 0;
+		[Export] public int CurrentBiomeContractsCompleted { get; set; } = 0;
 		[Export] public int Gold { get; set; } = 100;
 		public override string ToString() {
 			return $"RunData:\n"
@@ -20,6 +21,7 @@ namespace SaveData {
 				+ $"  CurrentContract={FormatResource(CurrentContract)}\n"
 				+ $"  OutpostData={FormatResource(OutpostData)}\n"
 				+ $"  ContractsCompleted={ContractsCompleted}\n"
+				+ $"  CurrentBiomeContractsCompleted={CurrentBiomeContractsCompleted}\n"
 				+ $"  Gold={Gold}";
 		}
 

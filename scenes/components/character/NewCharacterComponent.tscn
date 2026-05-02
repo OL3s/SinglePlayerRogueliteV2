@@ -56,7 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 18
 
-[node name="PlayerPreview" type="VBoxContainer" parent="TopUi"]
+[node name="PlayerPreview" type="VBoxContainer" parent="TopUi" unique_id=1854498198]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -79,14 +79,14 @@ text = "$Character Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartingItem" type="VBoxContainer" parent="TopUi"]
+[node name="StartingItem" type="VBoxContainer" parent="TopUi" unique_id=1440471943]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="TopUi/StartingItem"]
+[node name="TitleLabel" type="Label" parent="TopUi/StartingItem" unique_id=794846194]
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -94,7 +94,7 @@ text = "Starting Item"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ItemIcon" type="TextureRect" parent="TopUi/StartingItem"]
+[node name="ItemIcon" type="TextureRect" parent="TopUi/StartingItem" unique_id=2019402820]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -102,7 +102,7 @@ size_flags_vertical = 3
 texture = SubResource("PlaceholderTexture2D_ga2uj")
 stretch_mode = 5
 
-[node name="ItemNameLabel" type="Label" parent="TopUi/StartingItem"]
+[node name="ItemNameLabel" type="Label" parent="TopUi/StartingItem" unique_id=1436200213]
 custom_minimum_size = Vector2(0, 36)
 layout_mode = 2
 size_flags_horizontal = 3
