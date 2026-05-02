@@ -120,7 +120,7 @@ public partial class InventoryOverlay : Control {
 
 			if (itemIndex >= visibleItems.Count) {
 				button.Clear(_placeholderIcon);
-				button.Visible = true;
+				button.Visible = false;
 				button.Disabled = true;
 				continue;
 			}
