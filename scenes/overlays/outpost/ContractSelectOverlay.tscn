@@ -55,12 +55,12 @@ theme_override_constants/separation = 12
 [node name="Title" type="Label" parent="Content/ContractPanel/MarginContainer/ContractLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Available Contracts"
+text = "Available Paths"
 horizontal_alignment = 1
 
 [node name="EmptyLabel" type="Label" parent="Content/ContractPanel/MarginContainer/ContractLayout"]
 layout_mode = 2
-text = "No contracts available."
+text = "No paths available."
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -91,18 +91,18 @@ theme_override_constants/separation = 16
 [node name="Title" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "Choose Contract"
+text = "Choose Path"
 
 [node name="PreviewDetails" type="Label" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Select one of the available contracts to continue the run."
+text = "Select one of the available paths to continue the run."
 autowrap_mode = 3
 
 [node name="ChooseButton" type="Button" parent="Content/PreviewPanel/MarginContainer/PreviewLayout"]
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "Accept Contract"
+text = "Accept Path"
 
 [node name="CloseOverlay" type="Button" parent="." node_paths=PackedStringArray("CloseTarget")]
 custom_minimum_size = Vector2(56, 56)

@@ -86,14 +86,14 @@ public partial class ContractSelectOverlay : Control {
 
 	private void RenderPreview() {
 		if (_selectedContract == null) {
-			_selectedTitle.Text = "Choose Contract";
-			_selectedDetails.Text = "Select one of the available contracts to continue the run.";
+			_selectedTitle.Text = "Choose Path";
+			_selectedDetails.Text = "Select one of the available paths to continue the run.";
 			_chooseButton.Disabled = true;
 			return;
 		}
 
 		_selectedTitle.Text = FormatContractTitle(_selectedContract);
-		_selectedDetails.Text = $"Biome: {FormatBiomeName(_selectedContract.Biome)}\n\nAccepting this contract will set the next path for the current run.";
+		_selectedDetails.Text = $"Biome: {FormatBiomeName(_selectedContract.Biome)}\n\nAccepting this path will set the next path for the current run.";
 		_chooseButton.Disabled = false;
 	}
 

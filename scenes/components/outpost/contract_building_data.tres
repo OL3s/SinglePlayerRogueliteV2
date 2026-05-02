@@ -11,7 +11,7 @@ PathController = ExtResource("2_contract_select")
 
 [resource]
 script = ExtResource("1_contract")
-LabelName = "Contract"
-Description = "Choose the next contract for this run."
-OwnerText = "Contracts are waiting. Pick carefully; the outpost only pays for work that gets finished."
+LabelName = "Path"
+Description = "Choose the next path for this run."
+OwnerText = "Paths are opening. Pick carefully; each choice shapes where this run goes next."
 OverlayButtons = Array[Resource]([SubResource("Resource_choose_contract")])
