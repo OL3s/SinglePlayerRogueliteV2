@@ -23,7 +23,8 @@ public partial class OutpostBuildings : Node2D {
 		if (buildings == null || buildings.Count != GetChildCount()) {
 			buildings = GenerateOutpostBuildings();
 			saveNode.RunData.OutpostData = new OutpostData {
-				Buildings = buildings
+				Buildings = buildings,
+				ContractChooseData = new ContractChooseData()
 			};
 			saveNode.SaveRunData();
 		}

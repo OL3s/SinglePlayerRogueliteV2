@@ -38,10 +38,9 @@ stretch_mode = 5
 [node name="LabelName" type="Label" parent="StatStr" unique_id=1840103329]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.38399506
+offset_left = 52.0
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -85,10 +84,9 @@ stretch_mode = 5
 [node name="LabelName" type="Label" parent="StatAgi" unique_id=735923346]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.38399506
+offset_left = 52.0
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -132,10 +130,9 @@ stretch_mode = 5
 [node name="LabelName" type="Label" parent="StatArc" unique_id=1364201953]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.38399506
+offset_left = 52.0
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -179,10 +176,9 @@ stretch_mode = 5
 [node name="LabelName" type="Label" parent="StatVit" unique_id=1885446992]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.083000004
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.38399506
+offset_left = 52.0
 offset_right = -96.0
 grow_horizontal = 2
 grow_vertical = 2
