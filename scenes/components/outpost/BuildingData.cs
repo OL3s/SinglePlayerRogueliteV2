@@ -50,22 +50,27 @@ public partial class BuildingData : Resource {
 			if (buttonData == null)
 				continue;
 
-			bottomUi.AddChild(CreateButton(buttonData));
+			bottomUi.AddChild(CreateButton(buttonData, overlay));
 		}
 	}
 
-	private Button CreateButton(BuildingOverlayButtonData buttonData) {
-		var button = new Button {
-			CustomMinimumSize = new Vector2(80, 80),
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-			Text = buttonData.LabelName,
-			Icon = LoadIcon(buttonData.IconPath),
-			IconAlignment = HorizontalAlignment.Center,
-			VerticalIconAlignment = VerticalAlignment.Top,
-			ExpandIcon = true,
-		};
+	private Button CreateButton(BuildingOverlayButtonData buttonData, BuildingOverlay buildingOverlay) {
+		var button = buttonData.SceneToLoad == null
+			? new Button()
+			: new ChangeOverlayScene { SceneToLoad = buttonData.SceneToLoad };
 
-		button.Pressed += () => OpenPathController(buttonData);
+		button.CustomMinimumSize = new Vector2(80, 80);
+		button.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+		button.Text = buttonData.LabelName;
+		button.Icon = LoadIcon(buttonData.IconPath);
+		button.IconAlignment = HorizontalAlignment.Center;
+		button.VerticalIconAlignment = VerticalAlignment.Top;
+		button.ExpandIcon = true;
+		button.Disabled = buttonData.RequiresCurrentContract && SaveNode.Get()?.RunData?.CurrentContract == null;
+
+		if (buttonData.PathController != null)
+			button.Pressed += () => OpenPathController(buttonData, buildingOverlay);
+
 		return button;
 	}
 
@@ -76,7 +81,7 @@ public partial class BuildingData : Resource {
 		return ResourceLoader.Load<Texture2D>(iconPath) ?? _fallbackIcon;
 	}
 
-	private void OpenPathController(BuildingOverlayButtonData buttonData) {
+	private void OpenPathController(BuildingOverlayButtonData buttonData, BuildingOverlay buildingOverlay) {
 		if (buttonData.PathController == null) {
 			GD.PushWarning($"Building overlay button '{buttonData.LabelName}' has no path controller configured.");
 			return;
@@ -85,6 +90,8 @@ public partial class BuildingData : Resource {
 		var overlay = buttonData.PathController.Instantiate();
 		if (overlay is StorefrontOverlay storefrontOverlay)
 			storefrontOverlay.Update(this);
+
+		overlay.TreeExited += () => Generate(buildingOverlay);
 
 		GlobalOverlay.Get()?.AddChild(overlay);
 	}
