@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using MyTypes;
+using SaveData;
 
 [GlobalClass]
 public partial class ItemDependency : Resource {
@@ -13,8 +14,15 @@ public partial class ItemDependency : Resource {
 		Dependencies.Add(dependency);
 	}
 
-	internal static bool CanExecute(Array<Dependency> dependencies, ActionContext context) {
-		foreach (var dependency in dependencies) {
+	internal bool CanExecute(ItemUseContext context = null, PlayerRuntimeStats playerStats = null) {
+		context = PrepareContext(context, playerStats);
+
+		if (Dependencies == null) {
+			GD.PushError("ItemDependency: Dependencies array is missing.");
+			return false;
+		}
+
+		foreach (var dependency in Dependencies) {
 			if (dependency != null && !dependency.IsMet(context))
 				return false;
 		}
@@ -22,39 +30,61 @@ public partial class ItemDependency : Resource {
 		return true;
 	}
 
-	internal static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null, int? stamina = null) {
-		return CanExecute(dependencies, new ActionContext {
-			PlayerSkills = playerSkills,
-			Mana = mana,
-			Stamina = stamina
-		});
-	}
-
-	internal static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, ItemAmmo ammoItem = null, int? mana = null, int? stamina = null) {
-		return CanExecute(dependencies, new ItemUseContext {
-			PlayerSkills = playerSkills,
-			AmmoType = ammoType,
-			AmmoItem = ammoItem,
-			Mana = mana,
-			Stamina = stamina
-		});
-	}
-
-	internal bool CanExecute(ActionContext context) {
-		return CanExecute(Dependencies, context);
-	}
-
-	internal bool CanExecute(PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null, int? stamina = null) {
-		return CanExecute(Dependencies, playerSkills, ammoType, mana, stamina);
-	}
-
 	internal bool ApplyCosts(ActionContext context) {
+		context = PrepareContext(context as ItemUseContext);
+
 		foreach (var dependency in Dependencies) {
 			if (dependency != null && !dependency.ApplyCost(context))
 				return false;
 		}
 
 		return true;
+	}
+
+	private ItemUseContext PrepareContext(ItemUseContext context = null, PlayerRuntimeStats playerStats = null) {
+		context ??= new ItemUseContext();
+
+		RunData runData = null;
+		PlayerData playerData = null;
+
+		try {
+			var saveNode = SaveNode.Get();
+			runData = saveNode.RunData;
+			playerData = saveNode.PlayerData;
+		}
+		catch (System.Exception exception) {
+			GD.PushError($"ItemDependency: SaveNode.Get() failed while preparing dependency context: {exception.Message}");
+		}
+
+		context.RunData ??= runData;
+		context.PlayerData ??= playerData;
+		context.PlayerSkills ??= context.PlayerData?.Skills;
+		context.PlayerStats ??= playerStats ?? PlayerRuntimeStats.CreateWithDefaults(context.PlayerData);
+
+		if (context.RunData == null)
+			GD.PushError("ItemDependency: RunData was not found while preparing dependency context.");
+
+		if (context.PlayerData == null)
+			GD.PushError("ItemDependency: PlayerData was not found while preparing dependency context.");
+
+		if (context.PlayerSkills == null)
+			GD.PushError("ItemDependency: PlayerSkillData was not found while preparing dependency context.");
+
+		context.Mana ??= context.PlayerStats.CurrentMana;
+		context.Stamina ??= context.PlayerStats.CurrentStamina;
+
+		var requiredAmmoType = GetRequiredAmmoType();
+		if (context.AmmoType == null && requiredAmmoType != null)
+			context.AmmoType = requiredAmmoType;
+
+		if (context.AmmoType != null) {
+			context.AmmoItem ??= context.PlayerStats.GetAmmoItem(context.AmmoType.Value);
+
+			if (context.AmmoItem == null)
+				GD.PushError($"ItemDependency: Required ammo item of type {context.AmmoType.Value} was not found.");
+		}
+
+		return context;
 	}
 
 	public AmmoType? GetRequiredAmmoType() {

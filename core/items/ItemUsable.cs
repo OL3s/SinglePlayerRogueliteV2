@@ -13,18 +13,22 @@ public partial class ItemUsable : ItemBase {
 		Action = action;
 	}
 
-	public bool CanUse(ItemUseContext context) {
-		if (context == null || IsEmpty || IsBroken || !HasEnoughUses(context.UseCountCost))
+	public bool CanUse(ItemUseContext? context = null, PlayerRuntimeStats? playerStats = null) {
+		context ??= new ItemUseContext();
+
+		if (IsEmpty || IsBroken || !HasEnoughUses(context.UseCountCost))
 			return false;
 
-		if (Dependencies != null && !Dependencies.CanExecute(context))
+		if (Dependencies != null && !Dependencies.CanExecute(context, playerStats))
 			return false;
 
 		return Action == null || Action.CanExecute(context);
 	}
 
-	public bool TryUse(ItemUseContext context) {
-		if (!CanUse(context))
+	public bool TryUse(ItemUseContext? context = null, PlayerRuntimeStats? playerStats = null) {
+		context ??= new ItemUseContext();
+
+		if (!CanUse(context, playerStats))
 			return false;
 
 		context.Item ??= this;

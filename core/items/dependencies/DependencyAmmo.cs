@@ -7,10 +7,23 @@ public partial class DependencyAmmo : Dependency {
 	[Export] public int UseCountCost { get; set; } = 1;
 
 	internal override bool IsMet(ActionContext context) {
-		if (context is not ItemUseContext itemContext || itemContext.CurrentAmmoType == null || itemContext.CurrentAmmoType != AmmoType)
+		if (context is not ItemUseContext itemContext) {
+			GD.PushError("DependencyAmmo: Ammo dependency requires an ItemUseContext.");
 			return false;
+		}
 
-		return itemContext.AmmoItem == null || !itemContext.AmmoItem.IsConsumable || itemContext.AmmoItem.UseCountCurrent >= UseCountCost;
+		var ammoItem = itemContext.GetCurrentAmmoItem();
+		if (ammoItem == null) {
+			GD.PushError($"DependencyAmmo: Expected ammo item of type {AmmoType}, but none was found.");
+			return false;
+		}
+
+		if (ammoItem.AmmoType != AmmoType) {
+			GD.PushError($"DependencyAmmo: Expected ammo type {AmmoType}, but found {ammoItem.AmmoType}.");
+			return false;
+		}
+
+		return !ammoItem.IsConsumable || ammoItem.UseCountCurrent >= UseCountCost;
 	}
 
 	internal override bool ApplyCost(ActionContext context) {
