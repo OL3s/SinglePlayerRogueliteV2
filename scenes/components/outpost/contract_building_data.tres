@@ -1,17 +1,24 @@
-[gd_resource type="Resource" script_class="BuildingData" load_steps=3 format=3 uid="uid://dc5yw0wdd4tyc"]
+[gd_resource type="Resource" script_class="BuildingData" load_steps=4 format=3 uid="uid://dc5yw0wdd4tyc"]
 
 [ext_resource type="Script" uid="uid://enkabhmf46kb" path="res://scenes/overlays/building/BuildingOverlayButtonData.cs" id="1_2fvkw"]
 [ext_resource type="Script" uid="uid://cd5blmxgvl3oe" path="res://scenes/components/outpost/BuildingData.cs" id="1_contract"]
 [ext_resource type="PackedScene" path="res://scenes/overlays/outpost/ContractSelectOverlay.tscn" id="2_contract_select"]
+[ext_resource type="PackedScene" uid="uid://1lffmaipx3ky" path="res://scenes/debug/player_test_world.tscn" id="3_path_scene"]
 
 [sub_resource type="Resource" id="Resource_choose_contract"]
 script = ExtResource("1_2fvkw")
 LabelName = "Choose Path"
 PathController = ExtResource("2_contract_select")
 
+[sub_resource type="Resource" id="Resource_begin_path"]
+script = ExtResource("1_2fvkw")
+LabelName = "Begin Path"
+SceneToLoad = ExtResource("3_path_scene")
+RequiresCurrentContract = true
+
 [resource]
 script = ExtResource("1_contract")
 LabelName = "Path"
 Description = "Choose the next path for this run."
 OwnerText = "Paths are opening. Pick carefully; each choice shapes where this run goes next."
-OverlayButtons = Array[Resource]([SubResource("Resource_choose_contract")])
+OverlayButtons = Array[Resource]([SubResource("Resource_choose_contract"), SubResource("Resource_begin_path")])

@@ -62,7 +62,6 @@ public partial class ContractSelectOverlay : Control {
 			_contractList.AddChild(CreateContractButton(contract));
 		}
 
-		_selectedContract ??= contracts[0];
 	}
 
 	private Button CreateContractButton(Contract contract) {
