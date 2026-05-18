@@ -40,6 +40,25 @@ public partial class ItemBase : Resource {
 		ItemID = Guid.NewGuid().ToString();
 	}
 
+	public bool CanUse(ItemUseContext context) {
+		if (context == null || IsEmpty || IsBroken || !HasEnoughUses(context.UseCountCost))
+			return false;
+
+		return Dependencies == null || Dependencies.CanExecute(context);
+	}
+
+	public bool TryUse(ItemUseContext context) {
+		if (!CanUse(context))
+			return false;
+
+		if (Dependencies != null && !Dependencies.ApplyCosts(context))
+			return false;
+
+		ConsumeUse(context.UseCountCost);
+		ApplyConditionDamage(context.ConditionDamage);
+		return true;
+	}
+
 	public void ResetRuntimeValues() {
 		UseCountCurrent = UseCountDefault;
 		ConditionCurrent = ConditionDefault;
@@ -60,11 +79,11 @@ public partial class ItemBase : Resource {
 		return true;
 	}
 
-	protected bool HasEnoughUses(int amount) {
+	private bool HasEnoughUses(int amount) {
 		return !IsConsumable || UseCountCurrent >= Mathf.Max(0, amount);
 	}
 
-	protected void ApplyConditionDamage(int amount) {
+	private void ApplyConditionDamage(int amount) {
 		if (!HasCondition || amount <= 0)
 			return;
 

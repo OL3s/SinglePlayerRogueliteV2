@@ -96,6 +96,16 @@ Final decision will be locked before full asset production begins.
 - Shared combat, item, and progression systems in reusable C# code
 - Autoload-based global systems for save data, overlays, and signals
 
+## Run Pressure And Biome Risk
+
+- Contracts are finite during a run, so spending too many contracts in low-level biomes can limit long-term yield.
+- Rushing toward higher-level biomes should be a high-risk, high-reward route choice because later biomes can offer better rewards, but the player has fewer chances to recover if underprepared.
+- Biome advancement should include some RNG: the player may not always receive the contract/path option needed to move to the next biome immediately.
+- Ice and lava biomes should work best when the player has cold or heat resistance prepared from earlier biomes. These resistances should be acknowledged, earned, or planned for before entering those biomes.
+- Ice and lava should not be completely unplayable without the correct resistance, but missing resistance should apply a meaningful penalty.
+- Gem difficulty should scale from jungle/green as the easiest gem, then ice/blue, then lava/red as the hardest of these three.
+- The UI should include a clear slider/progress indicator showing how close the Diamond Boss is to hibernation. If the Diamond Boss reaches hibernation, the run is lost.
+
 ## Character Visual Structure Plan
 
 <details>

@@ -13,7 +13,7 @@ public partial class ItemDependency : Resource {
 		Dependencies.Add(dependency);
 	}
 
-	internal static bool CanExecute(Array<Dependency> dependencies, ActionContext context) {
+	internal static bool CanExecute(Array<Dependency> dependencies, ItemUseContext context) {
 		foreach (var dependency in dependencies) {
 			if (dependency != null && !dependency.IsMet(context))
 				return false;
@@ -23,24 +23,15 @@ public partial class ItemDependency : Resource {
 	}
 
 	internal static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, int? mana = null, int? stamina = null) {
-		return CanExecute(dependencies, new ActionContext {
-			PlayerSkills = playerSkills,
-			Mana = mana,
-			Stamina = stamina
-		});
-	}
-
-	internal static bool CanExecute(Array<Dependency> dependencies, PlayerSkillData playerSkills = null, AmmoType? ammoType = null, ItemAmmo ammoItem = null, int? mana = null, int? stamina = null) {
 		return CanExecute(dependencies, new ItemUseContext {
 			PlayerSkills = playerSkills,
 			AmmoType = ammoType,
-			AmmoItem = ammoItem,
 			Mana = mana,
 			Stamina = stamina
 		});
 	}
 
-	internal bool CanExecute(ActionContext context) {
+	internal bool CanExecute(ItemUseContext context) {
 		return CanExecute(Dependencies, context);
 	}
 
@@ -48,7 +39,7 @@ public partial class ItemDependency : Resource {
 		return CanExecute(Dependencies, playerSkills, ammoType, mana, stamina);
 	}
 
-	internal bool ApplyCosts(ActionContext context) {
+	internal bool ApplyCosts(ItemUseContext context) {
 		foreach (var dependency in Dependencies) {
 			if (dependency != null && !dependency.ApplyCost(context))
 				return false;

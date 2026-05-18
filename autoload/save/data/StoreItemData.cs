@@ -83,8 +83,8 @@ public partial class StoreItemData : Resource {
 		GD.Print($"Generating items for {buildingType} in {biome} biome");
 		return new Array<ItemBase>() {
 			new ItemBase($"{buildingType} Item 1", null, placeholderimage, 10, 100),
-			new ItemConsumable($"{buildingType} Consumable 1", null, null, placeholderimage, 10, 50, 5, 5),
-			new ItemEquipable($"{buildingType} Equipable 1", null, null, placeholderimage, 1, 200, placeholderimage) {
+			new ItemConsumable($"{buildingType} Consumable 1", null, placeholderimage, 10, 50, 5, 5),
+			new ItemEquipable($"{buildingType} Equipable 1", null, placeholderimage, 1, 200, placeholderimage) {
 				HasCondition = true,
 				ConditionMax = 100,
 				ConditionDefault = 100,

@@ -4,11 +4,11 @@ using Godot;
 public partial class DependencyStamina : Dependency {
 	[Export] public int Cost { get; set; }
 
-	internal override bool IsMet(ActionContext context) {
+	internal override bool IsMet(ItemUseContext context) {
 		return context?.Stamina != null && context.Stamina >= Cost;
 	}
 
-	internal override bool ApplyCost(ActionContext context) {
+	internal override bool ApplyCost(ItemUseContext context) {
 		return context != null && context.SpendStamina(Cost);
 	}
 }

@@ -7,6 +7,4 @@ public partial class BuildingOverlayButtonData : Resource {
 
 	[Export] public string LabelName { get; set; }
 	[Export] public PackedScene PathController { get; set; }
-	[Export] public PackedScene SceneToLoad { get; set; }
-	[Export] public bool RequiresCurrentContract { get; set; }
 }

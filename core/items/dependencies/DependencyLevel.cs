@@ -6,7 +6,7 @@ public partial class DependencyLevel : Dependency {
 	[Export] public PlayerSkillData.PlayerSkillType SkillType { get; set; } = PlayerSkillData.PlayerSkillType.Strength;
 	[Export] public int RequiredLevel { get; set; } = 1;
 
-	internal override bool IsMet(ActionContext context) {
+	internal override bool IsMet(ItemUseContext context) {
 		return context?.PlayerSkills != null && GetCurrentLevel(context.PlayerSkills) >= RequiredLevel;
 	}
 
